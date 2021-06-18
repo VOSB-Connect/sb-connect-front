@@ -1,5 +1,5 @@
 <script>
-    import { useForm, Hint, HintGroup, validators, minLength } from "svelte-use-form@2.0.0"
+    import { useForm, Hint, HintGroup, validators, minLength } from "svelte-use-form"
 
     let email = "sample@example.com";
     let password = "abc123";
