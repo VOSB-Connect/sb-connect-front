@@ -4,23 +4,36 @@
     let email = "sample@example.com";
     let password = "abc123";
     let duns = "1234";
-    let message = "";
+    $: message = "";
     let error;
+    let confirmed = true;
 
     // const form = useForm()
 
     const submitForm = async() => {
         try {
-            const submit = await fetch("./api/form", {
-                method: "POST",
-                body: JSON.stringify({
+            const registerInfo = {
                     email,
                     password,
                     duns,
-                })
+                    confirmed
+            }
+
+            const register = await fetch("http://localhost:1337/auth/local/register", {
+                method: "POST",
+                header: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(registerInfo)
             })
-            const data = await submit.json()
-            message = data
+            const registerResponse = await register.json()
+            console.log(registerResponse)
+            if(registerResponse.statusCode != 200){
+                console.log(registerResponse[0].messages[0].message)
+                error = registerResponse[0].messages[0].message
+            }
+            message = registerResponse
         } catch (err) {
             error = err
         }    
