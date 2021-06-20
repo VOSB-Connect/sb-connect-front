@@ -4,10 +4,10 @@
     let email = "sample@example.com";
     let password = "abc123";
     let duns = "1234";
-    $: message = "";
-    let error;
+    let message = "";
+    let didRegister = true
     let confirmed = true;
-
+    let error;
     // const form = useForm()
 
     const submitForm = async() => {
@@ -30,10 +30,13 @@
             const registerResponse = await register.json()
             console.log(registerResponse)
             if(registerResponse.statusCode != 200){
-                console.log(registerResponse[0].messages[0].message)
-                error = registerResponse[0].messages[0].message
+                console.log(registerResponse.message[0].messages[0].message)
+                error = registerResponse.message[0].messages[0].message
+                didRegister = false;
+            } else {
+                didRegister = true;
             }
-            message = registerResponse
+            
         } catch (err) {
             error = err
         }    
@@ -43,7 +46,10 @@
 </script>
 
 <main>
-        {#if !message && !error} 
+        {#if message == ""} 
+            {#if !didRegister}
+                <p>{error}</p>
+            {/if}
             <form on:submit|preventDefault={ submitForm }> 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" bind:value={ email }>
@@ -59,10 +65,8 @@
 
                 <input type="submit" value="Register"> 
             </form>
-        {:else if message}
+        {:else if didRegister}
             <p>Verification email has been sent to {email}. Please check email to varify.</p>
-        {:else if error} 
-            <p>{error}</p>
         {/if}
 </main>
 
