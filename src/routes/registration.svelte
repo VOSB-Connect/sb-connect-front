@@ -1,9 +1,10 @@
 <script>
     import { useForm, Hint, HintGroup, validators, minLength } from "svelte-use-form"
 
+
     let email = "sample@example.com";
     let password = "abc123";
-    let duns = "1234";
+    let duns = "12345";
     let message = "";
     let didRegister = true
     let confirmed = true;
@@ -12,29 +13,32 @@
 
     const submitForm = async() => {
         try {
-            const registerInfo = {
+
+            const registrationHeaders = new Headers();
+            registrationHeaders.append("Content-Type", "application/json")
+            const registrationInfo = JSON.stringify({
+                    username: duns,
                     email,
                     password,
-                    duns,
                     confirmed
-            }
-
-            const register = await fetch("http://localhost:1337/auth/local/register", {
+            });
+            const requestOptions = {
                 method: "POST",
-                header: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(registerInfo)
-            })
-            const registerResponse = await register.json()
-            console.log(registerResponse)
-            if(registerResponse.statusCode != 200){
-                console.log(registerResponse.message[0].messages[0].message)
-                error = registerResponse.message[0].messages[0].message
-                didRegister = false;
-            } else {
+                headers: registrationHeaders,
+                body: registrationInfo,
+                redirect: 'follow'
+            };
+            
+            const register = await fetch("http://localhost:1337/auth/local/register", requestOptions);
+            
+            if(register.ok){
+                const registerResponse = await register.json()
                 didRegister = true;
+                console.log(registerResponse)
+            } else {
+                const failedResponse = await register.json()
+                didRegister = false;
+                error = failedResponse.message[0].messages[0].message;
             }
             
         } catch (err) {
