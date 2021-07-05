@@ -1,7 +1,7 @@
 <script>
     import { useForm, Hint, HintGroup, validators, minLength } from "svelte-use-form"
 
-
+    let companyName = "testCompany";
     let email = "sample@example.com";
     let password = "abc123";
     let duns = "12345";
@@ -9,7 +9,6 @@
     let didRegister = true
     let confirmed = true;
     let error;
-    // const form = useForm()
 
     const submitForm = async() => {
         try {
@@ -19,7 +18,9 @@
             const registrationInfo = JSON.stringify({
                     username: duns,
                     email,
+                    companyName,
                     password,
+                    username: duns,
                     confirmed
             });
             const requestOptions = {
@@ -54,7 +55,10 @@
             {#if !didRegister}
                 <p>{error}</p>
             {/if}
-            <form on:submit|preventDefault={ submitForm }> 
+            <form on:submit|preventDefault={ submitForm }>
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" name="companyName" bind:value={ companyName } >
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" bind:value={ email }>
 
