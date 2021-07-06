@@ -16,7 +16,6 @@
             const registrationHeaders = new Headers();
             registrationHeaders.append("Content-Type", "application/json")
             const registrationInfo = JSON.stringify({
-                    username: duns,
                     email,
                     companyName,
                     password,
