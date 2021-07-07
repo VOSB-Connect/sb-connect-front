@@ -1,8 +1,8 @@
-    <header class="bg-gray-800">
+    <header class="bg-indigo-500">
         <nav class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
                 <a class="text-xl font-bold text-white transition-colors duration-300 transform md:text-2xl hover:text-indigo-400"
-                    href="#">SB Connection</a>
+                    href="/">SB Connect</a>
     
                 <!-- Mobile menu button -->
                 <div class="flex md:hidden">
@@ -20,13 +20,13 @@
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div class="flex-col mt-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
                 <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-                    href="#">Home</a>
+                    href="/">Home</a>
                 <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-                    href="#">Services</a>
+                    href="/services">Services</a>
                 <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-                    href="#">Pricing</a>
+                    href="/pricing">Pricing</a>
                 <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-                    href="#">Help</a>
+                    href="/help">Help</a>
                 <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
                     href="/registration">Register</a>
             </div>
@@ -34,13 +34,10 @@
     
         <section class="flex items-center justify-center" style="height: 500px;">
             <div class="text-center">
-                <p class="text-xl font-medium tracking-wider text-gray-300">Lorem ipsum dolor</p>
-                <h2 class="mt-6 text-3xl font-bold text-white md:text-5xl">Lorem ipsum dolor sit amet, <br> consectetur
-                    adipiscing elit</h2>
-    
+                <h2 class="mt-6 text-3xl font-bold text-indigo-300 md:text-5xl">Small Business. Big Results.<br>Connections Simplified.</h2>
                 <div class="flex justify-center mt-8">
-                    <a class="px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500"
-                        href="#">Get In Touch</a>
+                    <a class="px-8 py-2 text-lg font-medium text-yellow-600 transition-colors duration-300 transform bg-yellow-400 rounded hover:bg-indigo-500"
+                        href="/register">Register Today</a>
                 </div>
             </div>
         </section>
