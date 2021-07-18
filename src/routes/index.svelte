@@ -11,11 +11,9 @@
 	<div class="max-w-5xl px-6 py-16 mx-auto">
 		<div class="items-center md:flex md:space-x-6">
 			<div class="md:w-1/2">
-				<h3 class="text-2xl font-semibold text-gray-800">Lorem ipsum dolor sit <br> amet, consectetur</h3>
-				<p class="max-w-md mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.</p>
-				<a href="#" class="block mt-8 text-indigo-700 underline">Experienced team</a>
+				<h3 class="text-2xl font-semibold text-gray-800">Historically Underutilized Business Connections</h3>
+				<p class="max-w-md mt-4 text-gray-600">HUB Connection’s mission is to accelerate procurement opportunities by connecting HUBS who are led by women, veterans, and natives by identifying contract opportunities allowing them to submit a quote in a fraction of the time normally needed. Further, we help Protégés, Teaming Partners, and Joint Ventures find acquisitions that are SMART for business.
+				</p>
 			</div>
 
 			<div class="mt-8 md:mt-0 md:w-1/2">
