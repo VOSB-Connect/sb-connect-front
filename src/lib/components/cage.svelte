@@ -1,6 +1,12 @@
 <script>
-    export let code;
-    export let getInformation
+    export let cageCode;
+
+    function getInformation(){
+        // let response = await fetch(`https://api.sam.gov/entity-information/v1/entities?api_key=r3cYNK8ZhHkddQ6mX6Km8PqZG8JBqKqhWWWyLmlL&cageCode=${ cageCode }`)
+        // let data = await response.json()
+        // data.then(console.log)
+        console.log(cageCode)
+    }
 </script>
 
     <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -17,7 +23,7 @@
             <div class="rounded-md shadow-sm -space-y-px">
             <div>
                 <label for="cageCodeInput" class="sr-only">Enter Cage Code</label>
-                <input id="cageCodeInput" name="cageCodeInput" type="cageCodeInput" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Cage Code" bind:value={ code }>
+                <input id="cageCodeInput" name="cageCodeInput" bind:value={ cageCode } type="text" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Cage Code" >
             </div>
             </div>
     
