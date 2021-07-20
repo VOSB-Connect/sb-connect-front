@@ -1,6 +1,7 @@
 <script>
     // import { useForm, Hint, HintGroup, validators, minLength } from "svelte-use-form"
     import Cage from '$lib/components/cage.svelte'
+    import Verify from '$lib/components/verify.svelte'
 
     // let companyName = "testCompany";
     // let email = "sample@example.com";
@@ -10,15 +11,7 @@
     // let didRegister = true
     // let confirmed = true;
     // let error;
-    let cageCode;
-    
-
-    async function getInformation(){
-        // let response = await fetch(`https://api.sam.gov/entity-information/v1/entities?api_key=r3cYNK8ZhHkddQ6mX6Km8PqZG8JBqKqhWWWyLmlL&cageCode=${ cageCode }`)
-        // let data = await response.json()
-        // data.then(console.log)
-        console.log(cageCode)
-    }
+    let cageCode = "";
 
 
     // const submitForm = async() => {
@@ -62,7 +55,8 @@
 
 <main>
 
-    <Cage getInformation={ getInformation } code={ cageCode }></Cage>
+    <Cage { cageCode } ></Cage>
+    <Verify></Verify>
 
 
 
