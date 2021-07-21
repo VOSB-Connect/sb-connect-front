@@ -3,6 +3,8 @@
     import Cage from '$lib/components/cage.svelte'
     import Verify from '$lib/components/verify.svelte'
 
+    
+
     let isCageCodeEmpty = true;
     let userInformation;
 

@@ -1,5 +1,5 @@
 <script>
-    export let userInformation;
+    import Item from '$lib/components/item.svelte'
     let companyName = "testCompany";
     let email = "sample@example.com";
     let password = "abc123";
@@ -9,7 +9,7 @@
     let confirmed = true;
     let error;
 
-  $: console.log(userInformation)  
+  
     const submitForm = async() => {
         try {
 
@@ -59,45 +59,11 @@
     </div>
     <div class="border-t border-gray-200">
       <dl>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
-            Company Name
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            { userInformation.legalBusinessName }
-          </dd>
-        </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
-            Duns
-          </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            { userInformation.duns }
-          </dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
-            Cage Code
-          </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            { userInformation.cageCode }
-          </dd>
-        </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
-            Primary Naics
-          </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            { userInformation.primaryNaics }
-          </dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
-            Company Website:
-          </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            { userInformation.entityURL }
-          </dd>
-        </div>
+        <Item title="Company Name"  userItem={ userInformation.legalBusinessName } />
+        <Item title="Duns" userItem={ userInformation.duns } />
+        <Item title="Cage Code" userItem={ userInformation.cageCode }/>
+        <Item title="Primary Naics" userItem={ userInformation.primaryNaics } />
+        <Item title="Company Website" userItem={ userInformation.entityURL } />
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
             Attachments
