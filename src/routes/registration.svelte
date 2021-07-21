@@ -3,65 +3,20 @@
     import Cage from '$lib/components/cage.svelte'
     import Verify from '$lib/components/verify.svelte'
 
-    // let companyName = "testCompany";
-    // let email = "sample@example.com";
-    // let password = "abc123";
-    // let cage = "12345";
-    // let message = "";
-    // let didRegister = true
-    // let confirmed = true;
-    // let error;
-    let cageCode = "";
-
-
-    // const submitForm = async() => {
-    //     try {
-
-    //         const registrationHeaders = new Headers();
-    //         registrationHeaders.append("Content-Type", "application/json")
-    //         const registrationInfo = JSON.stringify({
-    //                 email,
-    //                 companyName,
-    //                 password,
-    //                 username: cage,
-    //                 confirmed
-    //         });
-    //         const requestOptions = {
-    //             method: "POST",
-    //             headers: registrationHeaders,
-    //             body: registrationInfo,
-    //             redirect: 'follow'
-    //         };
-            
-    //         const register = await fetch("http://localhost:1337/auth/local/register", requestOptions);
-            
-    //         if(register.ok){
-    //             const registerResponse = await register.json()
-    //             didRegister = true;
-    //             console.log(registerResponse)
-    //         } else {
-    //             const failedResponse = await register.json()
-    //             didRegister = false;
-    //             error = failedResponse.message[0].messages[0].message;
-    //         }
-            
-    //     } catch (err) {
-    //         error = err
-    //     }    
-    // }
-
+    let isCageCodeEmpty = true;
+    let userInformation;
 
 </script>
 
 <main>
+    {#if isCageCodeEmpty}
+        <Cage bind:isCageCodeEmpty={ isCageCodeEmpty } bind:userInformation={ userInformation }/>
+    {:else }
+        <Verify bind:userInformation={ userInformation }></Verify>
+    {/if}
 
-    <Cage { cageCode } ></Cage>
-    <Verify></Verify>
 
-
-
-
-        <!-- {#if message == ""} 
+    <!-- {#if message == ""} 
             {#if !didRegister}
                 <p>{error}</p>
             {/if}

@@ -1,54 +1,101 @@
-<script></script>
+<script>
+    export let userInformation;
+    let companyName = "testCompany";
+    let email = "sample@example.com";
+    let password = "abc123";
+    let cage = "12345";
+    let message = "";
+    let didRegister = true
+    let confirmed = true;
+    let error;
+
+  $: console.log(userInformation)  
+    const submitForm = async() => {
+        try {
+
+            const registrationHeaders = new Headers();
+            registrationHeaders.append("Content-Type", "application/json")
+            const registrationInfo = JSON.stringify({
+                    email,
+                    companyName,
+                    password,
+                    username: cage,
+                    confirmed
+            });
+            const requestOptions = {
+                method: "POST",
+                headers: registrationHeaders,
+                body: registrationInfo,
+                redirect: 'follow'
+            };
+            
+            const register = await fetch("http://localhost:1337/auth/local/register", requestOptions);
+            
+            if(register.ok){
+                const registerResponse = await register.json()
+                didRegister = true;
+                console.log(registerResponse)
+            } else {
+                const failedResponse = await register.json()
+                didRegister = false;
+                error = failedResponse.message[0].messages[0].message;
+            }
+            
+        } catch (err) {
+            error = err
+        }    
+    }
+</script>
 
 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <form action="">
     <div class="px-4 py-5 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
-        Applicant Information
+        Verify Information
       </h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">
-        Personal details and application.
+        Verify that all information is correct. If not hit cancel and re-enter cage code.
       </p>
     </div>
     <div class="border-t border-gray-200">
       <dl>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
-            Full name
-          </dt>
+            Company Name
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            Margot Foster
+            { userInformation.legalBusinessName }
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
-            Application for
+            Duns
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            Backend Developer
+            { userInformation.duns }
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
-            Email address
+            Cage Code
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            margotfoster@example.com
+            { userInformation.cageCode }
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
-            Salary expectation
+            Primary Naics
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            $120,000
+            { userInformation.primaryNaics }
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
-            About
+            Company Website:
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+            { userInformation.entityURL }
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -94,4 +141,10 @@
         </div>
       </dl>
     </div>
+  </form>
   </div>
+
+
+	
+
+
