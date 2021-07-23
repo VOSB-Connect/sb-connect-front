@@ -14,7 +14,7 @@
     {#if isCageCodeEmpty}
         <Cage bind:isCageCodeEmpty={ isCageCodeEmpty } bind:userInformation={ userInformation }/>
     {:else }
-        <Verify bind:userInformation={ userInformation }></Verify>
+        <Verify bind:userInformation={ userInformation } />
     {/if}
 
 
