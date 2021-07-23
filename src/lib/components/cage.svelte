@@ -6,7 +6,8 @@
 function getInformation(){
         // let response = await fetch(`https://api.sam.gov/entity-information/v1/entities?api_key=r3cYNK8ZhHkddQ6mX6Km8PqZG8JBqKqhWWWyLmlL&cageCode=${ cageCode }`)
         // let data = await response.json()
-        // data.then(console.log)
+            
+        // const { entityData } = data;
 
         // userInformation = {
         //     legalBusinessName: entityData[0].entityRegistration.legalBusinessName,
