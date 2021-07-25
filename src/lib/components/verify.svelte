@@ -1,5 +1,6 @@
 <script>
     import Item from '$lib/components/item.svelte'
+    import { goto } from '$app/navigation'
     export let userInformation;
 
     let legalBusinessName;
@@ -47,6 +48,7 @@
                 const registerResponse = await register.json()
                 didRegister = true;
                 console.log(registerResponse)
+                goto('/dashboard')
             } else {
                 const failedResponse = await register.json()
                 didRegister = false;
@@ -110,8 +112,15 @@
                 </div>
               </dd>
             </div>
-          </dl>
-        </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+              <button type="submit" class="bg-purple-400 px-3 py-3 text-sm shadow-sm font-medium tracking-wider border text-purple-100 rounded-full hover:shadow-lg hover:bg-purple-500">Register</button>
+            </div>
+          </div>
+        </dl>
+        
+      </div>
+      
+      
       </form>
     </div>
   {:else if didRegister}
