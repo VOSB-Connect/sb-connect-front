@@ -1,6 +1,6 @@
 <script>
     import {faSearch, faPeopleArrows, faFileAlt, faCog} from '@fortawesome/free-solid-svg-icons'
-    import SidebarItem from './sidebarItem.svelte'
+    import SidebarItem from '$lib/components/sideBarItem.svelte'
 </script>
 
 
