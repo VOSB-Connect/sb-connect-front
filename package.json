@@ -29,5 +29,9 @@
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",
 		"svelte-fa": "^2.2.1"
+	},
+	"engines": {
+		"node": "^12.20",
+		"npm": "6.14.4"
 	}
 }
