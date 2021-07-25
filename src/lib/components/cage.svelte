@@ -3,30 +3,30 @@
     export let cageCode = "";
     export let isCageCodeEmpty;
 
-function getInformation(){
-        // let response = await fetch(`https://api.sam.gov/entity-information/v1/entities?api_key=r3cYNK8ZhHkddQ6mX6Km8PqZG8JBqKqhWWWyLmlL&cageCode=${ cageCode }`)
-        // let data = await response.json()
+async function getInformation(){
+        let response = await fetch(`https://api.sam.gov/entity-information/v1/entities?api_key=r3cYNK8ZhHkddQ6mX6Km8PqZG8JBqKqhWWWyLmlL&cageCode=${ cageCode }`)
+        let data = await response.json()
             
-        // const { entityData } = data;
+        const { entityData } = data;
 
-        // userInformation = {
-        //     legalBusinessName: entityData[0].entityRegistration.legalBusinessName,
-        //     duns: entityData[0].entityRegistration.ueiDUNS,
-        //     cageCode: entityData[0].entityRegistration.cageCode,
-        //     businessTypeList: entityData[0].coreData.businessTypes.businessTypeList,
-        //     primaryNaics: entityData[0].assertions.goodsAndServices.primaryNaics, 
-        //     naicsList: entityData[0].assertions.goodsAndServices.naicsList,
-        //     entityURL: entityData[0].coreData.entityInformation.entityURL
-        // }
         userInformation = {
-            legalBusinessName: "Spatialgis, L.L.C",
-            duns: "080446911",
-            cageCode: "7RFJ7",
-            businessTypeList: [1, 2, 3, 4],
-            primaryNaics: "541370", 
-            naicsList: [5, 6, 7, 8, 9],
-            entityURL: "www.spatialgisservices.com"
+            legalBusinessName: entityData[0].entityRegistration.legalBusinessName,
+            duns: entityData[0].entityRegistration.ueiDUNS,
+            cageCode: entityData[0].entityRegistration.cageCode,
+            businessTypeList: entityData[0].coreData.businessTypes.businessTypeList,
+            primaryNaics: entityData[0].assertions.goodsAndServices.primaryNaics, 
+            naicsList: entityData[0].assertions.goodsAndServices.naicsList,
+            entityURL: entityData[0].coreData.entityInformation.entityURL
         }
+        // userInformation = {
+        //     legalBusinessName: "Spatialgis, L.L.C",
+        //     duns: "080446911",
+        //     cageCode: "7RFJ7",
+        //     businessTypeList: [1, 2, 3, 4],
+        //     primaryNaics: "541370", 
+        //     naicsList: [5, 6, 7, 8, 9],
+        //     entityURL: "www.spatialgisservices.com"
+        // }
 
         isCageCodeEmpty = false;
     }
