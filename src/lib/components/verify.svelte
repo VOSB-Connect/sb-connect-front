@@ -42,7 +42,7 @@
                 redirect: 'follow'
             };
             
-            const register = await fetch("http://localhost:1337/auth/local/register", requestOptions);
+            const register = await fetch("https://sb-connect-back-strapi.herokuapp.com/auth/local/register", requestOptions);
             
             if(register.ok){
                 const registerResponse = await register.json()
