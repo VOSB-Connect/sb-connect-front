@@ -1,5 +1,5 @@
 {
-	"name": "HUB Connection",
+	"name": "hub-connection",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
