@@ -3,37 +3,26 @@
     import { goto } from '$app/navigation'
     export let userInformation;
 
-    let legalBusinessName;
-    let duns;
-    let cageCode;
-    let primaryNaics;
-    let businessTypeList;
-    let naicsList;
-    let entityURL;
+    $:console.log(userInformation)
     let email = "";
     let password = "";
     let message = "";
     let didRegister = true
-    let confirmed = true;
+    let confirmed = false;
     let error;
 
   
-    const submitForm = async() => {
+    async function submitForm() {
         try {
 
             const registrationHeaders = new Headers();
             registrationHeaders.append("Content-Type", "application/json")
             const registrationInfo = JSON.stringify({
-                    legalBusinessName,
-                    duns,
-                    username: cageCode,
-                    entityURL,
-                    primaryNaics,
-                    email,
-                    password,
-                    businessTypeList,
-                    naicsList,
-                    confirmed
+              username: userInformation.cageCode,
+              email,
+              password,
+              confirmed,    
+              ...userInformation,
             });
             const requestOptions = {
                 method: "POST",
@@ -57,6 +46,7 @@
             
         } catch (err) {
             error = err
+            console.error(err)
         }    
     }
 </script>
@@ -65,7 +55,7 @@
     <p>{error}</p>
 {/if}
   <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form on:click|preventDefault={ submitForm }>
+    <form on:submit|preventDefault={ submitForm }>
       <div class="px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           Verify Information
@@ -77,11 +67,11 @@
       <div class="border-t border-gray-200">
         <dl>
           <div>
-            <Item title="Company Name"  userItem={ userInformation.legalBusinessName } bindValue={ legalBusinessName } />
-            <Item title="Duns" userItem={ userInformation.duns } bindValue={ duns } />
-            <Item title="Cage Code" userItem={ userInformation.cageCode } bindValue={ cageCode } />
-            <Item title="Primary Naics" userItem={ userInformation.primaryNaics } bindValue={ primaryNaics } />
-            <Item title="Company Website" userItem={ userInformation.entityURL } bindValue={ entityURL } />
+            <Item title="Company Name"  userItem={ userInformation.legalBusinessName } />
+            <Item title="Duns" userItem={ userInformation.duns }  />
+            <Item title="Cage Code" userItem={ userInformation.cageCode } />
+            <Item title="Primary Naics" userItem={ userInformation.primaryNaics }  />
+            <Item title="Company Website" userItem={ userInformation.entityURL }  />
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">
                 Email
@@ -117,10 +107,7 @@
             </div>
           </div>
         </dl>
-        
-      </div>
-      
-      
+      </div>      
       </form>
     </div>
   {:else if didRegister}
