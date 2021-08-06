@@ -9,8 +9,8 @@ async function login() {
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-        "identifier": "blossomperez18@gmail.com",
-        "password": "PASSWORD"
+        "identifier": email,
+        "password": password
     });
 
     const requestOptions = {
@@ -23,7 +23,7 @@ async function login() {
     const loginResponse = await fetch("http://localhost:1337/auth/local", requestOptions)
       if(loginResponse.ok){
         const data = await loginResponse.json();
-        sessionStorage.setItem("token", data.jxt);
+        sessionStorage.setItem("token", data.jwt);
         console.log(data)
         goto("/dashboard")
         return data;
