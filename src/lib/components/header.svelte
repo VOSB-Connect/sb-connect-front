@@ -27,8 +27,17 @@
                     href="/pricing">Pricing</a>
                 <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
                     href="/help">Help</a>
-                <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
-                    href="/registration">Register</a>
+                {#if }
+                    <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
+                        href="/registration">Register</a>
+                    <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
+                        href="/login">Sign in</a>
+                {:else}
+                    <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
+                        href="/dashboard">Dashboard</a>
+                    <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
+                        href="/">Sign out</a>
+                {/if}
             </div>
         </nav>
     
@@ -37,7 +46,7 @@
                 <h2 class="mt-6 text-3xl font-bold text-indigo-300 md:text-5xl">Small Business. Big Results.<br>Connections Simplified.</h2>
                 <div class="flex justify-center mt-8">
                     <a class="px-8 py-2 text-lg font-medium text-yellow-600 transition-colors duration-300 transform bg-yellow-400 rounded hover:bg-indigo-500"
-                        href="/register">Register Today</a>
+                        href="/registration">Register Today</a>
                 </div>
             </div>
         </section>
