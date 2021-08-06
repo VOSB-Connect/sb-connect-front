@@ -15,8 +15,8 @@
     </div>
     <div class="mt-10 mb-4">
       <ul class="ml-4">
-        <SidebarItem title="Profile" namedIcon={faCog} route="/profile" />
-        <SidebarItem title="Search" namedIcon={faSearch} route="/search" />
+        <SidebarItem title="Profile" namedIcon={faCog} route="/dashboard" />
+        <SidebarItem title="Search" namedIcon={faSearch} route="/dashboard/search" />
         <SidebarItem title="Partnerships" namedIcon={faPeopleArrows} route="/partners" />
         <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/contracts" />
       </ul>
