@@ -1,10 +1,10 @@
 <script>
-    import DashboardTopNav from '$lib/components/dashboard/topNav.svelte'
+  import DashboardTopNav from '$lib/components/dashboard/topNav.svelte'
   import DashboardStatistics from '$lib/components/dashboard/statistics.svelte'
   import DashboardSearchResults from '$lib/components/dashboard/searchResults.svelte'
 </script>
 
-<div slot="mainMenu" class="flex-1 flex flex-col">
+<div class="flex-1 flex flex-col">
   <!-- section body top nav -->
   <DashboardTopNav />
 

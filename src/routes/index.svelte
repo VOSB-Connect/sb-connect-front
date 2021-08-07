@@ -19,8 +19,8 @@
 			<div class="mt-8 md:mt-0 md:w-1/2">
 				<div class="flex items-center justify-center">
 					<div class="max-w-md">
-						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 500px;"
-							src="https://images.unsplash.com/photo-1618346136472-090de27fe8b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=673&q=80">
+						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 300px;"
+							src="https://images.unsplash.com/photo-1579389083046-e3df9c2b3325?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHNtYWxsJTIwYnVzaW5lc3N8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
 					</div>
 				</div>
 			</div>
@@ -28,48 +28,63 @@
 	</div>
 </section>
 
-<!-- Contact section -->
-<section class="bg-white">
-	<div class="max-w-5xl px-6 py-16 mx-auto">
-		<div class="px-8 py-12 bg-gray-800 rounded-md md:px-20 md:flex md:items-center md:justify-between">
-			<div>
-				<h3 class="text-2xl font-semibold text-white">Lorem ipsum dolor sit amet</h3>
-				<p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-					volutpat, viverra magna risus aliquam massa.</p>
-			</div>
-
-			<a class="block px-8 py-2 mt-6 text-lg font-medium text-center text-white transition-colors duration-300 transform bg-indigo-600 rounded md:mt-0 hover:bg-indigo-500"
-				href="/">Get In Touch</a>
-		</div>
-	</div>
-</section>
 <!-- 3 cards section -->
 <section class="bg-white">
+	<div class="md:flex md:justify-center ">
+		<h2 class="text-3xl font-semibold text-gray-800">Small Business. Big Results.
+			Connections Simplified.</h2>
+	</div>
 	<div class="max-w-5xl px-6 py-16 mx-auto">
-		<div class="md:flex md:justify-between">
-			<h2 class="text-3xl font-semibold text-gray-800">Lorem ipsum dolor sit amet, consectetur <br> adipiscing
-				elit, sed do eiusmod</h2>
+
+		<!-- Teaming anytime-->
+		<div class="items-center md:flex md:space-x-6">
+			<div class="md:w-1/2">
+				<h3 class="text-2xl font-semibold text-gray-800">Teaming Anytime</h3>
+				<p class="max-w-md mt-4 text-gray-600">Use HUB Connect's search features to find potential teaming partners. Save potential partners in a list that you can revisit anytime.
+				</p>
+			</div>
+
+			<div class="mt-8 md:mt-0 md:w-1/2">
+				<div class="flex items-center justify-center">
+					<div class="max-w-md">
+						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 200px;"
+							src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+					</div>
+				</div>
+			</div>
 		</div>
-
-		<div class="grid gap-8 mt-10 md:grid-cols-2 lg:grid-cols-3">
-			<div class="px-6 py-8 overflow-hidden bg-gray-100 rounded-md shadow-md">
-				<h2 class="text-xl font-medium text-gray-800">Audio</h2>
-				<p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-					volutpat, viverra magna risus aliquam massa.</p>
+		<!-- Procure anywhere -->
+		<div class="items-center md:flex md:space-x-6">
+			<div class="mt-8 md:mt-0 md:w-1/2">
+				<div class="flex items-center justify-center">
+					<div class="max-w-md">
+						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 200px;"
+							src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80">
+					</div>
+				</div>
 			</div>
 
-			<div class="px-6 py-8 overflow-hidden bg-gray-100 rounded-md shadow-md">
-				<h2 class="text-xl font-medium text-gray-800">Audio</h2>
-				<p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-					volutpat,
-					viverra magna risus aliquam massa.</p>
+			<div class="md:w-1/2">
+				<h3 class="text-2xl font-semibold text-gray-800">Procurement Anywhere</h3>
+				<p class="max-w-md mt-4 text-gray-600">Search for and save government contracts from your phone, your tablet or your computer.
+				</p>
+			</div>
+		</div>
+		<!-- Cashflow acceleration -->
+		<div class="items-center md:flex md:space-x-6">
+			<div class="md:w-1/2">
+				<h3 class="text-2xl font-semibold text-gray-800">Cashflow Acceleration</h3>
+				<p class="max-w-md mt-4 text-gray-600">HUB Connect streamlines the contract procurement process saving you time, eliminating the need to hire or contract out the procurement process.
+				</p>
 			</div>
 
-			<div class="px-6 py-8 overflow-hidden bg-gray-100 rounded-md shadow-md">
-				<h2 class="text-xl font-medium text-gray-800">Audio</h2>
-				<p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-					volutpat,
-					viverra magna risus aliquam massa.</p>
+			<div class="mt-8 md:mt-0 md:w-1/2">
+				<div class="flex items-center justify-center">
+					<div class="max-w-md">
+						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 200px;"
+							src="https://images.unsplash.com/photo-1589348517750-445ce37a610f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
