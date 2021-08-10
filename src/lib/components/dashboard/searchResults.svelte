@@ -9,7 +9,7 @@
     <div class="pt-2 text-gray-600">
         <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
         type="search" name="search" placeholder="Search">
-        <button type="submit" class="mt-5 mr-4" >
+        <button type="submit" class="m-auto" >
             <DashboardIcons iconName={faSearch} />
         </button>
     </div>
