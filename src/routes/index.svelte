@@ -23,7 +23,7 @@
 				<div class="flex justify-end">
 					<div class="max-w-md">
 						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 300px;"
-							src="https://images.unsplash.com/photo-1579389083046-e3df9c2b3325?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHNtYWxsJTIwYnVzaW5lc3N8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+							src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 		<h2 class="text-3xl font-semibold text-gray-800 mx-4">Cashflow Acceleration</h2> 
 		<!-- <DashboardIcons iconName={faMoneyBillWave} /> -->
 	</div>
-	<div class="max-w-5xl px-6 py-16 mx-auto">
+	<div class="max-w-5xl px-16 py-16 mx-auto">
 
 		<!-- Teaming anytime-->
 		<div class="items-center md:flex md:space-x-6">
@@ -54,7 +54,7 @@
 			<div class="mt-8 md:mt-0 md:w-1/2">
 				<div class="flex justify-end">
 					<div class="max-w-md">
-						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 200px;"
+						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow my-4" style="height: 200px;"
 							src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 			<div class="mt-8 md:mt-0 md:w-1/2">
 				<div class="flex justify-start">
 					<div class="max-w-md">
-						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 200px;"
+						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow my-4" style="height: 200px;"
 							src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80">
 					</div>
 				</div>
@@ -88,7 +88,7 @@
 			<div class="mt-8 md:mt-0 md:w-1/2">
 				<div class="flex justify-end">
 					<div class="max-w-md">
-						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow" style="height: 200px;"
+						<img alt="placeholder" class="object-cover object-center w-full rounded-md shadow my-4" style="height: 200px;"
 							src="https://images.unsplash.com/photo-1554768804-50c1e2b50a6e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
 					</div>
 				</div>
