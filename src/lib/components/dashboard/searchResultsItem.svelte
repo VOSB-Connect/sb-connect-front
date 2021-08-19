@@ -1,29 +1,29 @@
 <script>
 		// your script goes here
 		let status = "green"
+		export let id;
 </script>
 
 <tr role="row" class="hover:bg-blue-100 border-b flex cursor-pointer">
-		<td role="cell" headers="select" class="py-3 pl-3 pr-1 w-12 flex items-start">
-				<input class="mt-1" type="checkbox" />	
-		</td>
+		<td role="cell" headers="select" class="py-3 pl-3 pr-1 w-12 flex items-start"><input class="mt-1" type="checkbox" /></td>
 		<td class="py-3 px-1 w-36">
-			<div class="ml-auto relative group">
-				<!-- dropdown -->
-				<article class="hidden group-hover:block ml-4 mt-10 w-screen max-w-lg absolute top-0 border shadow-lg p-6 bg-white rounded-md z-50 text-gray-900">
+			<a href={`/companies/${id}`}>
+				<div class="ml-auto relative group">
+					<!-- dropdown -->
+					<article class="hidden group-hover:block ml-4 mt-10 w-screen max-w-lg absolute top-0 border shadow-lg p-6 bg-white rounded-md z-50 text-gray-900">
 						<header>
-						<div>
+							<div>
 								<span class="px-3 py-1 uppercase text-xs leading-none rounded-sm bg-red-600 text-white">Open</span>
 								<span class="ml-2 text-gray-700">Incident #12534</span>
 								<span class="ml-1">(Low)</span>
-						</div>
+							</div>
 						</header>
 						<section class="mt-5">
-						<h1 class="text-sm font-semibold mt-3">
+							<h1 class="text-sm font-semibold mt-3">
 								Quo laudantium error corporis accusamus unde,
 								labore quidem non officiis.
-						</h1>
-						<p class="mt-3">
+							</h1>
+							<p class="mt-3">
 								Hi Team,
 								<br />
 								Lorem ipsum dolor sit amet consectetur adipisicing
@@ -31,16 +31,17 @@
 								doloremque. <br /><br />
 								Lorem ipsum dolor sit amet consectetur,
 								adipisicing elit? ...
-						</p>
+							</p>
 						</section>
-				</article>
-				<!-- end dropdown -->
-			</div>
-			12534
-		</td>
-		<td class="py-3 px-1 w-full max-w-xs xl:max-w-lg">
+					</article>
+					<!-- end dropdown -->
+				</div>
+				12534
+				</a>
+			</td>
+			<td class="py-3 px-1 w-full max-w-xs xl:max-w-lg">
 				<div class="relative group w-full">
-						<p class="w-full truncate">
+					<p class="w-full truncate">
 						Quo laudantium error corporis accusamus unde, labore
 						quidem non officiis.
 						</p>
@@ -92,13 +93,13 @@
 		<td class="py-3 px-1 flex-1 truncate">Tuesday 09:56</td>
 		<td class="py-3 px-1 flex-1 truncate">UK Support</td>
 </tr>
-<tr role="row" class="hover:bg-blue-100 border-b flex cursor-pointer">
+<!-- <tr role="row" class="hover:bg-blue-100 border-b flex cursor-pointer">
 	<td role="cell" headers="select" class="py-3 pl-3 pr-1 w-12 flex items-start">
 		<input class="mt-1" type="checkbox" />
 	</td>
 	<td class="py-3 px-1 w-36">
 		<div class="ml-auto relative group">
-			<!-- dropdown -->
+
 			<article class="hidden group-hover:block ml-4 mt-10 w-screen max-w-lg absolute top-0 border shadow-lg p-6 bg-white rounded-md z-50 text-gray-900">
 				<header>
 					<div>
@@ -134,7 +135,6 @@
 				<p class="mt-2"></p>
 				</footer>
 			</article>
-			<!-- end dropdown -->
 		</div>
 	12534
 	</td>
@@ -144,7 +144,6 @@
 				Excepturi at labore vel accusamus exercitationem
 				assumenda ex incidunt eum quam, amet provident!
 				</p>
-				<!-- dropdown -->
 				<span class="hidden group-hover:block ml-4 mt-10 w-screen max-w-lg absolute top-0 border shadow-lg p-6 bg-white rounded-md z-50 text-gray-900">
 				<article>
 						<header>
@@ -187,10 +186,9 @@
 						</footer>
 				</article>
 				</span>
-				<!-- end dropdown -->
 		</div>
 	</td>
 	<td class="py-3 px-1 flex-1 truncate">Freddy Murro</td>
 	<td class="py-3 px-1 flex-1 truncate">Today 12:13</td>
 	<td class="py-3 px-1 flex-1 truncate">-</td>
-</tr>
+</tr> -->

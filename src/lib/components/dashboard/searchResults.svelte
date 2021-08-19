@@ -43,7 +43,7 @@
         </thead>
         <tbody class="flex w-full flex-col flex-1 min-h-0 overflow-hidden px-4">
             {#each [1,2,3,4] as item}
-                <SearchResultsItem />
+                <SearchResultsItem id={item} />
             {/each}
         </tbody>
     </table>

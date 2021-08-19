@@ -3,7 +3,9 @@
   import DashboardStatistics from '$lib/components/dashboard/statistics.svelte'
   import DashboardSearchResults from '$lib/components/dashboard/searchResults.svelte'
 </script>
-
+<svelte:head>
+  <title>HUB Connection</title>
+</svelte:head>
 <div class="flex-1 flex flex-col">
   <!-- section body top nav -->
   <DashboardTopNav />
