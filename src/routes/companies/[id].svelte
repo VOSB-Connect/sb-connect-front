@@ -11,31 +11,31 @@
 </script>
 
 
-<div class="container mx-auto w-6/12">
+<div class="container mx-auto w-3/5">
     <div class="text-center">
         <p class="py-8">Spatialgis, L.L.C id:{id}</p>
     </div>
-    <div class="container mx-auto flex">
+    <div class="container flex">
         <div class="right">
-            <div>
-                <p>Cage: <span></span></p>
+            <div class="py-2">
+                <p>Cage: <span>7RFJ7</span></p>
             </div> 
-            <div>
-                <p>DUNS: <span></span></p>
+            <div class="py-2">
+                <p>DUNS: <span>080446911</span></p>
             </div> 
-            <div>
-                <p>Company Site: <span></span></p>
+            <div class="py-2">
+                <p>Company Site: <span><a href="#">www.spatialgisservices.com</a></span></p>
             </div> 
         </div>
-        <div class="left">
-            <div>
-                <p>Statement of Capability: <span></span></p>
+        <div class="left ml-auto">
+            <div class="py-2">
+                <p>Statement of Capability: <span><a href="#">Spatialgis.pdf</a></span></p>
             </div> 
-            <div>
-                <p>Location: <span></span></p>
+            <div class="py-2">
+                <p>Location: <span>San Antonio, TX</span></p>
             </div> 
-            <div>
-                <p>Primary NAICS: <span></span></p>
+            <div class="py-2">
+                <p>Primary NAICS: <span>541370</span></p>
             </div> 
         </div>
         </div>
