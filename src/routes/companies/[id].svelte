@@ -1,10 +1,17 @@
 <script context="module">
     export async function load({page}) {
         const companyId = page.params.id;
-        return { props: { id: companyId } };
+        // fetch out to an API
+        return { props: 
+            { id: companyId }
+         };
     }
 </script>
 <!-- SSR -->
+/\
+|
+\/
+
 
 <script>
     export let id;
