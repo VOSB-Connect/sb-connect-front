@@ -42,7 +42,12 @@ async function getInformation(){
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Sign Up
             </h2>
-        
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Have an account?
+                <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+                  Sign in
+                </a>
+              </p>
         </div>
         <form class="mt-8 space-y-6" on:submit|preventDefault={ getInformation }>
             <input type="hidden" name="remember" value="true">
