@@ -2,12 +2,12 @@
     import DashboardIcons from "$lib/components/dashboard/dashboardIcons.svelte"
     import {faSearch} from '@fortawesome/free-solid-svg-icons'
     import SearchResultsItem from "./searchResultsItem.svelte";
-    import CompanyStore from '$lib/stores/CompanyStore'
+    import CompanyStore from '$lib/stores/company-store'
 
     let searchParam = "";
     let filteredResults = []
     $: {
-        filteredResults = [...$CompanyStore].filter(company => company.primaryNaics.includes(searchParam)) || [...$CompanyStore]
+        filteredResults = [...$CompanyStore].filter(company => company.primaryNaics.includes(searchParam) || company.name.includes(searchParam)) || []
     }
 </script>
 
@@ -29,10 +29,13 @@
         <div class="font-semibold text-left py-3 px-1 flex-1">PSC</div>
     </section>
 
-
     <section class="flex w-full flex-col flex-1 min-h-0 overflow-y-scroll px-0">
-        {#each filteredResults as company}
-            <SearchResultsItem {company} />
-        {/each}
+        {#if filteredResults.length > 0}
+            {#each filteredResults as company}
+                <SearchResultsItem {company} />
+            {/each}
+        {:else}
+            <p>No results found containing "{searchParam}"</p>
+        {/if}
     </section>
 </section>
