@@ -1,8 +1,56 @@
 <script>
-    let cageCode ='';
-    let userInformation = {};
+    import { goto } from '$app/navigation';
 
-    async function getInformation(){
+    let cageCode = "";
+    let email = "";
+    let password = "";
+    let userInformation = {}
+    let message = "";
+    let didRegister = true
+    let confirmed = false;
+    let match = true;
+    let error;
+
+    
+    async function submitForm(userInformation) {
+        try {
+
+            const registrationHeaders = new Headers();
+            registrationHeaders.append("Content-Type", "application/json")
+            const registrationInfo = JSON.stringify({
+              username: userInformation.cageCode,
+              email,
+              password,
+              confirmed,    
+              ...userInformation,
+            });
+            const requestOptions = {
+                method: "POST",
+                headers: registrationHeaders,
+                body: registrationInfo,
+                redirect: 'follow'
+            };
+            
+            const register = await fetch("http://localhost:1337/auth/local/register", requestOptions);
+            
+            if(register.ok){
+                const registerResponse = await register.json()
+                didRegister = true;
+                console.log(registerResponse)
+                goto('/dashboard')
+            } else {
+                const failedResponse = await register.json()
+                didRegister = false;
+                error = failedResponse.message[0].messages[0].message;
+            }
+            
+        } catch (err) {
+            error = err
+            console.error(err)
+        }    
+    }
+
+    function getInformation(){
         // let response = await fetch(`https://api.sam.gov/entity-information/v1/entities?api_key=r3cYNK8ZhHkddQ6mX6Km8PqZG8JBqKqhWWWyLmlL&cageCode=${ cageCode }`)
         // let data = await response.json()
             
@@ -21,15 +69,19 @@
         userInformation = {
             legalBusinessName: "Spatialgis, L.L.C",
             duns: "080446911",
-            cageCode: "7RFJ7",
+            cageCode: "78209",
             businessTypeList: [1, 2, 3, 4],
             primaryNaics: "541370", 
             naicsList: [5, 6, 7, 8, 9],
             entityURL: "www.spatialgisservices.com",
-            samEmail: "FOUO Only" 
+            samEmail: "bp_ct2009@yahoo.com" 
         }
 
-        console.log(userInformation)
+        if(email === userInformation.samEmail) {
+            submitForm(userInformation);
+        }else {
+            match = false;
+        }
 
     }
 
@@ -52,13 +104,19 @@
                     type="text"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
                     name="email"
-                    placeholder="Email" />
-
+                    placeholder="Email"
+                    bind:value={ email }
+                />
+                {#if !match} 
+                    <p>Email does not match sam.gov email</p>
+                {/if}
                 <input 
                     type="password"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
                     name="password"
-                    placeholder="Password" />
+                    placeholder="Password" 
+                    bind:value={ password }
+                />
                 <!-- <input 
                     type="password"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
