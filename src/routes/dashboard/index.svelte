@@ -18,7 +18,7 @@
       <section aria-label="main content" class="flex min-h-0 flex-col flex-auto border-l">
           <!-- section body header -->
 
-          <DashboardSearchResults title="HUB Connection" />
+          <DashboardSearchResults />
       </section>
   </main>
 </div>
