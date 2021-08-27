@@ -1,5 +1,7 @@
 <script>
     import { goto } from '$app/navigation';
+    import {faInfo} from '@fortawesome/free-solid-svg-icons'
+    import Fa from "svelte-fa"
 
     let cageCode = "";
     let email = "";
@@ -93,6 +95,11 @@
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
         <form class="mt-8 space-y-6" on:submit|preventDefault={ getInformation }>
+            {#if !match} 
+                <div class=" rounded flex items-center gap-x-2 bg-red-700 text-white text-sm font-bold p-3" role="alert">
+                    <Fa icon={faInfo} size="md" /> <p>Email does not match sam.gov email</p>
+                </div>           
+            {/if}
             <div>
                 <label for="cageCode" class="sr-only">Cage Code</label>
                 <input type="text" class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" name="cageCode" placeholder="Cage Code" bind:value={ cageCode } />
@@ -101,9 +108,6 @@
                 <label for="email" class="sr-only">Email address</label>
                 <input type="email" class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" name="email" placeholder="Email" bind:value={ email } />
             </div>
-            {#if !match} 
-                <p>Email does not match sam.gov email</p>
-            {/if}
             <div>
                 <label for="password" class="sr-only">Password</label>
                 <input type="password" class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" name="password" placeholder="Password" bind:value={ password } />
