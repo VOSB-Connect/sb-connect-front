@@ -36,7 +36,9 @@ async function login() {
 
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-        <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+        <a href="/" class="link pointer">
+            <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+        </a>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Don't have an account? <a href="/account/registration" class="font-medium text-indigo-600 hover:text-indigo-500">Sign up</a></p>
         <form class="mt-8 space-y-6" method="POST">
