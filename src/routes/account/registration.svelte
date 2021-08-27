@@ -136,11 +136,7 @@
         </form>
         <div class="text-white mt-6">
             Already have an account? 
-            <a class="no-underline border-b border-blue text-blue" href="/login">Sign in</a>.
+            <a class="no-underline border-b border-blue text-blue" href="account/login">Sign in</a>.
         </div>
     </div>
 </div>
-
-
-
-
