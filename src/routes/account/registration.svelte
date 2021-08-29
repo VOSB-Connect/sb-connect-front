@@ -1,8 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
     import { post } from '$lib/utils'
-    import {faInfo} from '@fortawesome/free-solid-svg-icons'
-    import Fa from "svelte-fa"
     import ListError from '$lib/ListError.svelte'
 
     let cageCode = "", email = "", password = "", userInformation = {};
@@ -26,36 +24,16 @@
         }    
     }
 
-    function handleValidUser(){
-        // let response = await fetch(`https://api.sam.gov/entity-information/v1/entities?api_key=r3cYNK8ZhHkddQ6mX6Km8PqZG8JBqKqhWWWyLmlL&cageCode=${ cageCode }`)
-        // const { entityData } = await response.json()
-        // userInformation = {
-        //     legalBusinessName: entityData[0].entityRegistration.legalBusinessName,
-        //     duns: entityData[0].entityRegistration.ueiDUNS,
-        //     cageCode: entityData[0].entityRegistration.cageCode,
-        //     businessTypeList: entityData[0].coreData.businessTypes.businessTypeList,
-        //     primaryNaics: entityData[0].assertions.goodsAndServices.primaryNaics, 
-        //     naicsList: entityData[0].assertions.goodsAndServices.naicsList,
-        //     entityURL: entityData[0].coreData.entityInformation.entityURL,
-        //     samEmail: entityData[0].pointsOfContact.governmentBusinessPOC.email
-        // }
-        userInformation = {
-            legalBusinessName: "Spatialgis, L.L.C",
-            duns: "080446911",
-            cageCode: "78209",
-            businessTypeList: [1, 2, 3, 4],
-            primaryNaics: "541370", 
-            naicsList: [5, 6, 7, 8, 9],
-            entityURL: "www.spatialgisservices.com",
-            samEmail: "bp_ct2009@yahoo.com" 
+    async function handleValidUser(){
+        let validationRequest = await post("valid-companies", { registeredEmail: email })
+        if(validationRequest.ok){
+            const validationData = await validationRequest.json();
+            if(validationData.isRegistered){
+                handleRegistration(validationData);
+            }else {
+                match = false;
+            }
         }
-
-        if(email === userInformation.samEmail) {
-            handleRegistration(userInformation);
-        }else {
-            match = false;
-        }
-
     }
 
 </script>
@@ -69,23 +47,23 @@
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
         <form class="mt-8 space-y-6" on:submit|preventDefault={ handleValidUser }>
             {#if !match} 
-                <ListError error={"The e-mail entered does not match the e-mail on <a class='link pointer' href='https://sam.gov/'>sam.gov</a></span>"} />    
+                <ListError error={"The e-mail entered does not match the e-mail on <a class='cursor-pointer' href='https://sam.gov/' target='_blank'>Sam.gov</a></span>"} />    
             {/if}
             <div>
                 <label for="cageCode" class="sr-only">Cage Code</label>
-                <input type="text" bind:value={ cageCode } name="cageCode" placeholder="Cage Code"
+                <input type="text" bind:value={ cageCode } name="cageCode" placeholder="Cage Code" required
                     class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
             <div>
                 <label for="email" class="sr-only">Email address</label>
-                <input type="email" bind:value={ email } name="email" placeholder="Email"
+                <input type="email" bind:value={ email } name="email" placeholder="Email" required
                     class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
             <div>
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" bind:value={ password } name="password" placeholder="Password" 
+                <input type="password" bind:value={ password } name="password" placeholder="Password" required
                     class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
