@@ -2,7 +2,7 @@
     import DashboardIcons from "$lib/components/dashboard/dashboardIcons.svelte"
     import {faSearch} from '@fortawesome/free-solid-svg-icons'
     import SearchResultsItem from "./searchResultsItem.svelte";
-    import CompanyStore from '$lib/stores/company-store'
+    import CompanyStore from '$lib/shared/company-store'
 
     let searchParam = "";
     let filteredResults = []
