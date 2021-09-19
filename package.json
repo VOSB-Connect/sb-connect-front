@@ -29,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",
+		"@macfja/svelte-persistent-store": "^1.2.0",
 		"svelte-fa": "^2.2.1"
 	}
 }

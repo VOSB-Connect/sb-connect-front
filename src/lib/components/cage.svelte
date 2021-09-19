@@ -40,16 +40,21 @@ async function getInformation(){
         <div>
             <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Enter your cage code
+                Sign Up
             </h2>
-        
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Have an account?
+                <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+                  Sign in
+                </a>
+              </p>
         </div>
         <form class="mt-8 space-y-6" on:submit|preventDefault={ getInformation }>
             <input type="hidden" name="remember" value="true">
             <div class="rounded-md shadow-sm -space-y-px">
             <div>
                 <label for="cageCodeInput" class="sr-only">Enter Cage Code</label>
-                <input id="cageCodeInput" name="cageCodeInput" bind:value={ cageCode } type="text" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Cage Code" >
+                <input id="cageCodeInput" name="cageCodeInput" bind:value={ cageCode } type="text" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Enter your Cage Code" >
             </div>
             </div>
     
