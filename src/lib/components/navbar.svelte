@@ -1,4 +1,5 @@
 <script>
+    import { auth } from '$lib/shared/user-store'
 
 </script>
 
@@ -30,9 +31,13 @@
             href="/pricing">Pricing</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="/contact">Contact</a>
-        <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-        href="account/login">Login</a>
-        <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
-            href="account/registration">Register</a>
+        {#if $auth !== null}
+            <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
+            href="dashboard">Dashboard</a>
+        {:else}
+            <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400" href="account/login">Login</a>
+            <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
+                href="account/registration">Register</a>
+        {/if}
     </div>
 </nav>
