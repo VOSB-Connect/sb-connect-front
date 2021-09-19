@@ -1,23 +1,34 @@
 <script>
-    import { goto } from '$app/navigation'
-    import { post, browserSet } from '$lib/utils'
-    import ListError from '$lib/ListError.svelte'
+import { onMount } from 'svelte'
+import { goto } from '$app/navigation'
+import { post } from '$lib/utils'
+import { auth } from '$lib/shared/user-store'
+import ListError from '$lib/ListError.svelte'
+
 
     let email = "something@gmail.com";
-    let password = "";
+    let password = "tester123";
     let error = null;
-    
-async function handleLogin() {
-    const loginResponse = await post("auth/local", {identifier: email, password});
-     
-    if(loginResponse.ok){
-        const json = await loginResponse.json()
-        browserSet("jwt", json.jwt);
-        goto("/dashboard")
-    } else {
-        error = loginResponse.message[0].messages[0].message
+   
+
+    async function handleLogin() {
+        const loginResponse = await post("auth/local", {identifier: email, password});
+        
+        if(loginResponse.ok){
+            const json = await loginResponse.json()
+            $auth = json;
+            goto("/dashboard")
+        } else {
+            error = loginResponse.message[0].messages[0].message
+        }
     }
-}
+
+onMount(async () => {
+    if($auth !== null && $auth.jwt){
+        goto("/dashboard")
+    }
+})
+
 </script>
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
