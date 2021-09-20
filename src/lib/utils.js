@@ -1,4 +1,5 @@
 import {strapiBase} from '$lib/api'
+
 export async function post(endpoint, body){
    let customError = false
 
@@ -6,8 +7,9 @@ export async function post(endpoint, body){
     let headers = {}
     headers['Content-Type'] = 'application/json',
     body = JSON.stringify(body || {})
+    
     const token = sessionStorage.getItem("auth");
-    if(token) headers['Authorization'] = 'Bearer ' + token;
+    if(token.jwt) headers['Authorization'] = 'Bearer ' + token;
 
     const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'POST', body, headers})
     if(!response.ok){
