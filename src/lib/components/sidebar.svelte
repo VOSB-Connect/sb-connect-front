@@ -7,7 +7,7 @@
     
     function handleLogout() {
         $auth = null;
-        goto("/", true)
+        window.location.href = "/"
     }
 </script>
 
@@ -26,12 +26,12 @@
         <SidebarItem title="Profile" namedIcon={faCog} route="/dashboard" />
         <SidebarItem title="Search" namedIcon={faSearch} route="/dashboard/search" />
         <SidebarItem title="Partnerships" namedIcon={faPeopleArrows} route="/partners" />
-        <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/contracts" />  
+        <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/contracts" />
         <li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
             <span>
                 <Fa icon={faSignOutAlt} size="lg" />
             </span>
-            <p class="cursor-pointer ml-2" on:click={handleLogout}>Sign out</p>
+            <p on:click={handleLogout} class="ml-2 cursor-pointer">Sign out</p>
         </li>
       </ul>
     </div>
