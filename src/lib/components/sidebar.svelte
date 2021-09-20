@@ -1,6 +1,14 @@
 <script>
-    import {faSearch, faPeopleArrows, faFileAlt, faCog} from '@fortawesome/free-solid-svg-icons'
+    import {faSearch, faPeopleArrows, faFileAlt, faCog, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
     import SidebarItem from '$lib/components/sideBarItem.svelte'
+    import Fa from 'svelte-fa'
+    import { auth } from '$lib/shared/user-store'
+    import { goto } from '$app/navigation'
+    
+    function handleLogout() {
+        $auth = null;
+        goto("/", true)
+    }
 </script>
 
 
@@ -18,7 +26,13 @@
         <SidebarItem title="Profile" namedIcon={faCog} route="/dashboard" />
         <SidebarItem title="Search" namedIcon={faSearch} route="/dashboard/search" />
         <SidebarItem title="Partnerships" namedIcon={faPeopleArrows} route="/partners" />
-        <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/contracts" />
+        <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/contracts" />  
+        <li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
+            <span>
+                <Fa icon={faSignOutAlt} size="lg" />
+            </span>
+            <p class="cursor-pointer ml-2" on:click={handleLogout}>Sign out</p>
+        </li>
       </ul>
     </div>
   </nav>
