@@ -1,6 +1,8 @@
 <script>
     import { auth } from '$lib/shared/user-store'
 
+    $: console.log($auth)
+
 </script>
 
 <nav class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
@@ -31,7 +33,7 @@
             href="/pricing">Pricing</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="/contact">Contact</a>
-        {#if $auth !== null}
+        {#if $auth !== null && $auth.jwt}
             <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="dashboard">Dashboard</a>
         {:else}
