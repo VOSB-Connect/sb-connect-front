@@ -1,8 +1,5 @@
 <script>
     import { auth } from '$lib/shared/user-store'
-
-    $: console.log($auth)
-
 </script>
 
 <nav class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
