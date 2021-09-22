@@ -9,7 +9,10 @@ export async function post(endpoint, body){
     body = JSON.stringify(body || {})
     
     const token = sessionStorage.getItem("auth");
-    if(token.jwt) headers['Authorization'] = 'Bearer ' + token;
+    if(token !== ""){
+        const authToken = JSON.parse(token).jwt;
+        headers['Authorization'] = `Bearer ${authToken}`;
+    } 
 
     const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'POST', body, headers})
     if(!response.ok){
@@ -30,4 +33,36 @@ export async function post(endpoint, body){
     console.error(err);
     throw customError ? err : {id: '', message: 'An unknown error occured'}
    }
+}
+
+export async function get(endpoint) {
+    let customError = false;
+    try {
+        let headers = {}
+        headers['Content-Type'] = 'application/json';
+
+        const token = sessionStorage.getItem("auth");
+        if (token !== '') {
+            const authToken = JSON.parse(token).jwt;
+            headers['Authorization'] = `Bearer ${authToken}`;
+        } 
+        const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'GET', headers });
+        if(!response.ok){
+            try {
+                const data = await response.json();
+                return data;
+            } catch (err) {
+                console.error(err);
+            } 
+        }
+        try {
+            return response;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    } catch (error) {
+        console.error(error);
+		throw customError ? error : { id: '', message: 'An unknown error occured' };
+    }
 }
