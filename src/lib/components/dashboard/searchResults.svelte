@@ -8,19 +8,17 @@
 
     let searchParam = "";
     let filteredResults = []
-    $: {
-        filteredResults = searchParam == "" ? $CompanyStore : [...$CompanyStore].filter(bySearchParam)
-    }
-
-    function bySearchParam(searchParam){
-        return $CompanyStore.filter(company => company.entityRegistration.legalBusinessName.includes(searchParam) || company.entityRegistration.cageCode.toLowerCase().includes(searchParam.toLowerCase()));
+    $: filteredResults =  (searchParam) ? getFilteredCompanies() : $CompanyStore;
+    
+    function getFilteredCompanies(){
+        return filteredResults =  [...$CompanyStore].filter(company => company.entityRegistration.legalBusinessName.includes(searchParam)
+         || company.entityRegistration.cageCode.startsWith(searchParam.toUpperCase()))
     }
 
     onMount(async () => {
         const response = await get("entities");
         if(response.ok){
             const data = await response.json();
-            console.dir(data)
             CompanyStore.setCompanies(data);
         }
     })
@@ -30,7 +28,7 @@
 <section aria-label="page caption" class="flex-col flex h-full bg-gray-100 border-t p-4 items-start">
     <h1 id="page-caption" class="font-semibold text-lg">Hub Connection</h1>
     <div class="pt-2 text-gray-600 flex flex-row align-items-center gap-x-1 mb-3">
-        <input bind:value={searchParam} class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="search" name="search" placeholder="Search">
+        <input bind:value={searchParam} class="uppercase border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="search" name="search" placeholder="Search">
         <button type="submit" class="m-auto -ml-8" >
             <DashboardIcons iconName={faSearch} />
         </button>
