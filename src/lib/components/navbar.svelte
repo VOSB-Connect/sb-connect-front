@@ -33,7 +33,7 @@
             href="/pricing">Pricing</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="/contact">Contact</a>
-        {#if $auth.jwt}
+        {#if $auth !== null && $auth.jwt}
             <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="dashboard">Dashboard</a>
         {:else}
