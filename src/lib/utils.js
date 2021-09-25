@@ -9,11 +9,12 @@ export async function post(endpoint, body){
     body = JSON.stringify(body || {})
     
     const token = sessionStorage.getItem("auth");
-    if(token !== ""){
+    if(token.length > 2){
+        // This is needed for post requests that require a jwt token.
         const authToken = JSON.parse(token).jwt;
         headers['Authorization'] = `Bearer ${authToken}`;
     } 
-
+    
     const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'POST', body, headers})
     if(!response.ok){
         try {
