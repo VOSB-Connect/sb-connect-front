@@ -25,7 +25,7 @@
         <!-- <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="/">Home</a> -->
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-            href="/services">Services</a>
+            href="https://calendly.com/atknho/acceleratorcapturemvp">CAPTR Labs</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="/pricing">Pricing</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
