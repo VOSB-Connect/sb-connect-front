@@ -2,19 +2,24 @@
     import { goto } from '$app/navigation';
     import { post } from '$lib/utils'
     import ListError from '$lib/ListError.svelte'
+    import { auth } from '$lib/shared/user-store'
 
-    let cageCode = "", email = "", password = "", userInformation = {};
+    let cageCode = "", email = "", password = "";
     let confirmed = false;
     let match = true;
     let error = null;
     
-    async function handleRegistration(userInformation) {
+    async function handleRegistration(entityId) {
         try {
             const registrationResponse = await post("auth/local/register", { 
-                username: userInformation.cageCode, email, password, confirmed, ...userInformation,
+                username: email,
+                entity: entityId,
+                email,
+                password
             })
             if(registrationResponse.ok){
                 const registerResponse = await registrationResponse.json()
+                $auth = registerResponse;
                 goto('/activation')
             } else {
                 error = registrationResponse.message[0].messages[0].message;
@@ -25,16 +30,19 @@
     }
 
     async function handleValidUser(){
-        let validationRequest = await post("valid-companies", { registeredEmail: email })
+
+        let validationRequest = await post("entities/validate", { cageCode, email })
         if(validationRequest.ok){
-            const validationData = await validationRequest.json();
-            if(validationData.isRegistered){
-                handleRegistration(validationData);
+            const entityId = await validationRequest.json();
+            if(entityId > 0){
+                handleRegistration(entityId);
             }else {
                 match = false;
             }
         }
     }
+
+    $:cageCode = cageCode.toUpperCase()
 
 </script>
 
@@ -52,7 +60,7 @@
             <div>
                 <label for="cageCode" class="sr-only">Cage Code</label>
                 <input type="text" bind:value={ cageCode } name="cageCode" placeholder="Cage Code" required
-                    class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    class="rounded relative block w-full px-3 py-2 border uppercase border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
             <div>
