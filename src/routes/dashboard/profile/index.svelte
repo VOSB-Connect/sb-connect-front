@@ -20,7 +20,7 @@
 </script>
 
 
-<div class="container h-full overflow-x-auto p-5 bg-gray-100">
+<div class="container-full h-full overflow-x-auto p-5 bg-gray-100">
 	<div class="grid grid-cols-4 grid-rows-2 gap-4">
 		<!-- Profile Card -->
 		<ProfileCard />
