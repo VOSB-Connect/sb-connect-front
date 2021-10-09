@@ -4,21 +4,24 @@
   import SidebarItem from '$lib/components/sideBarItem.svelte'
   import Fa from 'svelte-fa'
   import { auth } from '$lib/shared/user-store'
-  import { goto } from '$app/navigation'
     
   function handleLogout() {
       $auth = null;
       window.location.href = "/"
   }
 
-  let business = {}
+  let business = {
+    legalName: "",
+    dbaName: "",
+    entityId: null,
+  }
 
   onMount(async () => {
     if($auth !== null){
-      console.log($auth.user)
       const entity = $auth.user.entity;
       business.legalName = entity.entityRegistration.legalBusinessName;
       business.dbaName = entity.entityRegistration.dbaName;
+      business.entityId = entity.id; 
     }
   })
 </script>
@@ -40,7 +43,7 @@
         <SidebarItem title="Partnerships" namedIcon={faPeopleArrows} route="/partners" />
         <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/contracts" />
         <SidebarItem title="Profile" namedIcon={faUser} route="/dashboard/profile" />
-        <li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
+        <li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded">
             <span>
                 <Fa icon={faSignOutAlt} size="lg" />
             </span>
