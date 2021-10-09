@@ -5,7 +5,7 @@
 <nav class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
     <div class="flex items-center justify-between">
         <a class="text-xl font-bold text-white transition-colors duration-300 transform md:text-2xl hover:text-indigo-400"
-            href="/">HUB Connection</a>
+            href="/">CAPTR</a>
 
         <!-- Mobile menu button -->
         <div class="flex md:hidden">
@@ -27,9 +27,9 @@
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="https://calendly.com/atknho/acceleratorcapturemvp">CAPTR Labs</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-            href="/pricing">Pricing</a>
+            href="/pricing">Autobot Labs</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-            href="/contact">Contact</a>
+            href="/contact">Teaming Labs</a>
         {#if $auth !== null && $auth.jwt}
             <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="dashboard">Dashboard</a>

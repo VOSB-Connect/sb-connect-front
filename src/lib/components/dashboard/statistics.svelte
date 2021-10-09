@@ -9,7 +9,7 @@
           <button class="focus:outline-none focus:bg-yellow-200 p-2 rounded-l-md border border-r-0 bg-white flex flex-col items-center w-24">
             <p class="font-semibold text-lg">6</p>
             <p class="text-sm uppercase text-gray-600">
-              You
+              Protege
             </p>
           </button>
         </li>
@@ -17,7 +17,7 @@
           <button class="focus:outline-none focus:bg-yellow-200 p-2 border rounded-r-md bg-white flex flex-col items-center w-24 cursor-pointer">
             <p class="font-semibold text-lg">23</p>
             <p class="text-sm uppercase text-gray-600">
-              Mentees
+              Teaming
             </p>
           </button>
         </li>
@@ -32,7 +32,7 @@
           <button class="focus:outline-none focus:bg-yellow-200 p-2 rounded-l-md border border-r-0 bg-white flex flex-col items-center w-24">
             <p class="font-semibold text-lg">16</p>
             <p class="uppercase text-gray-600 text-sm">
-              good
+              Lead
             </p>
           </button>
         </li>
@@ -40,7 +40,7 @@
           <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24">
             <p class="font-semibold text-lg">2</p>
             <p class="uppercase text-gray-600 text-sm">
-              bad
+              qualify
             </p>
           </button>
         </li>
@@ -49,9 +49,33 @@
           <button class="focus:outline-none focus:bg-yellow-200 p-2 border rounded-r-md bg-white flex flex-col items-center w-24">
             <p class="font-semibold text-lg">32</p>
             <p class="uppercase text-gray-600 text-sm">
-              solved
+              captr
             </p>
           </button>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="ticket-statistics-tabs-label" class="pb-2 ml-auto">
+      <label id="ticket-statistics-tabs-label" class="font-semibold block mb-1 text-sm">Leads<span class="font-normal text-gray-700">(this week)</span></label>
+      <ul class="flex">
+        <li>
+          <div class="focus:outline-none focus:bg-yellow-200 p-2 rounded-l-md border border-r-0 bg-white flex flex-col items-center w-24">
+            <p class="font-semibold text-lg">$10,216</p>
+            <p class="uppercase text-gray-600 text-sm">Lead</p>
+          </div>
+        </li>
+        <li>
+          <div class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24">
+            <p class="font-semibold text-lg">$45,000</p>
+            <p class="uppercase text-gray-600 text-sm">qualify</p>
+          </div>
+        </li>
+        <li>
+          <div class="focus:outline-none focus:bg-yellow-200 p-2 border rounded-r-md bg-white flex flex-col items-center w-24">
+            <p class="font-semibold text-lg">$89,032</p>
+            <p class="uppercase text-gray-600 text-sm">captr</p>
+          </div>
         </li>
       </ul>
     </section>

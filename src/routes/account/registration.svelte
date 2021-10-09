@@ -2,6 +2,7 @@
     import { goto } from '$app/navigation';
     import { post } from '$lib/utils'
     import ListError from '$lib/ListError.svelte'
+    import { auth } from '$lib/shared/user-store'
 
     let cageCode = "", email = "", password = "";
     let confirmed = false;
@@ -18,6 +19,7 @@
             })
             if(registrationResponse.ok){
                 const registerResponse = await registrationResponse.json()
+                $auth = registerResponse;
                 goto('/activation')
             } else {
                 error = registrationResponse.message[0].messages[0].message;
