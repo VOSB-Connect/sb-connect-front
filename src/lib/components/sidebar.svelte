@@ -31,9 +31,7 @@
     <div class="flex flex-wrap mt-8">
       <div class="w-100">
         <span class="font-semibold text-white">{business.dbaName}</span>
-        <button class="bg-green-500 text-white p-1 ml-3 rounded-md border border-blue-500 hover:bg-white hover:text-green-500">
-          Premium
-        </button>
+       
       </div>
     </div>
     <div class="mt-10 mb-4">
@@ -50,5 +48,9 @@
             <p on:click={handleLogout} class="ml-2 cursor-pointer">Sign out</p>
         </li>
       </ul>
+    </div>
+    <div class="mt-auto flex mb-3 items-center justify-between">
+      <p class="text-white">Platform Status:</p>
+      <p class="text-green-500 p-1 ml-3 border-green-500">Premium</p>
     </div>
   </nav>
