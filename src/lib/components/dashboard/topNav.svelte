@@ -14,9 +14,9 @@
         <span class="absolute p-1 hidden group-hover:block z-20">
           <ul id="add" role="listbox" class="outline-none py-2 bg-white border rounded-md w-screen max-w-md w-dropdown-large shadow-lg focus:outline-none leading-relaxed">
             <li role="separator" class="mb-2">
-              <label class="block px-4 py-3 font-semibold">
+              <p class="block px-4 py-3 font-semibold">
                 New
-              </label>
+              </p>
               <hr />
             </li>
             <li role="option" class="px-6 py-1 my-1 focus:outline-none focus:bg-blue-100 hover:bg-blue-100 cursor-pointer">
@@ -32,7 +32,7 @@
               Search
             </li>
             <li role="separator" class="mb-2">
-              <label class="block px-4 py-3 font-semibold">Recently Viewed</label>
+              <p class="block px-4 py-3 font-semibold">Recently Viewed</p>
               <hr />
             </li>
             <li role="option" class="px-6 py-1 my-1 focus:outline-none focus:bg-blue-100 hover:bg-blue-100 cursor-pointer">

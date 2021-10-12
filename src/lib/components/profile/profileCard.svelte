@@ -1,24 +1,30 @@
-<div class="bg-white p-3 border-t-4 row-span-2 border-green-400">
-	<div class="image overflow-hidden">
-		<img class="max-w-16 w-full mx-auto"
-			src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-			alt="">
-	</div>
-	<h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Jane Doe</h1>
-	<h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
-	<p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
-		consectetur adipisicing elit.
-		Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
-	<ul
-		class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-		<li class="flex items-center py-3">
-			<span>Status</span>
-			<span class="ml-auto"><span
-					class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+<script>
+	import Icon from '$lib/components/dashboard/dashboardIcons.svelte'
+	import AffiliatesCard from '$lib/components/profile/affiliatesCard.svelte';
+	import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
+	export let business;
+
+	$:console.log(business)
+	let primaryNaics = business.assertions.goodsAndServices.PrimaryNaics ?? "--";
+</script>
+
+<div class="bg-white shadow-sm p-3 border-t-4 row-span-2 border-green-400">
+	<h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{business.entityRegistration.legalBusinessName}</h1>
+	<ul class="bg-gray-100 text-gray-600 py-2 px-3 my-3 divide-y rounded shadow-sm">
+		<li class="flex items-center justify-between py-3">
+			<span>SAM Status</span>
+			<span class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span>
 		</li>
-		<li class="flex items-center py-3">
-			<span>Member since</span>
-			<span class="ml-auto">Nov 07, 2016</span>
+		<li class="flex items-center justify-between py-3">
+			<span>Primary NAICs</span>
+			<span class="ml-auto">{primaryNaics}</span>
+		</li>
+		<li class="flex items-center justify-between py-3">
+			<span>Statement of Capability</span>
+			<a href="/">
+				<Icon iconName={faFilePdf} />
+			</a>
 		</li>
 	</ul>
+	<AffiliatesCard />
 </div>
