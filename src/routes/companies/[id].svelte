@@ -1,10 +1,17 @@
 <script context="module">
+    import { get } from '$lib/utils'
+
     export async function load({page}) {
         const companyId = page.params.id;
         // fetch out to an API
-        return { props: 
-            { id: companyId }
-         };
+        const companyResponse = await get(`entities/${companyId}`);
+        if(companyResponse.ok) {
+            const company = await companyResponse.json();
+            console.log(company)
+            return { props: 
+                { company }
+            };
+        }
     }
 </script>
 <!-- SSR -->
@@ -14,13 +21,13 @@
 
 
 <script>
-    export let id;
+    export let company;
 </script>
 
 
 <div class="container mx-auto w-3/5">
     <div class="text-center">
-        <p class="py-8">Spatialgis, L.L.C id:{id}</p>
+        <p class="py-8">Spatialgis, L.L.C id:{company.id}</p>
     </div>
     <div class="container flex">
         <div class="right">
