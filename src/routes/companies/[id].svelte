@@ -1,62 +1,41 @@
 <script context="module">
-    import { get } from '$lib/utils'
-
+    
     export async function load({page}) {
         const companyId = page.params.id;
-        // fetch out to an API
-        const companyResponse = await get(`entities/${companyId}`);
-        if(companyResponse.ok) {
-            const company = await companyResponse.json();
-            console.log(company)
-            return { props: 
-                { company }
-            };
-        }
+        return { 
+            props: { companyId }
+        };
     }
 </script>
 <!-- SSR -->
-/\
-|
-\/
-
 
 <script>
-    export let company;
+    import { get } from '$lib/utils'
+    import ProfileCard from '$lib/components/profile/profileCard.svelte';
+	import AboutCard from '$lib/components/profile/aboutCard.svelte';
+	import ExperienceCard from '$lib/components/profile/experienceCard.svelte';
+    export let companyId;
+
+    async function getCompany(){
+        const response = await get(`entities/${companyId}`);
+        if(response.ok) return response.json();
+    }
+
 </script>
 
-
-<div class="container mx-auto w-3/5">
-    <div class="text-center">
-        <p class="py-8">Spatialgis, L.L.C id:{company.id}</p>
+{#await getCompany()}
+    <p>Loading...</p>
+{:then company} 
+<div class="w-full h-auto overflow-x-auto p-5 bg-gray-100">
+    <div class="grid grid-cols-3 grid-rows-2 gap-4">
+        <!-- Profile Card -->
+        <ProfileCard business={company}/>
+        <!-- End of profile card -->
+        <!-- About Section -->
+        <AboutCard />
+        <!-- End of about section -->		
+        <!-- Experience card -->
+        <ExperienceCard />
     </div>
-    <div class="container flex">
-        <div class="right">
-            <div class="py-2">
-                <p>Cage: <span>7RFJ7</span></p>
-            </div> 
-            <div class="py-2">
-                <p>DUNS: <span>080446911</span></p>
-            </div> 
-            <div class="py-2">
-                <p>Company Site: <span><a href="#">www.spatialgisservices.com</a></span></p>
-            </div> 
-        </div>
-        <div class="left ml-auto">
-            <div class="py-2">
-                <p>Statement of Capability: <span><a href="#">Spatialgis.pdf</a></span></p>
-            </div> 
-            <div class="py-2">
-                <p>Location: <span>San Antonio, TX</span></p>
-            </div> 
-            <div class="py-2">
-                <p>Primary NAICS: <span>541370</span></p>
-            </div> 
-        </div>
-        </div>
 </div>
-
-<style>
-    div {
-        border: 1px solid black;
-    }
-</style>
+{/await}
