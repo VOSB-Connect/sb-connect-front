@@ -20,19 +20,16 @@
         const response = await get(`entities/${companyId}`);
         if(response.ok) return response.json();
     }
-
 </script>
 
-{#await getCompany()}
-    <p>Loading...</p>
-{:then company} 
+{#await getCompany() then company}
 <div class="w-full h-auto overflow-x-auto p-5 bg-gray-100">
     <div class="grid grid-cols-3 grid-rows-2 gap-4">
         <!-- Profile Card -->
         <ProfileCard business={company}/>
         <!-- End of profile card -->
         <!-- About Section -->
-        <AboutCard />
+        <AboutCard business={company}/>
         <!-- End of about section -->		
         <!-- Experience card -->
         <ExperienceCard />
