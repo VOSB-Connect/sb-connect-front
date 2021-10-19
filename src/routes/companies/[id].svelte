@@ -14,6 +14,7 @@
     import ProfileCard from '$lib/components/profile/profileCard.svelte';
 	import AboutCard from '$lib/components/profile/aboutCard.svelte';
 	import ExperienceCard from '$lib/components/profile/experienceCard.svelte';
+    import ActionCard from '$lib/components/profile/actionCard.svelte'
     export let companyId;
 
     async function getCompany(){
@@ -26,7 +27,9 @@
 <div class="w-full h-auto overflow-x-auto p-5 bg-gray-100">
     <div class="grid grid-cols-3 grid-rows-2 gap-4">
         <!-- Profile Card -->
-        <ProfileCard business={company}/>
+        <ProfileCard business={company}>
+            <ActionCard />
+        </ProfileCard>
         <!-- End of profile card -->
         <!-- About Section -->
         <AboutCard business={company}/>

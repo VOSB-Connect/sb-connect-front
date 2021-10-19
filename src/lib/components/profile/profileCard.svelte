@@ -1,6 +1,5 @@
 <script>
 	import Icon from '$lib/components/dashboard/dashboardIcons.svelte'
-	import AffiliatesCard from '$lib/components/profile/affiliatesCard.svelte';
 	import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 	export let business;
 
@@ -26,5 +25,5 @@
 			</a>
 		</li>
 	</ul>
-	<AffiliatesCard />
+	<slot />
 </div>
