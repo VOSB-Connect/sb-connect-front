@@ -4,7 +4,8 @@
 	export let business;
 
 	$:console.log(business)
-	let primaryNaics = business.assertions.goodsAndServices.PrimaryNaics ?? "--";
+	let primaryNaics = business.assertions.goodsAndServices.PrimaryNaics ?? "n/a";
+	let purposeOfRegistrationDesc = business.entityRegistration.purposeOfRegistrationDesc;
 </script>
 
 <div class="bg-white shadow-sm p-3 border-t-4 row-span-2 border-green-400">
@@ -13,6 +14,10 @@
 		<li class="flex items-center justify-between py-3">
 			<span>SAM Status</span>
 			<span class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span>
+		</li>
+		<li class="flex items-center justify-between py-3">
+			<span>Purpose of Registration</span>
+			<span class="py-1 px-2 text-white text-sm">{purposeOfRegistrationDesc}</span>
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Primary NAICs</span>
