@@ -1,1 +1,1 @@
-<p>Action card</p>
+<button class="block w-full text-white text-sm font-semibold rounded-lg bg-blue-500 py-1 px-2 rounded">Save Partner</button>
