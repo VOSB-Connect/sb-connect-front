@@ -4,6 +4,9 @@
 	export let contract;
 	
 	const { title, solicitationNumber, naicsCode, published_at, classificationCode } = contract;
+
+	const [date, time] = published_at.split("T")
+	
 </script>
 
 <div class="bg-white shadow-sm p-3 border-t-4 row-span-2 border-green-400">
@@ -19,7 +22,7 @@
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Post Date</span>
-			<span class="ml-auto">{ published_at }</span>
+			<span class="ml-auto">{ date }</span>
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Classification Code </span>
