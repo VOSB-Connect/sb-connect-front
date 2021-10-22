@@ -2,7 +2,19 @@
 	export let contract;
     $:console.log(contract);
     const { pointOfContact } = contract;
-    const [firstName, lastName] = pointOfContact[0].fullName.split(" ")
+
+    const [firstName, lastName] = pointOfContact[0].fullName.split(' ');
+
+	function formatPhoneNo(phone) {
+		if(phone) {
+			let phoneArr = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
+			return `(${phoneArr[1]}) ${phoneArr[2]}-${phoneArr[3]}`;
+		}
+
+		return 'N/A'
+	}
+
+
 </script>
 
 
@@ -28,12 +40,8 @@
 				<div class="px-4 py-2">{ lastName }</div>
 			</div>
 			<div class="grid grid-cols-2">
-				<div class="px-4 py-2 font-semibold">Gender</div>
-				<div class="px-4 py-2">Female</div>
-			</div>
-			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Contact No.</div>
-				<div class="px-4 py-2">{ pointOfContact[0].phone }</div>
+				<div class="px-4 py-2">{ formatPhoneNo(pointOfContact[0].phone) }</div>
 			</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Mailing Address</div>
