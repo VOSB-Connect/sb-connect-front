@@ -1,3 +1,10 @@
+<script>
+	export let business;
+
+	let naicsList = business.assertions.goodsAndServices.naicsList;
+	console.log(naicsList);
+
+</script>
 <div class="bg-white p-3 shadow-sm rounded-sm col-span-2 flex gap-4">
 	<div>
 		<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
@@ -8,28 +15,18 @@
 						d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 				</svg>
 			</span>
-			<span class="tracking-wide">Experience</span>
+			<span class="tracking-wide">NAICs</span>
 		</div>
 		<ul class="list-inside space-y-2">
-			<li>
-				<div class="text-teal-600">Owner at Her Company Inc.</div>
-				<div class="text-gray-500 text-xs">March 2020 - Now</div>
-			</li>
-			<li>
-				<div class="text-teal-600">Owner at Her Company Inc.</div>
-				<div class="text-gray-500 text-xs">March 2020 - Now</div>
-			</li>
-			<li>
-				<div class="text-teal-600">Owner at Her Company Inc.</div>
-				<div class="text-gray-500 text-xs">March 2020 - Now</div>
-			</li>
-			<li>
-				<div class="text-teal-600">Owner at Her Company Inc.</div>
-				<div class="text-gray-500 text-xs">March 2020 - Now</div>
-			</li>
+			{#each naicsList as naics}
+				<li>
+					<div class="text-teal-600">{naics.naicsCode ?? "This entity did not choose to pursue Federal contracts. They stated their reason for registering in SAM was to pursue Federal Assistance opportunities like grants and loans. "}</div>
+					<div class="text-gray-500 text-xs">{naics.naicsDescription ?? ""}</div>
+				</li>
+			{/each}
 		</ul>
 	</div>
-	<div>
+	<!-- <div>
 		<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
 			<span class="text-green-500">
 				<svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -53,5 +50,5 @@
 				<div class="text-gray-500 text-xs">March 2020 - Now</div>
 			</li>
 		</ul>
-	</div>
+	</div> -->
 </div>
