@@ -24,7 +24,7 @@
 </script>
 
 {#await getCompany() then company}
-<div class="w-full h-auto overflow-x-auto p-5 bg-gray-100">
+<div class="w-full h-auto overflow-x-auto overflow-y-auto p-5 bg-gray-100">
     <div class="grid grid-cols-3 grid-rows-2 gap-4">
         <!-- Profile Card -->
         <ProfileCard business={company}>
@@ -35,7 +35,7 @@
         <AboutCard business={company}/>
         <!-- End of about section -->		
         <!-- Experience card -->
-        <ExperienceCard />
+        <ExperienceCard business={company}/>
     </div>
 </div>
 {/await}
