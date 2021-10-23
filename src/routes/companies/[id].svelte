@@ -24,8 +24,8 @@
 </script>
 
 {#await getCompany() then company}
-<div class="w-full h-auto overflow-x-auto overflow-y-auto p-5 bg-gray-100">
-    <div class="grid grid-cols-3 grid-rows-2 gap-4">
+<div class="w-full h-full overflow-auto p-5 bg-gray-100">
+    <div class="grid grid-cols-3 grid-rows-3 gap-4">
         <!-- Profile Card -->
         <ProfileCard business={company}>
             <ActionCard />
