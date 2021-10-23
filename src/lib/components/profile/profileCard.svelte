@@ -17,7 +17,7 @@
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Purpose of Registration</span>
-			<span class="py-1 px-2 text-white text-sm">{purposeOfRegistrationDesc}</span>
+			<span class="py-1 px-2 text-sm">{purposeOfRegistrationDesc}</span>
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Primary NAICs</span>
