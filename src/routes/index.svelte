@@ -4,8 +4,6 @@
 
 	let isOpen = true;
 
-	import DashboardIcons from "$lib/components/dashboard/dashboardIcons.svelte"
-    import {faHandshake, faMobileAlt, faMoneyBillWave} from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <Header />
