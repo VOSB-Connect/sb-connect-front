@@ -4,7 +4,7 @@
 	import ProfileCard from '$lib/components/profile/profileCard.svelte';
 	import AboutCard from '$lib/components/profile/aboutCard.svelte';
 	import ExperienceCard from '$lib/components/profile/experienceCard.svelte';
-	
+	import AffiliatesCard from '$lib/components/profile/affiliatesCard.svelte';
 
 	const business = {
 		entity: null,
@@ -25,10 +25,12 @@
 	<div class="container-full h-full overflow-x-auto p-5 bg-gray-100">
 		<div class="grid grid-cols-3 grid-rows-2 gap-4">
 			<!-- Profile Card -->
-			<ProfileCard business={business.entity}/>
+			<ProfileCard business={business.entity}>
+				<AffiliatesCard />
+			</ProfileCard>
 			<!-- End of profile card -->
 			<!-- About Section -->
-			<AboutCard />
+			<AboutCard business={business.entity} />
 			<!-- End of about section -->		
 			<!-- Experience card -->
 			<ExperienceCard />

@@ -8,7 +8,7 @@ export async function post(endpoint, body){
     headers['Content-Type'] = 'application/json',
     body = JSON.stringify(body || {})
     
-    const token = sessionStorage.getItem("auth");
+    const token = window.sessionStorage.getItem("auth");
     if(token.length > 2){
         // This is needed for post requests that require a jwt token.
         const authToken = JSON.parse(token).jwt;
@@ -42,7 +42,7 @@ export async function get(endpoint) {
         let headers = {}
         headers['Content-Type'] = 'application/json';
 
-        const token = sessionStorage.getItem("auth");
+        const token = window.sessionStorage.getItem("auth");
         if (token !== '') {
             const authToken = JSON.parse(token).jwt;
             headers['Authorization'] = `Bearer ${authToken}`;
