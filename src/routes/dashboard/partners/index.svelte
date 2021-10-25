@@ -1,16 +1,17 @@
 <script>
     import PartnerCard from "$lib/components/partners/partnerCard.svelte";
+    import { auth } from '$lib/shared/user-store'
+    import { get } from '$lib/utils'
 
+    let partners = []
     async function getMyPartners(){
-        const response = await get(`partners/myPartners`);
-        if(response.ok) return response.json();
+        const response = await get(`partners/getPartners/${$auth.user.entity.id}`);
+        if(response.ok) partners = await response.json();
     }
+
 </script>
-<main class="flex-grow flex flex-col min-h-0 border-t">
-    {#await getMyPartners() then partners}
-        {#each partners as partner}
-            <PartnerCard {partner}/>
-        {/each}
-    
-    {/await}
-</main>
+{#await getMyPartners()}
+    {#each partners as partner}
+        <PartnerCard {partner}/>
+    {/each}
+{/await}

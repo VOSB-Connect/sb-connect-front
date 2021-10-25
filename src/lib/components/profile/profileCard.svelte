@@ -2,8 +2,7 @@
 	import Icon from '$lib/components/dashboard/dashboardIcons.svelte'
 	import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 	export let business;
-
-	$:console.log(business)
+	
 	let primaryNaics = business.assertions.goodsAndServices.PrimaryNaics ?? "n/a";
 	let purposeOfRegistrationDesc = business.entityRegistration.purposeOfRegistrationDesc;
 </script>
