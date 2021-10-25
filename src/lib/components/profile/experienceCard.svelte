@@ -2,10 +2,8 @@
 	export let business;
 
 	let naicsList = business.assertions.goodsAndServices.naicsList;
-	console.log(naicsList);
 
 	let businessTypeList = business.coreData.businessTypes.businessTypeList;
-	console.log(businessTypeList);
 
 </script>
 <div class="bg-white p-3 shadow-sm rounded-sm flex flex-row col-span-2 row-span-2 gap-4">

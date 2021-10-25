@@ -17,10 +17,10 @@
         <!-- Card -->
         <div class="w-full m-2 md:w-64 justify-center items-center bg-white shadow-lg rounded-lg flex flex-col">
             <div class="w-full p-4 justify-center flex flex-col">
-                <h4 class="border-b-2 text-3xl" id="whoobe-3mr7n">partner.entityRegistration.legalBusinessName</h4>
-                <p class="my-1" >pointOfContact.firstName pointOfContact.lastName</p>
-                <p class="my-1" >pointOfContact.email</p>
-                <p class="my-1" >pointOfContact.city, pointOfContact.stateOrProvinceCode</p>
+                <h4 class="border-b-2 text-3xl" id="whoobe-3mr7n">{partner.entityRegistration.legalBusinessName}</h4>
+                <p class="my-1" >{pointOfContact.firstName} {pointOfContact.lastName}</p>
+                <p class="my-1" >{pointOfContact.email}</p>
+                <p class="my-1" >{pointOfContact.city}, {pointOfContact.stateOrProvinceCode}</p>
                 <p class="my-1" >
                     {#each naicsList as naics}
                         <span>
