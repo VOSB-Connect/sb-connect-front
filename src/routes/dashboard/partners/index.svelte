@@ -5,7 +5,7 @@
 
     let partners = []
     async function getMyPartners(){
-        const response = await get(`partners/getPartners/${$auth.user.entity.id}`);
+        const response = await get(`entities/getPartners/${$auth.user.entity.id}`);
         if(response.ok) partners = await response.json();
     }
 
