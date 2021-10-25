@@ -3,14 +3,13 @@
     import { auth } from '$lib/shared/user-store'
     import { get } from '$lib/utils'
 
-    let partners = []
     async function getMyPartners(){
         const response = await get(`entities/getPartners/${$auth.user.entity.id}`);
-        if(response.ok) partners = await response.json();
+        if(response.ok) return await response.json();
     }
 
 </script>
-{#await getMyPartners()}
+{#await getMyPartners() then partners}
     {#each partners as partner}
         <PartnerCard {partner}/>
     {/each}
