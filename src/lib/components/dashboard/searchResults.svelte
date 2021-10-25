@@ -4,6 +4,7 @@
 	import SearchResultsItem from "./searchResultsItem.svelte";
 	import CompanyStore from '$lib/shared/company-store'
 	import SolicitationStore from '$lib/shared/solicitation-store'
+import SearchResultsItemSolicitation from "./searchResultsItemSolicitation.svelte";
 
 	let searchParam = "";
 	let searchByBusiness = false;
@@ -113,8 +114,10 @@
 			{#if filteredSolicitations.length == 0 && searchParam === ""}
 				<p class="text-center mt-3">Search for opportunities</p>
 			{:else if filteredSolicitations.length > 0}
-				{#each filteredSolicitations as company}
-					<SearchResultsItem {company} />
+				{#each filteredSolicitations as contract}
+					<!-- <SearchResultsItem {company} />
+					 -->
+					 <SearchResultsItemSolicitation { contract } />
 				{/each}
 			{:else}
 				<p>No results found containing "{searchParam}"</p>
