@@ -15,7 +15,6 @@
    
     let didSaveSolicitation;
     export let solicitationId;
-    solicitationId = 3;
     
 
     async function getSolicitation() {
