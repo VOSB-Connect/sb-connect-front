@@ -71,19 +71,18 @@
             </div>
         </div>
         <div class="text-center max-w-xl mx-auto mt-4">
-            <p class="text-s leading-tight">*** Custom pricing available, please <a href="/contact"> Contact Us</a> for details.</p>
+            <p class="text-s leading-tight">*Don't see the tier that fits your needs? Please <a href="/contact"> Contact Us</a> for a custom quote.</p>
         </div>
     </div>
-    
 </div>
 
 <Footer />
 
 <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
-<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+<!-- <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
     <div>
         <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
-            <img class="object-cover object-center w-full h-full rounded-full" src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"/>
+            <img class="object-cover object-center w-full h-full rounded-full" src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg" alt="scott windon"/>
         </a>
     </div>
-</div>
+</div> -->
