@@ -29,12 +29,14 @@
                     </ul>
                 </div>
                 <div class="w-full">
+        <!-- Need link to MoonClerk -->
                     <button class="font-bold bg-gray-600 hover:bg-gray-700 text-white rounded-md px-10 py-2 transition-colors w-full">Buy Now</button>
                 </div>
             </div>
             <div class="w-full md:w-1/3 md:max-w-none bg-white px-8 md:px-10 py-8 md:py-10 mb-3 mx-auto md:-mx-3 md:mb-0 rounded-md shadow-lg shadow-gray-600 md:relative md:z-50 md:flex md:flex-col">
                 <div class="w-full flex-grow">
                     <h2 class="text-center font-bold uppercase mb-4">SMB Leader GPS</h2>
+        <!-- Check pricing at this level -->
                     <h3 class="text-center font-bold text-5xl mb-5">$49.99/mo</h3>
                     <ul class="text-sm px-5 mb-8">
                         <li class="leading-tight"><i class="mdi mdi-check-bold text-lg"></i> Search database of opportunities based on NAICs</li>
@@ -46,6 +48,7 @@
                     
                 </div>
                 <div class="w-full">
+        <!-- Need link to MoonClerk -->
                     <button class="font-bold bg-gray-600 hover:bg-gray-700 text-white rounded-md px-10 py-2 transition-colors w-full">Buy Now</button>
                 </div>
             </div>
@@ -62,12 +65,13 @@
                     </ul>
                 </div>
                 <div class="w-full">
+        <!-- Need link to MoonClerk -->
                     <button class="font-bold bg-gray-600 hover:bg-gray-700 text-white rounded-md px-10 py-2 transition-colors w-full">Buy Now</button>
                 </div>
             </div>
         </div>
         <div class="text-center max-w-xl mx-auto mt-4">
-            <p class="text-xs leading-tight">*Custom pricing available, please <a href="/contact"> Contact Us</a> for details.</p>
+            <p class="text-s leading-tight">*** Custom pricing available, please <a href="/contact"> Contact Us</a> for details.</p>
         </div>
     </div>
     
@@ -75,11 +79,11 @@
 
 <Footer />
 
-<!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES
+<!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
 <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
     <div>
         <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
             <img class="object-cover object-center w-full h-full rounded-full" src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"/>
         </a>
     </div>
-</div> -->
+</div>
