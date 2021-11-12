@@ -13,13 +13,15 @@
 
 <div class="min-w-screen min-h-screen bg-gray-100 px-5 py-5">
 
-    <div class="w-full gap-x-2 mx-auto bg-white px-5 py-10 text-gray-600 mb-10">
-        <!-- protege sup -->
+    <div class="w-full mx-auto bg-white px-5 py-10 text-gray-600 mb-10">
+        
         <div class="text-center max-w-xl mx-auto">
             <h1 class="text-5xl md:text-6xl font-bold mb-5">Pricing</h1>
             <h3 class="text-xl font-medium mb-10">Monthly subscriptions starting at $9.99</h3>
         </div>
-        <div class="max-w-4xl mx-auto md:flex">
+        
+        <div class="max-w-4xl gap-x-4 mx-auto flex">
+            <!-- protege sup -->
             <div class="w-full md:w-1/3 md:max-w-none bg-white px-8 md:px-10 py-8 md:py-10 mb-3 mx-auto md:my-6 rounded-md shadow-lg shadow-gray-600 md:flex md:flex-col">
                 <div class="w-full flex-grow">
                     <h2 class="text-center font-bold uppercase mb-4">Protege SUP</h2>
