@@ -1,7 +1,7 @@
 <!--- FIRST ROW CONTAINING THE  STATS CARD STARTS HERE -->
   <div class="flex bg-gray-100 py-10 p-14">
 <!--- First Container --->
-    <div class="container ml-0 pr-4">
+    <div class="pr-4">
       <div class="w-72 bg-white max-w-xs mx-auto rounded-sm overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-100 cursor-pointer">
         <div class="h-20 bg-red-400 flex items-center justify-between">
           <p class="mr-0 text-white text-lg pl-5">TOTAL OPPORTUNITIES</p>
