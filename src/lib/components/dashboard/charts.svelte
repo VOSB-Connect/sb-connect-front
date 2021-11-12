@@ -58,7 +58,7 @@
 
 <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES STARTS HERE -->
   <div class="flex-col justify-center bg-gray-100 py-10 p-5">
-    <h1 class="text-xl mb-4">Ten Most Recent Contract Solicitations</h1>
+    <h1 class="text-xl mb-4">Ten Most Recent Contract Opportunities</h1>
     <div class="container mr-5 ml-2 mx-auto bg-white shadow-xl">
       <table>
         <thead>
@@ -232,7 +232,7 @@
 <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES ENDS HERE -->
 <!-- THIRD ROW CONTAINING SAVED CONTRACT Solicitations STARTS HERE -->
   <div class="flex-col justify-center bg-gray-100 py-10 p-5">
-    <h1 class="text-xl mb-4">Last 5 Saved Solicitations</h1>
+    <h1 class="text-xl mb-4">Last 5 Saved Contract Opportunities</h1>
     <div class="container mr-5 ml-2 mx-auto bg-white shadow-xl">
       <table>
         <thead>
