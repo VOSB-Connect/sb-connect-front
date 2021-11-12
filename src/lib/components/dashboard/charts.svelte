@@ -58,7 +58,7 @@
 
 <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES STARTS HERE -->
   <div class="flex-col justify-center bg-gray-100 py-10 p-5">
-    <h1 class="text-xl mb-4">Ten Most Recent Contract Opportunities</h1>
+    <h1 class="text-xl mb-4">Ten Most Recent Contract Solicitations</h1>
     <div class="container mr-5 ml-2 mx-auto bg-white shadow-xl">
       <table>
         <thead>
@@ -69,6 +69,7 @@
           </tr>
         </thead>
         <tbody>
+  <!-- foreach loop -->
           <tr class="hover:bg-grey-lighter">
             <td class="py-4 px-6 border-b border-grey-light">987098</td>
             <td class="py-4 px-6 text-center border-b border-grey-light">
@@ -228,4 +229,31 @@
       </div> -->
 <!-- Third div ends here --->
   </div>
-<!-- SECOND ROW CONTAINING THE TABLE STATS ENDS HERE -->
+<!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES ENDS HERE -->
+<!-- THIRD ROW CONTAINING SAVED CONTRACT Solicitations STARTS HERE -->
+  <div class="flex-col justify-center bg-gray-100 py-10 p-5">
+    <h1 class="text-xl mb-4">Last 5 Saved Solicitations</h1>
+    <div class="container mr-5 ml-2 mx-auto bg-white shadow-xl">
+      <table>
+        <thead>
+          <tr>
+            <th class="py-4 px-6 bg-purple-400 font-bold uppercase text-sm text-white border-b border-grey-light">NAICs Code</th>
+            <th class="py-4 px-6 bg-purple-400 font-bold uppercase text-sm text-white border-b border-grey-light">Title</th>
+            <th class="py-4 px-6 bg-purple-400 font-bold uppercase text-sm text-white border-b border-grey-light">Close Date</th>
+          </tr>
+        </thead>
+        <tbody>
+  <!-- foreach loop -->
+          <tr class="hover:bg-grey-lighter">
+            <td class="py-4 px-6 border-b border-grey-light">987098</td>
+            <td class="py-4 px-6 text-center border-b border-grey-light">
+              Title of Contract opportunity here
+            </td>
+            <td class="py-4 px-6 text-center border-b border-grey-light">
+              12/31/2021
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
