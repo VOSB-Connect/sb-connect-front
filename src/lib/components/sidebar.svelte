@@ -36,9 +36,9 @@
     </div>
     <div class="mt-10 mb-4">
       <ul class="ml-4">
-        <SidebarItem title="Dashboard" namedIcon={faTachometerAlt} route="/dashboard" />
-        <SidebarItem title="Search" namedIcon={faSearch} route="/dashboard/search" />
-        <SidebarItem title="Partnerships" namedIcon={faPeopleArrows} route="/dashboard/partners" />
+        <SidebarItem title="Discover" namedIcon={faTachometerAlt} route="/dashboard" />
+        <!-- <SidebarItem title="Search" namedIcon={faSearch} route="/dashboard/search" /> -->
+        <!-- <SidebarItem title="Partnerships" namedIcon={faPeopleArrows} route="/dashboard/partners" /> -->
         <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/dashboard/contracts" />
         <SidebarItem title="Profile" namedIcon={faUser} route="/dashboard/profile" />
         <li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded">
