@@ -27,9 +27,11 @@
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="https://calendly.com/atknho/acceleratorcapturemvp">CAPTR Labs</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-            href="/pricing">Autobot Labs</a>
+            href="/contact">Autobot Labs</a>
         <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="/contact">Teaming Labs</a>
+            <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
+            href="/pricing">Pricing</a>
         {#if $auth !== null && $auth.jwt}
             <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
             href="dashboard">Dashboard</a>
