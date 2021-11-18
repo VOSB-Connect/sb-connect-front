@@ -1,11 +1,10 @@
 <script>
-	import Icon from '$lib/components/dashboard/dashboardIcons.svelte'
-	import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
+	import { formatDate } from '$lib/utils'
 	export let contract;
 	
 	const { title, solicitationNumber, naicsCode, published_at, classificationCode } = contract;
 
-	const [date, time] = published_at.split("T")
+	const [date, time] = formatDate(published_at).split(", ")
 	
 </script>
 
