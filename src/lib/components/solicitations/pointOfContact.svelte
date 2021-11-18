@@ -1,5 +1,9 @@
 <script>
+	import ActionCard from '../solicitations/actionCard.svelte'
+	import { auth } from '$lib/shared/user-store';
+	import { post } from '$lib/utils';
 	export let contract;
+	let didSaveSolicitation;
     $:console.log(contract);
     const { pointOfContact } = contract;
 
@@ -14,11 +18,20 @@
 		return 'N/A'
 	}
 
+	async function saveSolicitation(e) {
+        const saveSolicitationResponse = await post("entities/saveSolicitation", {
+            solicitation: solicitationId,
+            entityId: $auth.user.entity.id
+        })
+        if(saveSolicitationResponse.ok){
+            didSaveSolicitation = true;
+        }
+    }
 
 </script>
 
 
-<div class="bg-white p-3 shadow-sm rounded-sm col-span-2">
+<div class="bg-white p-3 shadow-sm rounded-sm w-1/2">
 	<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
 		<span class="text-green-500">
 			<svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -55,6 +68,5 @@
 			</div>
 		</div>
 	</div>
-	<button class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
-		Full Information</button>
+	<ActionCard on:addsolicitation={saveSolicitation} bind:solicitationSelected={didSaveSolicitation} />
 </div>
