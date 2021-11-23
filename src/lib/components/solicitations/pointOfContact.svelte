@@ -22,7 +22,7 @@
 
 	async function saveSolicitation(e) {
         const saveSolicitationResponse = await post("entities/saveSolicitation", {
-            solicitation: solicitationId,
+            solicitation: contract.id,
             entityId: $auth.user.entity.id
         })
         if(saveSolicitationResponse.ok){
