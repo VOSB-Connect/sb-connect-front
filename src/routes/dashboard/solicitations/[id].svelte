@@ -13,13 +13,14 @@
     import PointOfContact from '$lib/components/solicitations/pointOfContact.svelte';
 
     export let solicitationId;
-    
+    $:getSolicitation().then(console.log)
     async function getSolicitation() {
         const response = await get(`solicitations/${ solicitationId }`)
         if(response.ok) return response.json();
     }  
 
 </script>
+
 
 {#await getSolicitation() then solicitation}
     <div class="flex flex-col lg:flex-row">

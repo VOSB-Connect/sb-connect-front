@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte'
-  import {faSearch, faPeopleArrows, faFileAlt, faTachometerAlt, faUser, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
+  import { faFileAlt, faTachometerAlt, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
   import SidebarItem from '$lib/components/sideBarItem.svelte'
   import Fa from 'svelte-fa'
   import { auth } from '$lib/shared/user-store'
@@ -27,7 +27,7 @@
 </script>
 
 
-<nav class="flex flex-col bg-purple-900 w-64 h-screen px-4 tex-gray-900 border border-purple-900">
+<nav class="hidden lg:flex flex-col bg-purple-900 w-64 h-screen px-4 tex-gray-900 border border-purple-900">
     <div class="flex flex-wrap mt-8">
       <div class="w-100">
         <span class="font-semibold text-white">{business.dbaName}</span>
@@ -37,9 +37,7 @@
     <div class="mt-10 mb-4">
       <ul class="ml-4">
         <SidebarItem title="Discover" namedIcon={faTachometerAlt} route="/dashboard" />
-        <!-- <SidebarItem title="Search" namedIcon={faSearch} route="/dashboard/search" /> -->
-        <!-- <SidebarItem title="Partnerships" namedIcon={faPeopleArrows} route="/dashboard/partners" /> -->
-        <SidebarItem title="Contracts" namedIcon={faFileAlt} route="/dashboard/contracts" />
+        <SidebarItem title="My Solicitations" namedIcon={faFileAlt} route="/dashboard/solicitations" />
         <SidebarItem title="Profile" namedIcon={faUser} route="/dashboard/profile" />
         <li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded">
             <span>

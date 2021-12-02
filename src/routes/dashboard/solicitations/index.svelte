@@ -1,6 +1,6 @@
 <script>
     import SavedSolicitation from '$lib/components/solicitations/savedSolicitation.svelte';
-import { auth } from '$lib/shared/user-store'
+    import { auth } from '$lib/shared/user-store'
     import { get } from '$lib/utils'
 
     async function getMySolicitations(){
@@ -11,6 +11,6 @@ import { auth } from '$lib/shared/user-store'
 
 {#await getMySolicitations() then solicitations}
     {#each solicitations as solicitation}
-        <SavedSolicitation contract={ solicitation }/>
+        <SavedSolicitation { solicitation }/>
     {/each}
 {/await}
