@@ -67,3 +67,12 @@ export async function get(endpoint) {
 		throw customError ? error : { id: '', message: 'An unknown error occured' };
     }
 }
+
+export function formatDate(isoString){
+    const date = new Intl.DateTimeFormat("en", {
+        timeStyle: "short",
+        dateStyle: "short"
+    }).format(new Date(isoString));
+
+    return date
+}

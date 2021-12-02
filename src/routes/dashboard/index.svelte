@@ -1,7 +1,6 @@
 <script>
-  import DashboardStatistics from '$lib/components/dashboard/statistics.svelte'
-  import Charts from '$lib/components/dashboard/charts.svelte'
-  import DashboardSearchResults from '$lib/components/dashboard/searchResults.svelte'
+  import SearchResults from '$lib/components/dashboard/searchResults.svelte'
+  import SolicitationsWidget from '$lib/components/dashboard/solicitationsWidget.svelte';
 </script>
 
 <!-- main content -->
@@ -9,13 +8,23 @@
 
   <!-- section content -->
   <section aria-label="main content" class="flex min-h-0 flex-col flex-auto border-l">
-    <Charts />
-  </section>
+    <!--- FIRST ROW CONTAINING THE  STATS CARD STARTS HERE -->
+    <SolicitationsWidget />
+  <!-- FIRST ROW CONTAINING THE  STATS CARD ENDS HERE -->
 
-  <!-- section content -->
-  <section aria-label="main content" class="flex min-h-0 flex-col flex-auto border-l">
-		<!-- section body header -->
-		
-		<DashboardSearchResults />
-	</section>
+  <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES STARTS HERE -->
+    <div class="px-5">
+      <h1 class="text-xl mb-4">Ten Most Recent Contract Opportunities</h1>
+      <div class="container bg-gray-100">
+        <section class="border-t-2 border-b-2 w-full bg-white min-h-0 h-auto flex flex-row px-3">
+          <div class="font-semibold text-left py-3 px-1 mr-4 flex">NAICs</div>        
+          <div class="font-semibold text-left py-3 px-1 w-24 flex-1">Title</div>
+          <div class="font-semibold text-left py-3 px-1 flex">Expiration Date</div>
+        </section>
+        <SearchResults />
+      </div>
+    </div>
+  <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES ENDS HERE -->
+    </section>
+
 </main>
