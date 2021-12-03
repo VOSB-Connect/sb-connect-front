@@ -9,7 +9,7 @@
     <div class="h-screen w-full flex overflow-auto antialiased text-gray-800 bg-white">
         <!-- section body side nav -->
         <Sidebar />
-        <div class="flex-1 flex flex-col pt-5">
+        <div class="flex-1 flex flex-col md:flex-row justify-start items-start pt-5 pr-5">
             <slot />
         </div>
     </div>
