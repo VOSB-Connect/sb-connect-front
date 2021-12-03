@@ -9,7 +9,6 @@
         business = $auth.user.entity;
       }
   })
-  $:console.log(business)
 </script>
 
 {#if business}
