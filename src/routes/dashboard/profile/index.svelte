@@ -33,7 +33,7 @@
 			<AboutCard business={business.entity} />
 			<!-- End of about section -->		
 			<!-- Experience card -->
-			<ExperienceCard />
+			<ExperienceCard business={business.entity} />
 		</div>
 	</div>
 {:else} 
