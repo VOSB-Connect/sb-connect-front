@@ -1,12 +1,13 @@
 <script>
+	import { onMount } from 'svelte';
 	import ActionCard from '../solicitations/actionCard.svelte'
 	import { auth } from '$lib/shared/user-store';
-	import { post } from '$lib/utils';
+	import { get,post } from '$lib/utils';
 	import { faUser } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
 	export let contract;
 	let didSaveSolicitation;
-    $:console.log(contract);
+
     const { pointOfContact } = contract;
 
     const [firstName, lastName] = pointOfContact[0].fullName.split(' ');
@@ -20,14 +21,25 @@
 		return 'N/A'
 	}
 
-	async function saveSolicitation(e) {
-        const saveSolicitationResponse = await post("entities/saveSolicitation", {
-            solicitation: contract.id,
-            entityId: $auth.user.entity.id
-        })
-        if(saveSolicitationResponse.ok){
-            didSaveSolicitation = true;
-        }
+	onMount(async () => {
+		const entityId = $auth.user.entity.id;
+		const response = await get(`entities/${entityId}`);
+		if(response.ok){
+			const entity = await response.json();
+			didSaveSolicitation = entity.solicitations.some(sol => sol.id == contract.id)
+		}
+	})
+
+	async function saveSolicitation() {
+		if(!didSaveSolicitation){
+			const saveSolicitationResponse = await post("entities/saveSolicitation", {
+				solicitation: contract.id,
+				entityId: $auth.user.entity.id
+			})
+			if(saveSolicitationResponse.ok){
+				didSaveSolicitation = true;
+			}
+		}
     }
 
 </script>
@@ -51,7 +63,7 @@
 			</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Contact No.</div>
-				<div class="px-4 py-2">{ pointOfContact[0].phone }</div>
+				<div class="px-4 py-2">{ formatPhoneNo(pointOfContact[0].phone) }</div>
 			</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Mailing Address</div>
