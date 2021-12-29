@@ -6,7 +6,7 @@
 </script>
 
 
-<li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
+<li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded-lg">
     <span>
         <Fa icon={namedIcon} size="lg" />
     </span>
