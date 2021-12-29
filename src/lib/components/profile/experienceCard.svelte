@@ -6,7 +6,7 @@
 	let businessTypeList = business.coreData.businessTypes.businessTypeList;
 
 </script>
-<div class="bg-white p-3 shadow-sm rounded-sm flex flex-row col-span-2 row-span-2 gap-4">
+<div class="bg-white p-3 shadow-sm rounded-sm flex flex-col md:flex-row col-span-2 row-span-2 gap-4">
 	<div>
 		<p class="tracking-wide font-semibold text-gray-900 leading-8 mb-3">NAICs</p>
 		<ul class="list-inside space-y-2">
