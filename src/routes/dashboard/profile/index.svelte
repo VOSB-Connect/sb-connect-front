@@ -22,11 +22,11 @@
 </script>
 
 {#if hasLoaded }
-	<div class="container-full h-full overflow-x-auto p-5 bg-gray-100">
-		<div class="grid grid-cols-3 grid-rows-2 gap-4">
+	<div class="w-full h-full overflow-x-auto md:p-5">
+		<div class="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2  gap-y-2 md:gap-4">
 			<!-- Profile Card -->
 			<ProfileCard business={business.entity}>
-				<AffiliatesCard />
+	
 			</ProfileCard>
 			<!-- End of profile card -->
 			<!-- About Section -->
