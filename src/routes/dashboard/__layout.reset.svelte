@@ -12,7 +12,7 @@
         <Sidebar />
 
         <SidebarMobile />
-        <div class="flex-1 flex flex-col md:flex-row justify-start items-start px-2 pt-2 md:pt-5 md:pr-5">
+        <div class="flex-1 flex flex-col md:flex-row justify-start items-start md:px-2 pt-2 md:pt-5 md:pr-5">
             <slot />
         </div>
     </div>
