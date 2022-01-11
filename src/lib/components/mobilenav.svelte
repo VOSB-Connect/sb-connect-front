@@ -7,8 +7,8 @@
 </script>
 
   <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-  <aside class="md:hidden bg-purple-900 w-60 fixed z-50 h-full" class:open id="mobile-menu">
-    <div class="pt-10 pr-6 pl-6 space-y-1">
+  <aside class="md:hidden bg-purple-900 w-full fixed z-50" class:open id="mobile-menu">
+    <div class="py-10 pl-6 space-y-1">
         <a href="#"  on:click="{() => open = !open}">
             <Fa icon={faTimes} size="lg" class="ml-auto cursor-pointer" />
         </a>
