@@ -6,7 +6,7 @@
 </script>
 
 <nav class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center fixed">
-    <div class="flex items-center justify-between">
+    <div class="m-auto flex items-center justify-between">
          <!-- Mobile menu button -->
          <div class="flex md:hidden">
             <button type="button" on:click="{() => open = !open}" class="text-grey-200 hover:text-gray-400 focus:outline-none focus:text-gray-400"
