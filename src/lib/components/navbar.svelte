@@ -5,7 +5,7 @@
     let displayMenu = false;
 </script>
 
-<nav class="w-full px-6 py-4 md:flex md:justify-between md:items-center fixed bg-indigo-500">
+<nav class="w-full px-6 py-4 md:flex md:justify-between md:items-center fixed z-10 bg-indigo-500">
     <div class="w-full xl:w-9/12 lg:w-10/12 mx-auto flex justify-between items-center">
         <!-- Mobile menu button -->
         <div class="block md:hidden">
