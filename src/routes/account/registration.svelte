@@ -7,6 +7,7 @@
     let cageCode = "", email = "", password = "";
     let confirmed = false;
     let match = true;
+    let duplicate = false;
     let error = null;
     
     async function handleRegistration(entityId) {
@@ -39,6 +40,8 @@
             }else {
                 match = false;
             }
+        } else {
+            duplicate = true;
         }
     }
 
@@ -54,9 +57,13 @@
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
         <form class="mt-8 space-y-6" on:submit|preventDefault={ handleValidUser }>
-            {#if !match} 
+            <!-- {#if !match} 
                 <ListError error={"The e-mail entered does not match the e-mail on <a class='cursor-pointer' href='https://sam.gov/' target='_blank'>Sam.gov</a></span>"} />    
+            {/if} -->
+            {#if duplicate}
+                <ListError error={"E-mail or Cage Code already registered"} />
             {/if}
+
             <div>
                 <label for="cageCode" class="sr-only">Cage Code</label>
                 <input type="text" bind:value={ cageCode } name="cageCode" placeholder="Cage Code" required
