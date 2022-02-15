@@ -7,13 +7,12 @@
     let cageCode = "", email = "", password = "";
     let confirmed = false;
     let match = true;
-    let duplicate = false;
     let error = null;
     
     async function handleRegistration(entityId) {
         try {
             const registrationResponse = await post("auth/local/register", { 
-                username: email,
+                username: cageCode,
                 entity: entityId,
                 email,
                 password
@@ -30,20 +29,20 @@
         }    
     }
 
-    async function handleValidUser(){
 
-        let validationRequest = await post("entities/validate", { cageCode, email })
-        if(validationRequest.ok){
-            const entityId = await validationRequest.json();
-            if(entityId > 0){
-                handleRegistration(entityId);
-            }else {
-                match = false;
-            }
-        } else {
-            duplicate = true;
-        }
-    }
+
+    // async function handleValidUser(){
+
+    //     let validationRequest = await post("entities/validate", { cageCode, email })
+    //     if(validationRequest.ok){
+    //         const entityId = await validationRequest.json();
+    //         if(entityId > 0){
+    //             handleRegistration(entityId);
+    //         }else {
+    //             match = false;
+    //         }
+    //     } 
+    // }
 
     $:cageCode = cageCode.toUpperCase()
 
@@ -56,12 +55,16 @@
         </a>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
-        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleValidUser }>
+        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleRegistration }>
             <!-- {#if !match} 
                 <ListError error={"The e-mail entered does not match the e-mail on <a class='cursor-pointer' href='https://sam.gov/' target='_blank'>Sam.gov</a></span>"} />    
             {/if} -->
-            {#if duplicate}
-                <ListError error={"E-mail or Cage Code already registered"} />
+            {#if error}
+                {#if error === "Username already taken"}
+                    <ListError error="Cage Code already taken" />
+                {:else}
+                    <ListError error={error} />
+                {/if}
             {/if}
 
             <div>
@@ -72,13 +75,13 @@
             </div>
             <div>
                 <label for="email" class="sr-only">Email address</label>
-                <input type="email" bind:value={ email } name="email" placeholder="Email" required
+                <input type="email" bind:value={ email } name="email" placeholder="Email" 
                     class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
             <div>
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" bind:value={ password } name="password" placeholder="Password" required
+                <input type="password" bind:value={ password } name="password" placeholder="Password" 
                     class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
