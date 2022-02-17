@@ -44,6 +44,8 @@
     //     } 
     // }
 
+    // handleEntityInformation("97P39")
+    handleStrapiEntityInformation(entity)
     $:cageCode = cageCode.toUpperCase()
 
 </script>
