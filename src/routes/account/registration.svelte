@@ -1,25 +1,41 @@
 <script>
     import { goto } from '$app/navigation';
-    import { post } from '$lib/utils'
-    import ListError from '$lib/ListError.svelte'
-    import { auth } from '$lib/shared/user-store'
+    import { post, getPublic, publicPost } from '$lib/utils';
+    import ListError from '$lib/ListError.svelte';
+    import { auth } from '$lib/shared/user-store';
+    import axios from 'axios';
 
-    let cageCode = "", email = "", password = "";
+
+
+    let cageCode = "97P39", email = "", password = "";
     let confirmed = false;
     let match = true;
     let error = null;
     
-    async function handleRegistration(entityId) {
+    async function sam(){
+    let result = axios.get("https://api.sam.gov/entity-information/v2/entities", 
+            {
+                method: "get",
+                params: {
+                api_key: cnhYtSb7ddLiscvNifYgnlOxNjSDOm3IbZFe9HsQ,
+                cageCode: cageCode,
+            }
+        })
+           return result;
+    }
+
+    
+    async function handleRegistration() {
         try {
             const registrationResponse = await post("auth/local/register", { 
-                username: cageCode,
-                entity: entityId,
+                username: cageCode, 
                 email,
                 password
             })
             if(registrationResponse.ok){
                 const registerResponse = await registrationResponse.json()
                 $auth = registerResponse;
+                console.log(registerResponse)
                 goto('/activation')
             } else {
                 error = registrationResponse.message[0].messages[0].message;
@@ -29,26 +45,52 @@
         }    
     }
 
+    async function handleEntityInformation(entity) {
+        try {
+            const entityResponse = await post("entities", { ...entity })
+            if(entityResponse.ok){
+                const result = await entityResponse.json()
+                handleRegistration(result.shift().id)
+                console.log(result)
+            } else {
+                error = entityResponse.message[0].messages[0].message;
+                console.log(error)
+            }        
+        } catch (err) {
+            console.error(err)
+        }    
+    }
+    
+    
+//     async function handleValidUser(){
+
+// let validationRequests = await post("entities/validate", { cageCode, email })
+// if(validationRequest.ok){
+//     const entityId = await validationRequest.json();
+//     if(entityId > 0){
+//         handleRegistration(entityId);
+//     }else {
+//         match = false;
+//     }
+// }
+async function handleValidUser() {
+    let validationRequest = await getPublic(`user/${cageCode}/${email}`)
+        console.log(validationRequest)
+
+}
 
 
-    // async function handleValidUser(){
 
-    //     let validationRequest = await post("entities/validate", { cageCode, email })
-    //     if(validationRequest.ok){
-    //         const entityId = await validationRequest.json();
-    //         if(entityId > 0){
-    //             handleRegistration(entityId);
-    //         }else {
-    //             match = false;
-    //         }
-    //     } 
-    // }
+let entity = async () => {
+    let samEntity = await publicPost('entities', { cageCode });
+    console.log(samEntity.data.entityRegistration)
+}
 
-    // handleEntityInformation("97P39")
-    handleStrapiEntityInformation(entity)
+    // entity()
     $:cageCode = cageCode.toUpperCase()
 
-</script>
+</script> 
+
 
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
@@ -57,7 +99,7 @@
         </a>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
-        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleRegistration }>
+        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleValidUser }>
             <!-- {#if !match} 
                 <ListError error={"The e-mail entered does not match the e-mail on <a class='cursor-pointer' href='https://sam.gov/' target='_blank'>Sam.gov</a></span>"} />    
             {/if} -->
