@@ -6,7 +6,7 @@
 
 
 
-    let cageCode = "97P39", email = "bp_ct2009@yahoo.com", password = "";
+    let cageCode = "4SSF1", email = "bmp_test@gmail.com", password = "password";
     let confirmed = false;
     let match = true;
     let error = null;
@@ -14,9 +14,9 @@
     
     async function handleRegistration(entityId) {
         try {
-            const registrationResponse = await post("auth/local/register", { 
+            const registrationResponse = await publicPost("auth/local/register", { 
                 username: cageCode, 
-                entity: "4",
+                entity: entityId,
                 email,
                 password
             })
@@ -44,12 +44,12 @@
                     let registerEntityRequest = await publicPost('entities', { cageCode });
                     if(registerEntityRequest.ok) {
                         let entity = await registerEntityRequest.json()
-                        // handleRegistration(entity.id)
+                        console.log(entity)
+                        handleRegistration(entity.id)
                     } 
-                } else {
+                } else { 
                     error = validationResponse.error
                 }
-                
             } else {
                 error = validationRequest.message[0].messages[0].message;
                 console.log(error)
@@ -73,7 +73,7 @@
         </a>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
-        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleRegistration }>
+        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleEntityInformation }>
     
             {#if error}  
                 <ListError error={error} />
