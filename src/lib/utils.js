@@ -5,8 +5,8 @@ export async function post(endpoint, body){
 
    try{
     let headers = {}
-    headers['Content-Type'] = 'application/json'
-    body = JSON.stringify(body || {})
+     headers['Content-Type'] = 'application/json'
+     body = JSON.stringify(body || {});
     
     const token = window.sessionStorage.getItem("auth");
     if(token.length > 2){
@@ -108,8 +108,7 @@ export async function getPublic(endpoint) {
         const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'GET', headers });
         if(!response.ok){
             try {
-                const data = await response.json();
-                return data;
+                return await response.json();
             } catch (err) {
                 console.error(err);
             } 
