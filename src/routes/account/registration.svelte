@@ -3,7 +3,7 @@
     import { getPublic, publicPost } from '$lib/utils';
     import ListError from '$lib/ListError.svelte';
     import { auth } from '$lib/shared/user-store';
-    import entity from '$lib/data/entity'
+
 
 
 
