@@ -7,7 +7,7 @@
 
 
 
-    let cageCode = "4SSF1", email = "bmp_test@gmail.com", password = "password";
+    let cageCode = "", email = "", password = "";
     let confirmed = false;
     let match = true;
     let error = null;
