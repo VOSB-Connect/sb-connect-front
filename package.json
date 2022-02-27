@@ -31,5 +31,9 @@
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",
 		"@macfja/svelte-persistent-store": "^1.2.0",
 		"svelte-fa": "^2.2.1"
-	}
+	},
+	"engines": {
+    	"node": ">=10.16.0 <=14.x.x",
+    	"npm": "^6.0.0"
+  	}
 }
