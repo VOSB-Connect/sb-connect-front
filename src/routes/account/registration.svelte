@@ -1,27 +1,34 @@
 <script>
     import { goto } from '$app/navigation';
-    import { post } from '$lib/utils'
-    import ListError from '$lib/ListError.svelte'
-    import { auth } from '$lib/shared/user-store'
+    import { getPublic, publicPost } from '$lib/utils';
+    import ListError from '$lib/ListError.svelte';
+    import { auth } from '$lib/shared/user-store';
+
+
+
 
     let cageCode = "", email = "", password = "";
     let confirmed = false;
     let match = true;
     let error = null;
+
     
-    async function handleRegistration(entityId) {
+    async function handleRegistration(organizationId) {
         try {
-            const registrationResponse = await post("auth/local/register", { 
-                username: email,
-                entity: entityId,
+            const registrationResponse = await publicPost("auth/local/register", { 
+                username: cageCode, 
+                organization: organizationId,
                 email,
                 password
             })
+
             if(registrationResponse.ok){
                 const registerResponse = await registrationResponse.json()
+                console.log(registerResponse)
                 $auth = registerResponse;
                 goto('/activation')
             } else {
+                console.log(registrationResponse)
                 error = registrationResponse.message[0].messages[0].message;
             }        
         } catch (err) {
@@ -29,22 +36,38 @@
         }    
     }
 
-    async function handleValidUser(){
 
-        let validationRequest = await post("entities/validate", { cageCode, email })
-        if(validationRequest.ok){
-            const entityId = await validationRequest.json();
-            if(entityId > 0){
-                handleRegistration(entityId);
-            }else {
-                match = false;
-            }
-        }
+
+
+    async function handleOrganizationInformation() {
+        try {
+            let validationRequest = await getPublic(`user/${cageCode}/${email}`)
+            if(validationRequest.ok){
+                let validationResponse = await validationRequest.json();
+                if(!validationResponse.matchedUsers) {
+                    let registerOrganizationRequest = await publicPost('organizations', { cageCode });
+                    if(registerOrganizationRequest.ok) {
+                        let organization = await registerOrganizationRequest.json()
+                        console.log(organization)
+                        handleRegistration(organization.id)
+                    } 
+                } else { 
+                    error = validationResponse.error
+                }
+            } else {
+                error = validationRequest.message[0].messages[0].message;
+                console.log(error)
+            }        
+        } catch (err) {
+            console.error(err)
+        }    
+
     }
-
+    
     $:cageCode = cageCode.toUpperCase()
 
-</script>
+</script> 
+
 
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
@@ -53,10 +76,12 @@
         </a>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
-        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleValidUser }>
-            {#if !match} 
-                <ListError error={"The e-mail entered does not match the e-mail on <a class='cursor-pointer' href='https://sam.gov/' target='_blank'>Sam.gov</a></span>"} />    
+        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleOrganizationInformation }>
+    
+            {#if error}  
+                <ListError error={error} />
             {/if}
+
             <div>
                 <label for="cageCode" class="sr-only">Cage Code</label>
                 <input type="text" bind:value={ cageCode } name="cageCode" placeholder="Cage Code" required
@@ -65,13 +90,13 @@
             </div>
             <div>
                 <label for="email" class="sr-only">Email address</label>
-                <input type="email" bind:value={ email } name="email" placeholder="Email" required
+                <input type="email" bind:value={ email } name="email" placeholder="Email" 
                     class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
             <div>
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" bind:value={ password } name="password" placeholder="Password" required
+                <input type="password" bind:value={ password } name="password" placeholder="Password" 
                     class="rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
             </div>
