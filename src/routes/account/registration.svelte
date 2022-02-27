@@ -1,8 +1,9 @@
 <script>
     import { goto } from '$app/navigation';
-    import { post, getPublic, publicPost } from '$lib/utils';
+    import { getPublic, publicPost } from '$lib/utils';
     import ListError from '$lib/ListError.svelte';
     import { auth } from '$lib/shared/user-store';
+    import entity from '$lib/data/entity'
 
 
 
@@ -12,11 +13,11 @@
     let error = null;
 
     
-    async function handleRegistration(entityId) {
+    async function handleRegistration(organizationId) {
         try {
             const registrationResponse = await publicPost("auth/local/register", { 
                 username: cageCode, 
-                entity: entityId,
+                organization: organizationId,
                 email,
                 password
             })
@@ -35,17 +36,20 @@
         }    
     }
 
-    async function handleEntityInformation() {
+
+
+
+    async function handleOrganizationInformation() {
         try {
             let validationRequest = await getPublic(`user/${cageCode}/${email}`)
             if(validationRequest.ok){
                 let validationResponse = await validationRequest.json();
                 if(!validationResponse.matchedUsers) {
-                    let registerEntityRequest = await publicPost('entities', { cageCode });
-                    if(registerEntityRequest.ok) {
-                        let entity = await registerEntityRequest.json()
-                        console.log(entity)
-                        handleRegistration(entity.id)
+                    let registerOrganizationRequest = await publicPost('organizations', { cageCode });
+                    if(registerOrganizationRequest.ok) {
+                        let organization = await registerOrganizationRequest.json()
+                        console.log(organization)
+                        handleRegistration(organization.id)
                     } 
                 } else { 
                     error = validationResponse.error
@@ -57,10 +61,9 @@
         } catch (err) {
             console.error(err)
         }    
+
     }
     
-
-
     $:cageCode = cageCode.toUpperCase()
 
 </script> 
@@ -73,7 +76,7 @@
         </a>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h2>
         <p class="mt-2 text-center text-sm text-gray-600">Already have an account? <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
-        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleEntityInformation }>
+        <form class="mt-8 space-y-6" on:submit|preventDefault={ handleOrganizationInformation }>
     
             {#if error}  
                 <ListError error={error} />
