@@ -5,18 +5,21 @@
   import { auth } from '$lib/shared/user-store'
   import { get } from '$lib/utils'
 	import SolicitationStore from '$lib/shared/solicitation-store'
-  
+
   let business;
+
    onMount(async () => {
       if($auth !== null){
-        business = $auth.user.entity;
+        business = $auth.user.organization;
       }
-      const solicitationsResponse = await get("solicitations");
+      const solicitationsResponse = await get(`solicitations/naicsCode/${business.primaryNaics}`);
       if(solicitationsResponse.ok){
         const data = await solicitationsResponse.json();
         SolicitationStore.setSolicitations(data);
       }
   })
+
+
 
 
 
@@ -30,7 +33,7 @@
   <section aria-label="main content" class="flex min-h-0 flex-col flex-auto">
     <!--- FIRST ROW CONTAINING THE  STATS CARD STARTS HERE -->
     <div class="flex">
-      <SolicitationsWidget  bind:business={business}/>
+      <SolicitationsWidget  bind:business={business} />
       <SolicitationsWidget  bind:business={business} title={"Pre Solicitations"}/>
     </div>
     <!-- FIRST ROW CONTAINING THE  STATS CARD ENDS HERE -->
