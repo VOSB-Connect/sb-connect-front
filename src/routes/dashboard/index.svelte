@@ -8,6 +8,14 @@
 
   let business;
 
+  let counts = {
+    "Solicitation": 0,
+    "Presolicitation": 0,
+    "Combined Synopsis/Solicitation": 0,
+    "Sources Sought": 0,
+    "total": 0
+  }
+
    onMount(async () => {
       if($auth !== null){
         business = $auth.user.organization;
@@ -16,14 +24,19 @@
       if(solicitationsResponse.ok){
         const data = await solicitationsResponse.json();
         SolicitationStore.setSolicitations(data);
+
+        counts["total"] = $SolicitationStore.length 
+
+        $SolicitationStore.forEach(solicitation => {
+          counts[solicitation.type]+= 1
+        })
+
       }
+
   })
 
 
 
-
-
-  $:console.log($SolicitationStore)
 </script>
 
 <!-- main content -->
@@ -33,8 +46,11 @@
   <section aria-label="main content" class="flex min-h-0 flex-col flex-auto">
     <!--- FIRST ROW CONTAINING THE  STATS CARD STARTS HERE -->
     <div class="flex">
-      <SolicitationsWidget  bind:business={business} />
-      <SolicitationsWidget  bind:business={business} title={"Pre Solicitations"}/>
+      <SolicitationsWidget  bind:business={ business } bind:count={ counts["total"] }/>
+      <SolicitationsWidget  bind:business={ business } bind:count={ counts["Solicitation"] } title={ "Solicitations" }/>
+      <SolicitationsWidget  bind:business={ business } bind:count={ counts["Presolicitation"] } title={ "Pre Solicitations" }/>
+      <SolicitationsWidget  bind:business={ business } bind:count={ counts["Combined Synopsis/Solicitation"] } title={ "Combined Synopsis/Solicitation" }/>
+      <SolicitationsWidget  bind:business={ business } bind:count={ counts["Sources Sought"] } title={ "Sources Sought" }/>
     </div>
     <!-- FIRST ROW CONTAINING THE  STATS CARD ENDS HERE -->
 
