@@ -1,5 +1,26 @@
 <script>
+  import { createEventDispatcher } from 'svelte'
+
   export let count = {};
+  export let solicitations = {};
+  // let filterType;
+
+  function filterByType(type) {
+    if(!type) {
+      console.log(solicitations)
+    } else {
+      filterType = solicitations.filter(solicitation => solicitation.type === type)
+    
+      if(filterType.length > 0) {
+        console.log(filterType)
+      }
+    }
+  }
+
+
+  const dispatch = createEventDispatcher();
+
+
 
 </script>
 
@@ -10,7 +31,8 @@
       <span class="font-normal text-gray-700">(this week)</span></label>
     <ul class="flex">
       <li>
-        <button class="focus:outline-none focus:bg-yellow-200 p-2 rounded-l-md border border-r-0 bg-white flex flex-col items-center w-24">
+        <button on:click={() => filterByType(null)}
+        class="focus:outline-none focus:bg-yellow-200 p-2 rounded-l-md border border-r-0 bg-white flex flex-col items-center w-24"  >
           <p class="font-semibold text-lg">{ count["total"] }</p>
           <p class="uppercase text-gray-600 text-sm">
             Total
@@ -18,7 +40,7 @@
         </button>
       </li>
       <li>
-        <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24">
+        <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24"  >
           <p class="font-semibold text-lg">{ count["Solicitation"] }</p>
           <p class="uppercase text-gray-600 text-sm">
             Sol
@@ -26,7 +48,7 @@
         </button>
       </li>
       <li>
-        <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24">
+        <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24" >
           <p class="font-semibold text-lg"> { count["Presolicitation"] }</p>
           <p class="uppercase text-gray-600 text-sm">
             Pre
@@ -34,7 +56,7 @@
         </button>
       </li>
       <li>
-        <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24">
+        <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24" >
           <p class="font-semibold text-lg">{ count["Combined Synopsis/Solicitation"] }</p>
           <p class="uppercase text-gray-600 text-sm">
             Combined
@@ -43,7 +65,7 @@
       </li>
 
       <li>
-        <button class="focus:outline-none focus:bg-yellow-200 p-2 border rounded-r-md bg-white flex flex-col items-center w-24">
+        <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24" >
           <p class="font-semibold text-lg">{ count["Sources Sought"] }</p>
           <p class="uppercase text-gray-600 text-sm">
             Sources
