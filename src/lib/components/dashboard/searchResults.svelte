@@ -9,5 +9,7 @@
 		{#each $SolicitationStore as solicitation}
 			<SolicitationItem contract={ solicitation } />
 		{/each}
+		{:else}
+			<p>No Solicitations for this type</p>
 	{/if}
 </section>
