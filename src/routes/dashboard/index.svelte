@@ -1,38 +1,56 @@
 <script>
   import SearchResults from '$lib/components/dashboard/searchResults.svelte'
-  import SolicitationsWidget from '$lib/components/dashboard/solicitationsWidget.svelte';
+  import Statistics from '$lib/components/dashboard/statistics.svelte'
   import { onMount } from 'svelte'
   import { auth } from '$lib/shared/user-store'
   import { get } from '$lib/utils'
 	import SolicitationStore from '$lib/shared/solicitation-store'
-  
+
   let business;
-   onMount(async () => {
-      if($auth !== null){
-        business = $auth.user.entity;
+  let counts = {
+    "Solicitation": 0,
+    "Presolicitation": 0,
+    "Combined Synopsis/Solicitation": 0,
+    "Sources Sought": 0,
+    "total": 0
+  }
+
+
+  
+  onMount(async () => {
+    if($auth !== null){
+      business = $auth.user.organization;
+    }
+    
+    const solicitationsResponse = await get(`solicitations/naicsCode/${ business.primaryNaics }`);
+    if(solicitationsResponse.ok){
+      const data = await solicitationsResponse.json();
+      SolicitationStore.setSolicitations(data);
+      counts["total"] = $SolicitationStore.length 
+      
+
+      if(!counts["total"]) {
+        counts["total"] = 0;
+      } else {
+        $SolicitationStore.forEach(solicitation => {
+          counts[solicitation.type]+= 1
+        })
       }
-      const solicitationsResponse = await get("solicitations");
-      if(solicitationsResponse.ok){
-        const data = await solicitationsResponse.json();
-        SolicitationStore.setSolicitations(data);
-      }
+     
+
+      
+    }   
   })
 
-
-
-  $:console.log($SolicitationStore)
 </script>
 
 <!-- main content -->
 <main class="flex-grow flex flex-col min-h-0 w-screen md:w-10/12"> 
-
+ 
   <!-- section content -->
   <section aria-label="main content" class="flex min-h-0 flex-col flex-auto">
     <!--- FIRST ROW CONTAINING THE  STATS CARD STARTS HERE -->
-    <div class="flex">
-      <SolicitationsWidget  bind:business={business}/>
-      <SolicitationsWidget  bind:business={business} title={"Pre Solicitations"}/>
-    </div>
+    <Statistics bind:count={ counts } />
     <!-- FIRST ROW CONTAINING THE  STATS CARD ENDS HERE -->
 
     <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES STARTS HERE -->

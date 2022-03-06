@@ -2,10 +2,10 @@
   
   export let business = {}
   export let title = "Total Opportunities"
-  $:console.log(business)
+  export let count;
 </script>
 
-{#if business}
+{#if business && count >= 0}
   <div class="flex justify-start bg-gray-100 py-10 p-14">
     <!--- First Container --->
       <div class="w-72 bg-white max-w-xs rounded-sm border border-gray-300 cursor-pointer">
@@ -13,7 +13,7 @@
           <p class="text-white text-center text-2xl w-full">{title}</p>
         </div>
         <div class="flex flex-col items-center px-5 pt-6 mb-2 text-sm text-gray-600">
-          <p class="py-4 text-xl font-bold">41</p>
+          <p class="py-4 text-xl font-bold">{count}</p>
         </div>
       </div>
   </div> 

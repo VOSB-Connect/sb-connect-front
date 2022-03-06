@@ -18,12 +18,13 @@
 
   onMount(async () => {
     if($auth !== null){
-      const entity = $auth.user.entity;
-      business.legalName = entity.entityRegistration.legalBusinessName;
-      business.entityId = entity.id; 
+      const organization = $auth.user.organization;
+      business.legalName = organization.legalBusinessName;
+      business.entityId = organization.id; 
       business.status = $auth.user.isMember;
     }
   })
+  
 </script>
 
 
