@@ -5,11 +5,8 @@
   import { auth } from '$lib/shared/user-store'
   import { get } from '$lib/utils'
 	import SolicitationStore from '$lib/shared/solicitation-store'
-import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 
   let business;
-  let filterType;
-  let solicitations;
   let counts = {
     "Solicitation": 0,
     "Presolicitation": 0,
@@ -18,18 +15,6 @@ import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
     "total": 0
   }
 
-  function filterByType(type) {
-    console.log(type)
-    if(!type) {
-      console.log($SolicitationStore)
-    } else {
-      filterType = $SolicitationStore.filter(solicitation => solicitation.type === type)
-    
-      if(filterType.length > 0) {
-        console.log(filterType)
-      }
-    }
-  }
 
   
   onMount(async () => {
@@ -37,17 +22,21 @@ import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
       business = $auth.user.organization;
     }
     
-    const solicitationsResponse = await get(`solicitations/naicsCode/${ 332410 }`);
+    const solicitationsResponse = await get(`solicitations/naicsCode/${ business.primaryNaics }`);
     if(solicitationsResponse.ok){
       const data = await solicitationsResponse.json();
       SolicitationStore.setSolicitations(data);
       counts["total"] = $SolicitationStore.length 
       
-      $SolicitationStore.forEach(solicitation => {
-        counts[solicitation.type]+= 1
-      })
 
-     solicitations = filterByType("Solicitation")
+      if(!counts["total"]) {
+        counts["total"] = 0;
+      } else {
+        $SolicitationStore.forEach(solicitation => {
+          counts[solicitation.type]+= 1
+        })
+      }
+     
 
       
     }   
@@ -61,7 +50,7 @@ import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
   <!-- section content -->
   <section aria-label="main content" class="flex min-h-0 flex-col flex-auto">
     <!--- FIRST ROW CONTAINING THE  STATS CARD STARTS HERE -->
-    <Statistics bind:count={ counts } bind:solicitations= { solicitations } />
+    <Statistics bind:count={ counts } />
     <!-- FIRST ROW CONTAINING THE  STATS CARD ENDS HERE -->
 
     <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES STARTS HERE -->
@@ -73,7 +62,7 @@ import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
           <div class="font-semibold text-left py-3 px-1 w-24 flex-1">Title</div>
           <div class="font-semibold text-left py-3 px-1 flex">Expiration Date</div>
         </section>
-        <SearchResults on:showAll={() => filterByType("Solicitation")} />
+        <SearchResults />
       </div>
     </div>
   <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES ENDS HERE -->

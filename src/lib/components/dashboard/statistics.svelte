@@ -1,25 +1,20 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
 
   export let count = {};
   export let solicitations = {};
   // let filterType;
 
-  function filterByType(type) {
-    if(!type) {
-      console.log(solicitations)
-    } else {
-      filterType = solicitations.filter(solicitation => solicitation.type === type)
+  // function filterByType(type) {
+  //   if(!type) {
+  //     console.log(solicitations)
+  //   } else {
+  //     filterType = solicitations.filter(solicitation => solicitation.type === type)
     
-      if(filterType.length > 0) {
-        console.log(filterType)
-      }
-    }
-  }
-
-
-  const dispatch = createEventDispatcher();
-
+  //     if(filterType.length > 0) {
+  //       console.log(filterType)
+  //     }
+  //   }
+  // }
 
 
 </script>
