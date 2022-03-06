@@ -1,6 +1,7 @@
 <script>
     export let contract;
     import { formatDate } from '$lib/utils'
+    //$:console.log(contract)
 </script>
 
 <a href={`/solicitations/${contract.id}`} class="hover:bg-blue-100 bg-gray-100 flex w-full gap-x-4 px-3 py-2 items-center justify-center cursor-pointer">

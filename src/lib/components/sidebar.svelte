@@ -12,16 +12,16 @@
 
   let business = {
     legalName: "",
-    dbaName: "",
     entityId: null,
+    status: false
   }
 
   onMount(async () => {
     if($auth !== null){
       const entity = $auth.user.entity;
       business.legalName = entity.entityRegistration.legalBusinessName;
-      business.dbaName = entity.entityRegistration.dbaName;
       business.entityId = entity.id; 
+      business.status = $auth.user.isMember;
     }
   })
 </script>
@@ -30,7 +30,7 @@
 <nav class="hidden lg:flex flex-col bg-purple-900 w-64 h-screen px-4 tex-gray-900 border border-purple-900">
     <div class="flex flex-wrap mt-8">
       <div class="w-100">
-        <span class="font-semibold text-white">{business.dbaName}</span>
+        <span class="font-semibold text-white">{business.legalName}</span>
        
       </div>
     </div>
@@ -49,6 +49,6 @@
     </div>
     <div class="mt-auto flex mb-3 items-center justify-between">
       <p class="text-white">Platform Status:</p>
-      <p class="text-green-500 p-1 ml-3 border-green-500">Premium</p>
+      <p class="p-1 ml-3 text-green-500">{business.status ? "Paid" : "Free"}</p>
     </div>
   </nav>

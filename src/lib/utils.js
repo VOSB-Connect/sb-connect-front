@@ -70,7 +70,7 @@ export async function publicPost(endpoint, body){
 export async function get(endpoint) {
     let customError = false;
     try {
-        let headers = {}
+        let headers = {};
         headers['Content-Type'] = 'application/json';
 
         const token = window.sessionStorage.getItem("auth");
