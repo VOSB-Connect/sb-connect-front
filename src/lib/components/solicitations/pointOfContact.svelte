@@ -10,8 +10,19 @@
 
     const { pointOfContact } = contract;
 
-    const [firstName, lastName] = pointOfContact[0].fullName.split(' ');
+	function getPointOfContactName(index) {
+		if(pointOfContact[index] !== undefined) {
+			const [firstName, lastName] = pointOfContact[index].fullName.split(' ');
+			return [firstName, lastName]
+		}
 
+		return "No Contact"
+	}
+
+	const primaryName = getPointOfContactName(0);
+	const secondaryName = getPointOfContactName(1);
+    
+	
 	function formatPhoneNo(phone) {
 		if(phone) {
 			let phoneArr = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -22,19 +33,19 @@
 	}
 
 	onMount(async () => {
-		const entityId = $auth.user.entity.id;
-		const response = await get(`entities/${entityId}`);
+		const userId = $auth.user.id;
+		const response = await get(`users/${userId}`);
 		if(response.ok){
-			const entity = await response.json();
-			didSaveSolicitation = entity.solicitations.some(sol => sol.id == contract.id)
+			const user = await response.json();
+			didSaveSolicitation = user.solicitations.some(sol => sol.id == contract.id)
 		}
 	})
 
 	async function saveSolicitation() {
 		if(!didSaveSolicitation){
-			const saveSolicitationResponse = await post("entities/saveSolicitation", {
+			const saveSolicitationResponse = await post("user/saveSolicitation", {
 				solicitation: contract.id,
-				entityId: $auth.user.entity.id
+				userId: $auth.user.id
 			})
 			if(saveSolicitationResponse.ok){
 				didSaveSolicitation = true;
@@ -52,23 +63,27 @@
 		</span>
 		<span class="tracking-wide">Point of Contact</span>
 	</div>
+	<!-- primary POC -->
 		<div class="grid md:grid-cols-2 text-sm">
 			<div class="grid grid-cols-2">
+				<div class="px-4 py-2 font-semibold">Primary</div>
+			</div>
+			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">First Name</div>
-				<div class="px-4 py-2">{ firstName }</div>
+				<div class="px-4 py-2">{ primaryName[0] }</div>
 			</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Last Name</div>
-				<div class="px-4 py-2">{ lastName }</div>
+				<div class="px-4 py-2">{ primaryName[1] }</div>
 			</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Contact No.</div>
 				<div class="px-4 py-2">{ pointOfContact[0].phone }</div>
 			</div>
-			<div class="grid grid-cols-2">
+			<!-- <div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Mailing Address</div>
 				<div class="px-4 py-2"></div>
-			</div>
+			</div> -->
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Email</div>
 				<div class="px-4 py-2">
@@ -76,6 +91,37 @@
 				</div>
 			</div>
 		</div>
+		<!-- Secondary POC -->
+		{#if getPointOfContactName(1) !== "No Contact"}
+			<div class="grid md:grid-cols-2 text-sm">
+				<div class="grid grid-cols-2">
+					<div class="px-4 py-2 font-semibold">Secondary</div>
+				</div>
+				<div class="grid grid-cols-2">
+					<div class="px-4 py-2 font-semibold">First Name</div>
+					<div class="px-4 py-2">{ secondaryName[0] }</div>
+				</div>
+				<div class="grid grid-cols-2">
+					<div class="px-4 py-2 font-semibold">Last Name</div>
+					<div class="px-4 py-2">{ secondaryName[1] }</div>
+				</div>
+				<div class="grid grid-cols-2">
+					<div class="px-4 py-2 font-semibold">Contact No.</div>
+					<div class="px-4 py-2">{ pointOfContact[1].phone }</div>
+				</div>
+		
+				<!-- <div class="grid grid-cols-2">
+					<div class="px-4 py-2 font-semibold">Mailing Address</div>
+					<div class="px-4 py-2"></div>
+				</div> -->
+				<div class="grid grid-cols-2">
+					<div class="px-4 py-2 font-semibold">Email</div>
+					<div class="px-4 py-2">
+						<a class="text-blue-800" href="mailto:jane@example.com">{ pointOfContact[1].email }</a>
+					</div>
+				</div>
+			</div>
+		{/if}
 	<div class="flex justify-around items-center w-full mt-2">
 		<ActionCard on:addsolicitation={saveSolicitation} bind:solicitationSelected={didSaveSolicitation} />
 	</div>
