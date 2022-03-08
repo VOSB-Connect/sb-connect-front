@@ -2,7 +2,7 @@
 	import { formatDate } from '$lib/utils'
 	export let contract;
 	
-	const { title, solicitationNumber, naicsCode, published_at, classificationCode } = contract;
+	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink } = contract;
 
 	const [date, time] = formatDate(published_at).split(", ")
 	
@@ -26,6 +26,12 @@
 		<li class="flex items-center justify-between py-3">
 			<span>Classification Code </span>
 			<span class="ml-auto">{ classificationCode }</span>
+		</li>
+		<li class="flex items-center justify-between py-3">
+			<span>Sam URL </span>
+			<span class="ml-auto">
+				<a href={uiLink} target="_blank">{ uiLink }</a>
+			</span>
 		</li>
 	</ul>
 	<slot />
