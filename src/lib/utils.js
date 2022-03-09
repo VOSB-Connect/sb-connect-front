@@ -125,6 +125,36 @@ export async function getPublic(endpoint) {
     }
 }
 
+export async function del(endpoint) {
+    let customError = false;
+    try {
+        let headers = {};
+        headers['Content-Type'] = 'application/json';
+        const token = window.sessionStorage.getItem('auth');
+        if (Object.keys(token).length !== 0) {
+            const authToken = JSON.parse(token).jwt;
+            headers['Authorization'] = `Bearer ${authToken}`;
+        } 
+        const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'DELETE', headers });
+        if (!response.ok) {
+            try {
+                return await response.json();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        try {
+            return response;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    } catch (error) {
+        console.error(error);
+        throw customError ? error : { id: '', message: 'An unknown error occured' };
+    }
+}
+
 export function formatDate(isoString){
     const date = new Intl.DateTimeFormat("en", {
         timeStyle: "short",
