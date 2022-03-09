@@ -2,11 +2,11 @@
 	import { onMount } from 'svelte';
 	import ActionCard from '../solicitations/actionCard.svelte'
 	import { auth } from '$lib/shared/user-store';
-	import { get,post } from '$lib/utils';
+	import { get, post, del } from '$lib/utils';
 	import { faUser } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
 	export let contract;
-	let didSaveSolicitation;
+	let toggleSolicitationStatus;
 
     const { pointOfContact } = contract;
 
@@ -41,15 +41,18 @@
 		}
 	})
 
-	async function saveSolicitation() {
-		if(!didSaveSolicitation){
+	async function changeStatus() {
+		if(!toggleSolicitationStatus){
 			const saveSolicitationResponse = await post("user/saveSolicitation", {
 				solicitation: contract.id,
 				userId: $auth.user.id
 			})
 			if(saveSolicitationResponse.ok){
-				didSaveSolicitation = true;
+				toggleSolicitationStatus = true;
 			}
+		}else {
+			const deleteSolicitationResponse = await del(`user/removeSolicitation/${$auth.user.id}/${contract.id}`)
+			if (deleteSolicitationResponse.ok) toggleSolicitationStatus = false;
 		}
     }
 
@@ -115,6 +118,6 @@
 			</div>
 		{/if}
 	<div class="flex justify-around items-center w-full mt-2">
-		<ActionCard on:addsolicitation={saveSolicitation} bind:solicitationSelected={didSaveSolicitation} />
+		<ActionCard on:toggleSolicitation={changeStatus} bind:solicitationSelected={toggleSolicitationStatus} />
 	</div>
 </div>
