@@ -10,7 +10,7 @@
 
     let postDate = formatDate(published_at)
     let solicitationStatus = active === "Yes" ? "Active" : "Inactive";
-    let statusColors = solicitationStatus === "Active" ? {color: "text-green-700", bg: "bg-green-100", border: "border-green-300"} : {color: "text-red-700", bg: "bg-red-100", border: "border-red-300"};
+    let statusColors = solicitationStatus === "Active" ? { color: "text-green-700", bg: "bg-green-100", border: "border-green-300"} : {color: "text-red-700", bg: "bg-red-100", border: "border-red-300" };
     
     
     function displaySolicationAddress(placeOfPerformance){
@@ -38,8 +38,8 @@
         <!-- {#if displaySolicationAddress(solicitation.placeOfPerformance) !== ""}
             <p class="my-0 text-gray-500"><span class="font-bold">Place of Performance:</span> { displaySolicationAddress(solicitation.placeOfPerformance) }</p>   
         {/if}   -->
-        <div class="flex w-1/4 justify-center items-center m-1 font-medium py-1 px-2 rounded-full border {statusColors.bg} {statusColors.color} {statusColors.border}">
-            <div class="text-xs font-normal leading-none max-w-full flex-initial">{solicitationStatus}</div>
+        <div class="flex w-1/4 justify-center items-center m-1 font-medium py-1 px-2 rounded-full border { statusColors.bg } { statusColors.color } { statusColors.border }">
+            <div class="text-xs font-normal leading-none max-w-full flex-initial">{ solicitationStatus }</div>
         </div>
         <!-- <SolicitationAttachments {solicitation} /> -->
     </div>

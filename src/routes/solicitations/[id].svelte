@@ -22,7 +22,7 @@
 </script>
 
 {#await getSolicitation() then solicitation}
-    <div class="flex flex-col lg:flex-row">
+    <div class="flex flex-col mx-auto w-2/3">
         <SolicitationCard contract={ solicitation } />
         <PointOfContact contract={ solicitation } />
     </div>

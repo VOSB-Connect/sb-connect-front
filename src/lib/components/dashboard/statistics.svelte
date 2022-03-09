@@ -1,7 +1,7 @@
 <script>
 
   export let count = {};
-  export let solicitations = {};
+
   // let filterType;
 
   // function filterByType(type) {

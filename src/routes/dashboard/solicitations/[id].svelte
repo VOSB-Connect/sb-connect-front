@@ -23,7 +23,7 @@
 
 
 {#await getSolicitation() then solicitation}
-    <div class="flex flex-col lg:flex-row">
+    <div class="flex flex-col">
         <SolicitationCard contract={ solicitation } />
         <PointOfContact contract={ solicitation } />
     </div>

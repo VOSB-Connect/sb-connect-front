@@ -22,7 +22,7 @@
       business = $auth.user.organization;
     }
     
-    const solicitationsResponse = await get(`solicitations/naicsCode/${ business.primaryNaics }`);
+    const solicitationsResponse = await get(`solicitations/naicsCode/${ 334516 }`);
     if(solicitationsResponse.ok){
       const data = await solicitationsResponse.json();
       SolicitationStore.setSolicitations(data);
