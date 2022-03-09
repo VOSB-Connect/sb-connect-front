@@ -37,7 +37,7 @@
 		const response = await get(`users/${userId}`);
 		if(response.ok){
 			const user = await response.json();
-			didSaveSolicitation = user.solicitations.some(sol => sol.id == contract.id)
+			toggleSolicitationStatus = user.solicitations.some(sol => sol.id == contract.id)
 		}
 	})
 
