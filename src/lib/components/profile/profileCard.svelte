@@ -4,8 +4,6 @@
 	export let business;
 
 	const { primaryNaics, purposeOfRegistrationDesc, updated_at, legalBusinessName, registrationStatus} = business
-	
-	let naics = primaryNaics ?? "n/a";
 
 	const oneDay = (1 * 24 * 60 * 60 * 1000);
 	const currentTimeSpan = Date.now() - new Date(updated_at).getTime();
@@ -35,7 +33,7 @@
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Primary NAICs</span>
-			<span class="ml-auto">{ naics }</span>
+			<span class="ml-auto">{ primaryNaics ?? "N/A" }</span>
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Statement of Capability</span>
