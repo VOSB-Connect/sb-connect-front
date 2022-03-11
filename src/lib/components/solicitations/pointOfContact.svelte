@@ -9,18 +9,6 @@
 	let toggleSolicitationStatus;
 
     const { pointOfContact } = contract;
-
-	function getPointOfContactName(index) {
-		if(pointOfContact[index] !== undefined) {
-			const [firstName, lastName] = pointOfContact[index].fullName.split(' ');
-			return [firstName, lastName]
-		}
-
-		return "No Contact"
-	}
-
-	const primaryName = getPointOfContactName(0);
-	const secondaryName = getPointOfContactName(1);
     
 	
 	function formatPhoneNo(phone) {
@@ -66,6 +54,17 @@
 		</span>
 		<span class="tracking-wide">Point of Contact</span>
 	</div>
+	{#if pointOfContact[0].fullName.includes("Questions")}
+		<div class="grid md:grid-cols-2 text-sm">     
+			<div class="px-4 py-2">{ pointOfContact[0].fullName }</div>
+			<div class="grid grid-cols-2">
+				<div class="px-4 py-2 font-semibold">Email</div>
+				<div class="px-4 py-2">
+					<a class="text-blue-800" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
+				</div>
+			</div>
+		</div>
+	{:else}
 	<!-- primary POC -->
 		<div class="grid md:grid-cols-2 text-sm">
 			<div class="grid grid-cols-2">
@@ -91,7 +90,7 @@
 			</div>
 		</div>
 		<!-- Secondary POC -->
-		{#if getPointOfContactName(1) !== "No Contact"}
+		{#if pointOfContact[1] !== undefined}
 			<div class="grid md:grid-cols-2 text-sm">
 				<div class="grid grid-cols-2">
 					<div class="px-4 py-2 font-semibold">Secondary</div>
@@ -116,6 +115,7 @@
 					</div>
 				</div>
 			</div>
+		{/if}
 		{/if}
 	<div class="flex justify-around items-center w-full mt-2">
 		<ActionCard on:toggleSolicitation={changeStatus} bind:solicitationSelected={toggleSolicitationStatus} />
