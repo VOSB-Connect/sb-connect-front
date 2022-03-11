@@ -1,18 +1,19 @@
 <script>
     import Sidebar from '$lib/components/sidebar.svelte'
-    import DashboardTopNav from '$lib/components/dashboard/topNav.svelte'
+    import SidebarMobile from '$lib/components/sidebarMobile.svelte';
     import ProtectedLayout from '$lib/components/layouts/ProtectedLayout.svelte'
 </script>
-
-
+<svelte:head>
+  <title>CAPTR | Solicitations</title>
+</svelte:head>
 
 <ProtectedLayout>
-    <div class="h-full w-full flex overflow-hidden antialiased text-gray-800 bg-white">
+    <div class="h-screen w-full flex flex-col lg:flex-row overflow-auto antialiased text-gray-800 bg-gray-100">
         <!-- section body side nav -->
         <Sidebar />
-        <div class="flex-1 flex flex-col">
-            <!-- section body top nav -->
-            <DashboardTopNav />
+
+        <SidebarMobile />
+        <div class="flex-1 flex flex-col md:flex-row justify-start items-start lg:px-2 pt-2 lg:pt-5 lg:pr-5">
             <slot />
         </div>
     </div>
