@@ -54,7 +54,7 @@
     <div class="lg:px-5">
       <h1 class="text-center lg:text-left text-xl mb-4">All Contract Opportunities</h1>
       <div class="container-fluid bg-gray-100">
-        <section class="border-b-2 w-full bg-white min-h-0 h-auto flex flex-row px-3">
+        <section class="border-b-2 w-full bg-white min-h-0 h-auto hidden md:flex flex-row px-3">
           <div class="font-semibold text-left py-3 px-1">NAICs</div>        
           <div class="font-semibold text-left py-3 px-1 flex-1">Title</div>
           <div class="font-semibold text-left py-3 px-1">Expiration Date</div>
