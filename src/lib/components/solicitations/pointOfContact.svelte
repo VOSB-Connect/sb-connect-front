@@ -10,15 +10,14 @@
 
     const { pointOfContact } = contract;
     
-	
-	function formatPhoneNo(phone) {
-		if(phone) {
-			let phoneArr = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
-			return `(${phoneArr[1]}) ${phoneArr[2]}-${phoneArr[3]}`;
-		}
+	// function formatPhoneNo(phone) {
+	// 	if(phone) {
+	// 		let phoneArr = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
+	// 		return `(${phoneArr[1]}) ${phoneArr[2]}-${phoneArr[3]}`;
+	// 	}
 
-		return 'N/A'
-	}
+	// 	return 'N/A'
+	// }
 
 	onMount(async () => {
 		const userId = $auth.user.id;
@@ -48,7 +47,7 @@
 
 
 <div class="bg-white p-3 shadow-sm rounded-sm w-100">
-	<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+	<div class="flex items-center justify-center md:justify-start space-x-2 font-semibold text-gray-900 leading-8">
 		<span class="text-green-500">
 			<Fa icon={faUser} size="lg" />
 		</span>
@@ -59,9 +58,7 @@
 			<div class="px-4 py-2">{ pointOfContact[0].fullName }</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Email</div>
-				<div class="px-4 py-2">
-					<a class="text-blue-800" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
-				</div>
+				<a class="text-blue-800 px-4 py-2" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
 			</div>
 		</div>
 	{:else}
@@ -71,7 +68,7 @@
 				<div class="px-4 py-2 font-semibold">Primary</div>
 			</div>
 			<div class="grid grid-cols-2">
-				<div class="px-4 py-2 font-semibold">Full name</div>
+				<div class="px-4 py-2 font-semibold">Name</div>
 				<div class="px-4 py-2">{ pointOfContact[0].fullName }</div>
 			</div>
 			<div class="grid grid-cols-2">
@@ -84,9 +81,7 @@
 			</div> -->
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Email</div>
-				<div class="px-4 py-2">
-					<a class="text-blue-800" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
-				</div>
+				<a class="text-blue-800 px-4 py-2" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
 			</div>
 		</div>
 		<!-- Secondary POC -->
@@ -96,7 +91,7 @@
 					<div class="px-4 py-2 font-semibold">Secondary</div>
 				</div>
 				<div class="grid grid-cols-2">
-					<div class="px-4 py-2 font-semibold">Full Name</div>
+					<div class="px-4 py-2 font-semibold">Name</div>
 					<div class="px-4 py-2">{ pointOfContact[1].fullName }</div>
 				</div>
 				<div class="grid grid-cols-2">
@@ -110,9 +105,7 @@
 				</div> -->
 				<div class="grid grid-cols-2">
 					<div class="px-4 py-2 font-semibold">Email</div>
-					<div class="px-4 py-2">
-						<a class="text-blue-800" href="mailto:jane@example.com">{ pointOfContact[1].email }</a>
-					</div>
+					<a class="text-blue-800 px-4 py-2" href="mailto:jane@example.com">{ pointOfContact[1].email }</a>
 				</div>
 			</div>
 		{/if}

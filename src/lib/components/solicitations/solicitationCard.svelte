@@ -13,10 +13,10 @@
 </script>
 
 <div class="bg-white shadow-sm w-100 border-b-4  border-green-400">
-	<div class="flex justify-between">
-		<h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{ title }</h1>
-		<div class="flex w-1/6 m-1 justify-center items-center rounded-full border { statusColors.bg } { statusColors.color } { statusColors.border }">
-			<div class="text-s leading-none font-semibold flex-initial">{ solicitationStatus }</div>
+	<div class="flex flex-col items-center md:flex-row md:items-row md:justify-between">
+		<h1 class="text-gray-900 font-bold text-center md:text-left text-xl leading-8 my-1">{ title }</h1>
+		<div class="flex w-1/3 md:w-1/6 m-1 justify-center items-center rounded-full border { statusColors.bg } { statusColors.color } { statusColors.border }">
+			<div class="text-s py-2leading-none font-semibold flex-initial">{ solicitationStatus }</div>
 		</div>
 	</div>
 	<ul class="bg-gray-100 text-gray-600 py-2 px-3 my-3 divide-y rounded shadow-sm">
