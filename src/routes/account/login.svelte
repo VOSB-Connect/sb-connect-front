@@ -1,18 +1,18 @@
 <script>
 import { onMount } from 'svelte'
 import { goto } from '$app/navigation'
-import { post } from '$lib/utils'
+import { publicPost } from '$lib/utils'
 import { auth } from '$lib/shared/user-store'
 import ListError from '$lib/ListError.svelte'
 
 
-    let email = "jasong84@gmail.com";
-    let password = "asdf1243";
+    let email = "";
+    let password = "";
     let error = null;
    
 
     async function handleLogin() {
-        const loginResponse = await post("auth/local", {identifier: email, password});
+        const loginResponse = await publicPost("auth/local", {identifier: email, password});
         
         if(loginResponse.ok){
             const json = await loginResponse.json()
