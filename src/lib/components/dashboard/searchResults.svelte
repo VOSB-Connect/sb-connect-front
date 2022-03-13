@@ -1,12 +1,16 @@
 <script>
 	import SolicitationStore from '$lib/shared/solicitation-store'
 	import SolicitationItem from "./solicitationItem.svelte";
+
+	export let count = {};
+
 </script>
+ 
 
 <section class="flex w-full flex-col flex-1 divide-y min-h-0 max-h-96 {$SolicitationStore.length == 0 ? "" : "overflow-auto"} px-0">
 	{#if $SolicitationStore.length > 0}
 		{#each $SolicitationStore as solicitation}
-			<SolicitationItem contract={ solicitation } />
+			<SolicitationItem contract={ solicitation } count={ count } />
 		{/each}
 		{:else}
 			<p>No Solicitations</p>

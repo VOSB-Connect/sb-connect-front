@@ -7,14 +7,14 @@
 	import AffiliatesCard from '$lib/components/profile/affiliatesCard.svelte';
 
 	const business = {
-		entity: null,
+		organization: null,
 		user: null
 	};
 	let hasLoaded = false;
 
 	onMount(async () => {
 		if($auth !== null){
-			business.entity = $auth.user.entity;
+			business.organization = $auth.user.organization;
 			business.user = $auth.user;
 			hasLoaded = true;
 		}
@@ -25,15 +25,15 @@
 	<div class="w-full h-full overflow-x-auto md:p-5">
 		<div class="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2  gap-y-2 md:gap-4">
 			<!-- Profile Card -->
-			<ProfileCard business={business.entity}>
+			<ProfileCard business={ business.organization }></ProfileCard>
 	
-			</ProfileCard>
+			
 			<!-- End of profile card -->
 			<!-- About Section -->
-			<AboutCard business={business.entity} />
+			<AboutCard business={ business.organization } />
 			<!-- End of about section -->		
 			<!-- Experience card -->
-			<ExperienceCard business={business.entity} />
+			<ExperienceCard business={ business.organization } />
 		</div>
 	</div>
 {:else} 

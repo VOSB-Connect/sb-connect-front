@@ -8,11 +8,11 @@
 
   let business;
   let counts = {
-    "Solicitation": 0,
-    "Presolicitation": 0,
-    "Combined Synopsis/Solicitation": 0,
-    "Sources Sought": 0,
-    "total": 0
+    "Solicitation": [0, "bg-green-500"],
+    "Presolicitation": [0, "bg-red-600"],
+    "Combined Synopsis/Solicitation": [0, "bg-purple-600"],
+    "Sources Sought": [0, "bg-yellow-500"],
+    total: 0
   }
 
 
@@ -22,23 +22,20 @@
       business = $auth.user.organization;
     }
     
-    const solicitationsResponse = await get(`solicitations/naicsCode/${ business.primaryNaics }`);
+    const solicitationsResponse = await get(`solicitations/naicsCode/${ 335311 }`);
     if(solicitationsResponse.ok){
       const data = await solicitationsResponse.json();
       SolicitationStore.setSolicitations(data);
-      counts["total"] = $SolicitationStore.length 
+      counts.total = $SolicitationStore.length 
       
 
       if(!counts["total"]) {
         counts["total"] = 0;
       } else {
         $SolicitationStore.forEach(solicitation => {
-          counts[solicitation.type]+= 1
+          counts[solicitation.baseType][0] += 1
         })
       }
-     
-
-      
     }   
   })
 
@@ -57,12 +54,12 @@
     <div class="lg:px-5">
       <h1 class="text-center lg:text-left text-xl mb-4">All Contract Opportunities</h1>
       <div class="container-fluid bg-gray-100">
-        <section class="border-b-2 w-full bg-white min-h-0 h-auto flex flex-row px-3">
-          <div class="font-semibold text-left py-3 px-1 mr-4 flex">NAICs</div>        
-          <div class="font-semibold text-left py-3 px-1 w-24 flex-1">Title</div>
-          <div class="font-semibold text-left py-3 px-1 flex">Expiration Date</div>
+        <section class="border-b-2 w-full bg-white min-h-0 h-auto hidden md:flex flex-row px-3">
+          <div class="font-semibold text-left py-3 px-1">NAICs</div>        
+          <div class="font-semibold text-left py-3 px-1 flex-1">Title</div>
+          <div class="font-semibold text-left py-3 px-1">Expiration Date</div>
         </section>
-        <SearchResults />
+        <SearchResults bind:count={ counts }/>
       </div>
     </div>
   <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES ENDS HERE -->

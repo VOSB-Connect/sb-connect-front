@@ -156,6 +156,8 @@ export async function del(endpoint) {
 }
 
 export function formatDate(isoString){
+    if (isoString === null) return "--";
+
     const date = new Intl.DateTimeFormat("en", {
         timeStyle: "short",
         dateStyle: "short"

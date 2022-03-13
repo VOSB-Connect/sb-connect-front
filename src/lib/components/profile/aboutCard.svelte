@@ -1,9 +1,9 @@
 <script>
 	export let business;
-	const {addressLine1, addressLine2, city, stateOrProvinceCode, zipCode} = business.coreData.mailingAddress;
 
-	let pointOfContact = business.assertions.pointsOfContact?.electronicBusinessPOC;
-	pointOfContact = pointOfContact == null ? {}:pointOfContact;
+	const { entityPOC } = business
+	const { addressLine1, addressLine2, city, stateOrProvinceCode, zipCode, countryCode, firstName, lastName, email, usPhone } = entityPOC;
+	
 </script>
 
 <div class="bg-white p-3 shadow-sm rounded-sm col-span-2">
@@ -21,26 +21,26 @@
 		<div class="grid md:grid-cols text-sm">
 			<div class="grid grid-cols-3">
 				<div class="px-4 py-2 font-semibold">Name</div>
-				<div class="px-4 py-2 col-span-2">{pointOfContact.firstName ?? "No Point of Contact listed"} {pointOfContact.lastName ?? ""}</div>
+				<div class="px-4 py-2 col-span-2">{ firstName ?? "N/A" } { lastName ?? "" }</div>
 			</div>
 			<div class="grid grid-cols-3">
 				<div class="px-4 py-2 font-semibold">Email</div>
 				<div class="px-4 py-2 col-span-2">
-					{#if pointOfContact.email }
-						<a class="text-blue-800" href="mailto:{pointOfContact.email}">{pointOfContact.email}</a>
+					{#if email}
+						<a class="text-blue-800" href="mailto:{ email }">{ email }</a>
 						{:else} 
-						<p>No Point of Contact email listed.</p>
+						<p>N/A</p>
 					{/if}
 					
 				</div>
 			</div>
 			<div class="grid grid-cols-3">
 				<div class="px-4 py-2 font-semibold">Contact No.</div>
-				<div class="px-4 py-2 col-span-2">{pointOfContact.usPhone ?? ""}</div>
+				<div class="px-4 py-2 col-span-2">{ usPhone ?? "N/A"}</div>
 			</div>
 			<div class="grid grid-cols-3">
 				<div class="px-4 py-2 font-semibold">Mailing Address</div>
-				<div class="px-4 py-2 col-span-2">{addressLine1} {addressLine2 ?? ""} {city}, {stateOrProvinceCode} {zipCode}</div>
+				<div class="px-4 py-2 col-span-2">{ addressLine1 } { addressLine2 ?? "" } { city }, { stateOrProvinceCode } { zipCode }</div>
 			</div>
 			
 		</div>

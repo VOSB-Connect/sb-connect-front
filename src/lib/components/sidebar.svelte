@@ -50,6 +50,6 @@
     </div>
     <div class="mt-auto flex mb-3 items-center justify-between">
       <p class="text-white">Platform Status:</p>
-      <p class="p-1 ml-3 text-green-500">{business.status ? "Paid" : "Free"}</p>
+      <p class="p-1 ml-3 text-green-500">{business.status ? "Paid" : "Trial"}</p>
     </div>
   </nav>
