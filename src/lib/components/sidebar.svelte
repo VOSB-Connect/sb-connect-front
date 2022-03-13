@@ -1,9 +1,10 @@
 <script>
   import { onMount } from 'svelte'
-  import { faFileAlt, faTachometerAlt, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+  import { faFileAlt, faTachometerAlt, faUser, faSignOutAlt, faSlidersH } from '@fortawesome/free-solid-svg-icons'
   import SidebarItem from '$lib/components/sideBarItem.svelte'
   import Fa from 'svelte-fa'
   import { auth } from '$lib/shared/user-store'
+  import SideBarItem from '$lib/components/sideBarItem.svelte'
     
   function handleLogout() {
       $auth = null;
@@ -40,6 +41,7 @@
         <SidebarItem title="Discover" namedIcon={faTachometerAlt} route="/dashboard" />
         <SidebarItem title="My Solicitations" namedIcon={faFileAlt} route="/dashboard/solicitations" />
         <SidebarItem title="Profile" namedIcon={faUser} route="/dashboard/profile" />
+        <SideBarItem title="Settings" namedIcon={faSlidersH} route="/dashboard/settings"/>
         <li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded">
             <span>
                 <Fa icon={faSignOutAlt} size="lg" />
