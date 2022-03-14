@@ -46,7 +46,7 @@
 </script>
 
 
-<div class="bg-white p-3 shadow-sm rounded-sm w-100">
+<div class="bg-white shadow-sm rounded-sm w-100">
 	<div class="flex items-center justify-center md:justify-start space-x-2 font-semibold text-gray-900 leading-8">
 		<span class="text-green-500">
 			<Fa icon={faUser} size="lg" />
@@ -58,7 +58,7 @@
 			<div class="px-4 py-2">{ pointOfContact[0].fullName }</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Email</div>
-				<a class="text-blue-800 px-4 py-2" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
+				<a class="text-blue-800 px-4 py-2 break-all" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
 			</div>
 		</div>
 	{:else}
@@ -73,7 +73,7 @@
 			</div>
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Contact No.</div>
-				<div class="px-4 py-2">{ pointOfContact[0].phone }</div>
+				<div class="px-4 py-2">{ pointOfContact[0].phone ? pointOfContact[0].phone : "--"}</div>
 			</div>
 			<!-- <div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Mailing Address</div>
@@ -81,7 +81,7 @@
 			</div> -->
 			<div class="grid grid-cols-2">
 				<div class="px-4 py-2 font-semibold">Email</div>
-				<a class="text-blue-800 px-4 py-2" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
+				<a class="text-blue-800 px-4 py-2 break-all" href="mailto:jane@example.com">{ pointOfContact[0].email }</a>
 			</div>
 		</div>
 		<!-- Secondary POC -->
@@ -96,7 +96,7 @@
 				</div>
 				<div class="grid grid-cols-2">
 					<div class="px-4 py-2 font-semibold">Contact No.</div>
-					<div class="px-4 py-2">{ pointOfContact[1].phone }</div>
+					<div class="px-4 py-2">{ pointOfContact[1].phone ? pointOfContact[1].phone : "--"}</div>
 				</div>
 		
 				<!-- <div class="grid grid-cols-2">
@@ -105,7 +105,7 @@
 				</div> -->
 				<div class="grid grid-cols-2">
 					<div class="px-4 py-2 font-semibold">Email</div>
-					<a class="text-blue-800 px-4 py-2" href="mailto:jane@example.com">{ pointOfContact[1].email }</a>
+					<a class="text-blue-800 px-4 py-2 break-all" href="mailto:jane@example.com">{ pointOfContact[1].email }</a>
 				</div>
 			</div>
 		{/if}
