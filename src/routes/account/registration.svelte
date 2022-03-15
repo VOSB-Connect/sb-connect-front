@@ -1,6 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
-    import { getPublic, publicPost } from '$lib/utils';
+    import { getPublic, publicPost, publicPut } from '$lib/utils';
     import ListError from '$lib/ListError.svelte';
     import { auth } from '$lib/shared/user-store';
 
@@ -12,7 +12,26 @@
     let match = true;
     let error = null;
 
-    
+    async function handleOrganizationEmail(organizationId) {
+        try{
+            const response = await publicPut(`organizations/${ organizationId }`, {
+                entityPOC: {
+                    email
+                }
+            })
+            if(response.ok) {
+                const updateResponse = await response.json();
+                return updateResponse;
+            } else {
+                console.log(response)
+                error = response.message[0].messages[0].message;
+            } 
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
+
     async function handleRegistration(organizationId) {
         try {
             const registrationResponse = await publicPost("auth/local/register", { 
@@ -24,7 +43,6 @@
 
             if(registrationResponse.ok){
                 const registerResponse = await registrationResponse.json()
-                console.log(registerResponse)
                 $auth = registerResponse;
                 goto('/activation')
             } else {
@@ -37,8 +55,6 @@
     }
 
 
-
-
     async function handleOrganizationInformation() {
         try {
             let validationRequest = await getPublic(`user/${cageCode}/${email}`)
@@ -48,7 +64,7 @@
                     let registerOrganizationRequest = await publicPost('organizations', { cageCode });
                     if(registerOrganizationRequest.ok) {
                         let organization = await registerOrganizationRequest.json()
-                        console.log(organization)
+                        handleOrganizationEmail(organization.id)
                         handleRegistration(organization.id)
                     } 
                 } else { 
