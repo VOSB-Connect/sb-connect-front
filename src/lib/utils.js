@@ -160,7 +160,7 @@ export async function del(endpoint) {
             let headers = {};
             headers['Content-Type'] = 'application/json';
             body = JSON.stringify(body || {})
-            const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'PUT', body,headers });
+            const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'PUT', body, headers });
             if (!response.ok) {
                 try {
                     return await response.json();
