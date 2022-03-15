@@ -7,36 +7,71 @@
 	import SolicitationStore from '$lib/shared/solicitation-store'
 
   let business;
-  let counts = {
-    "Solicitation": [0, "bg-green-500"],
-    "Presolicitation": [0, "bg-red-600"],
-    "Combined Synopsis/Solicitation": [0, "bg-purple-600"],
-    "Sources Sought": [0, "bg-yellow-500"],
-    total: 0
+  let solicitationsData = {
+    "Solicitation": {
+      count: 0,
+      bgColor: "bg-green-500",
+      items: []
+    },
+    "Presolicitation": {
+      count: 0,
+      bgColor: "bg-red-600",
+      items: []
+    },
+    "Combined Synopsis/Solicitation": {
+      count: 0,
+      bgColor: "bg-purple-600",
+      items: []
+    },
+    "Sources Sought": {
+      count: 0,
+      bgColor: "bg-yellow-500",
+      items: []
+    },
+    "Total": {
+      count: 0,
+      bgColor: "",
+      items: []
+    }
   }
 
-
+  let solicitationType = "Total"
   
   onMount(async () => {
-    if($auth !== null){
-      business = $auth.user.organization;
-    }
-    
+    // if($auth !== null){
+    //   business = $auth.user.organization;
+    // }
+    //console.log(business)
+    // const solicitationsResponse = await get(`solicitations/naicsCode/${ $auth.user.organization.primaryNaics }`);
+
     const solicitationsResponse = await get(`solicitations/naicsCode/${ 335311 }`);
     if(solicitationsResponse.ok){
       const data = await solicitationsResponse.json();
       SolicitationStore.setSolicitations(data);
-      counts.total = $SolicitationStore.length 
-      
 
-      if(!counts["total"]) {
-        counts["total"] = 0;
-      } else {
-        $SolicitationStore.forEach(solicitation => {
-          counts[solicitation.baseType][0] += 1
-        })
-      }
-    }   
+      solicitationsData["Total"].count = $SolicitationStore.length;
+      solicitationsData["Total"].items = [...$SolicitationStore]
+  
+      $SolicitationStore.map(solicitation => {
+        if(solicitation.baseType.startsWith("Solicit")){
+          solicitationsData["Solicitation"].count += 1
+          solicitationsData["Solicitation"].items = [...solicitationsData["Solicitation"].items, solicitation ]
+        }
+        if(solicitation.baseType.startsWith("Pre")){
+          solicitationsData["Presolicitation"].count += 1
+          solicitationsData["Presolicitation"].items = [...solicitationsData["Presolicitation"].items, solicitation ]
+        }
+        if(solicitation.baseType.startsWith("Combined")){
+          solicitationsData["Combined Synopsis/Solicitation"].count += 1
+          solicitationsData["Combined Synopsis/Solicitation"].items = [...solicitationsData["Combined Synopsis/Solicitation"].items, solicitation ]
+        }
+        if(solicitation.baseType.startsWith("Sources")){
+          solicitationsData["Sources Sought"].count += 1
+          solicitationsData["Sources Sought"].items = [...solicitationsData["Sources Sought"].items, solicitation ]
+        }  
+      })
+      
+    }
   })
 
 </script>
@@ -47,7 +82,7 @@
   <!-- section content -->
   <section aria-label="main content" class="flex min-h-0 flex-col flex-auto">
     <!--- FIRST ROW CONTAINING THE  STATS CARD STARTS HERE -->
-    <Statistics bind:count={ counts } />
+    <Statistics {solicitationsData} bind:solicitationType={solicitationType} />
     <!-- FIRST ROW CONTAINING THE  STATS CARD ENDS HERE -->
 
     <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES STARTS HERE -->
@@ -57,9 +92,9 @@
         <section class="border-b-2 w-full bg-white min-h-0 h-auto hidden md:flex flex-row px-3">
           <div class="font-semibold text-left py-3 px-1">NAICs</div>        
           <div class="font-semibold text-left py-3 px-1 flex-1">Title</div>
-          <div class="font-semibold text-left py-3 px-1">Expiration Date</div>
+          <div class="font-semibold text-left py-3 px-1">Expiry Date</div>
         </section>
-        <SearchResults bind:count={ counts }/>
+        <SearchResults {solicitationsData} {solicitationType} />
       </div>
     </div>
   <!-- SECOND ROW CONTAINING THE TEN MOST RECENT CONTRACT OPPORTUNITIES ENDS HERE -->
