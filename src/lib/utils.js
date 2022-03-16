@@ -154,6 +154,31 @@ export async function del(endpoint) {
         throw customError ? error : { id: '', message: 'An unknown error occured' };
     }
 }
+    export async function publicPut(endpoint, body) {
+        let customError = false;
+        try {
+            let headers = {};
+            headers['Content-Type'] = 'application/json';
+            body = JSON.stringify(body || {})
+            const response = await fetch(`${strapiBase}/${endpoint}`, { method: 'PUT', body, headers });
+            if (!response.ok) {
+                try {
+                    return await response.json();
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+            try {
+                return response;
+            } catch (err) {
+                console.error(err);
+                throw err;
+            }
+        } catch (error) {
+            console.error(error);
+            throw customError ? error : { id: '', message: 'An unknown error occured' };
+        }
+}
 
 export function formatDate(isoString){
     if (isoString === null) return "--";
