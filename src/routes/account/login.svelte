@@ -6,8 +6,8 @@ import { auth } from '$lib/shared/user-store'
 import ListError from '$lib/ListError.svelte'
 
 
-    let email = "jasong84@gmail.com";
-    let password = "asdf1243";
+    let email = "";
+    let password = "";
     let error = null;
    
 
