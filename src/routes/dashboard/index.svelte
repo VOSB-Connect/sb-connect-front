@@ -38,13 +38,12 @@
   let solicitationType = "Total"
   
   onMount(async () => {
-    // if($auth !== null){
-    //   business = $auth.user.organization;
-    // }
-    //console.log(business)
-    // const solicitationsResponse = await get(`solicitations/naicsCode/${ $auth.user.organization.primaryNaics }`);
+    if($auth !== null){
+      business = $auth.user.organization;
+    }
+    const solicitationsResponse = await get(`solicitations/naicsCode/${ business.primaryNaics }`);
 
-    const solicitationsResponse = await get(`solicitations/naicsCode/${ 335311 }`);
+    // const solicitationsResponse = await get(`solicitations/naicsCode/${ 335311 }`);
     if(solicitationsResponse.ok){
       const data = await solicitationsResponse.json();
       SolicitationStore.setSolicitations(data);
