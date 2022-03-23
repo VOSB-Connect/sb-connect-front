@@ -1,7 +1,7 @@
 <script context="module">
-    export async function load({ page }) {
-        console.log(page)
-        const solicitationId = page.params.id;
+    export async function load({ params }) {
+        console.log(params)
+        const solicitationId = params.id;
         return {
             props: { solicitationId }
         };
