@@ -9,15 +9,6 @@
 	let toggleSolicitationStatus;
 
     const { pointOfContact } = contract;
-    
-	// function formatPhoneNo(phone) {
-	// 	if(phone) {
-	// 		let phoneArr = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
-	// 		return `(${phoneArr[1]}) ${phoneArr[2]}-${phoneArr[3]}`;
-	// 	}
-
-	// 	return 'N/A'
-	// }
 
 	onMount(async () => {
 		const userId = $auth.user.id;
@@ -33,12 +24,12 @@
 			const saveSolicitationResponse = await post("user/saveSolicitation", {
 				solicitation: contract.id,
 				userId: $auth.user.id
-			})
+			}, true)
 			if(saveSolicitationResponse.ok){
 				toggleSolicitationStatus = true;
 			}
 		}else {
-			const deleteSolicitationResponse = await del(`user/removeSolicitation/${$auth.user.id}/${contract.id}`)
+			const deleteSolicitationResponse = await del(`user/removeSolicitation/${$auth.user.id}/${contract.id}`, true)
 			if (deleteSolicitationResponse.ok) toggleSolicitationStatus = false;
 		}
     }
@@ -109,7 +100,7 @@
 				</div>
 			</div>
 		{/if}
-		{/if}
+	{/if}
 	<div class="flex justify-around items-center w-full mt-2">
 		<ActionCard on:toggleSolicitation={changeStatus} bind:solicitationSelected={toggleSolicitationStatus} />
 	</div>
