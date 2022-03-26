@@ -41,7 +41,8 @@
     if($auth !== null){
       business = $auth.user.organization;
     }
-    const solicitationsResponse = await get(`solicitations/naicsCode/${ business.primaryNaics }`);
+
+    const solicitationsResponse = await get(`solicitations/naicsCode/${ business.primaryNaics }`, true);
 
     // const solicitationsResponse = await get(`solicitations/naicsCode/${ 335311 }`);
     if(solicitationsResponse.ok){
