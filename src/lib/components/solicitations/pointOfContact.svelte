@@ -1,41 +1,46 @@
 <script>
 	import { onMount } from 'svelte';
 	import ActionCard from '../solicitations/actionCard.svelte'
+	import SaveSolicitation from '$lib/components/toasts/saveSolicitation.svelte';
 	import { auth } from '$lib/shared/user-store';
 	import { get, post, del } from '$lib/utils';
 	import { faUser } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
-	export let contract;
+
+	export let solicitation;
+
 	let toggleSolicitationStatus;
 
-    const { pointOfContact } = contract;
+    const { pointOfContact } = solicitation;
 
 	onMount(async () => {
 		const userId = $auth.user.id;
-		const response = await get(`users/${userId}`);
+		const response = await get(`users/${userId}`, true);
 		if(response.ok){
 			const user = await response.json();
-			toggleSolicitationStatus = user.solicitations.some(sol => sol.id == contract.id)
+			toggleSolicitationStatus = user.solicitations.some(sol => sol.id == solicitation.id)
 		}
 	})
 
 	async function changeStatus() {
 		if(!toggleSolicitationStatus){
 			const saveSolicitationResponse = await post("user/saveSolicitation", {
-				solicitation: contract.id,
+				solicitation: solicitation.id,
 				userId: $auth.user.id
 			}, true)
 			if(saveSolicitationResponse.ok){
 				toggleSolicitationStatus = true;
 			}
 		}else {
-			const deleteSolicitationResponse = await del(`user/removeSolicitation/${$auth.user.id}/${contract.id}`, true)
+			const deleteSolicitationResponse = await del(`user/removeSolicitation/${$auth.user.id}/${solicitation.id}`, true)
 			if (deleteSolicitationResponse.ok) toggleSolicitationStatus = false;
 		}
     }
 
+	$: showToastNotice = toggleSolicitationStatus
 </script>
 
+<SaveSolicitation { showToastNotice }/>
 
 <div class="bg-white shadow-sm rounded-sm w-100">
 	<div class="flex items-center justify-center md:justify-start space-x-2 font-semibold text-gray-900 leading-8">
