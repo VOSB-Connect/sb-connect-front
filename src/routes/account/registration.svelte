@@ -1,6 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
-    import { getPublic, publicPost, publicPut } from '$lib/utils';
+    import { get, post, put } from '$lib/utils';
     import ListError from '$lib/ListError.svelte';
     import { auth } from '$lib/shared/user-store';
 
@@ -14,17 +14,16 @@
 
     async function handleOrganizationEmail(organizationId) {
         try{
-            const response = await publicPut(`organizations/${ organizationId }`, {
+            const request = await put(`organizations/${ organizationId }`, {
                 entityPOC: {
                     email
                 }
             })
-            if(response.ok) {
-                const updateResponse = await response.json();
-                return updateResponse;
+            if(request.ok) {
+                return await request.json();
             } else {
-                console.log(response)
-                error = response.message[0].messages[0].message;
+                console.log(request)
+                error = request.message[0].messages[0].message;
             } 
         } catch(err) {
             console.error(err)
@@ -34,20 +33,19 @@
 
     async function handleRegistration(organizationId) {
         try {
-            const registrationResponse = await publicPost("auth/local/register", { 
+            const registrationRequest = await post("auth/local/register", { 
                 username: cageCode, 
                 organization: organizationId,
                 email,
                 password
             })
 
-            if(registrationResponse.ok){
-                const registerResponse = await registrationResponse.json()
-                $auth = registerResponse;
+            if(registrationRequest.ok){
+                $auth = await registrationRequest.json()
                 goto('/activation')
             } else {
-                console.log(registrationResponse)
-                error = registrationResponse.message[0].messages[0].message;
+                console.log(registrationRequest)
+                error = registrationRequest.message[0].messages[0].message;
             }        
         } catch (err) {
             console.error(err)
@@ -57,11 +55,11 @@
 
     async function handleOrganizationInformation() {
         try {
-            let validationRequest = await getPublic(`user/${cageCode}/${email}`)
+            let validationRequest = await get(`user/${cageCode}/${email}`)
             if(validationRequest.ok){
                 let validationResponse = await validationRequest.json();
                 if(!validationResponse.matchedUsers) {
-                    let registerOrganizationRequest = await publicPost('organizations', { cageCode });
+                    let registerOrganizationRequest = await post('organizations', { cageCode });
                     if(registerOrganizationRequest.ok) {
                         let organization = await registerOrganizationRequest.json()
                         handleOrganizationEmail(organization.id)
