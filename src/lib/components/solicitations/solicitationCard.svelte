@@ -1,8 +1,8 @@
 <script>
 	import { formatDate } from '$lib/utils';
-	export let contract;
+	export let solicitation;
 	
-	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink, active, type, typeOfSetAside } = contract;
+	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink, active, type, typeOfSetAside } = solicitation;
 
 	const [date, time] = formatDate(published_at).split(", ")
 	let solicitationStatus = active === "Yes" ? "Active" : "Inactive";
