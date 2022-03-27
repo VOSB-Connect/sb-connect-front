@@ -45,7 +45,12 @@
 		<li class="flex items-center justify-between py-3">
 			<span>SAM link</span>
 			<span class="ml-auto">
-				<a href={ uiLink } target="_blank">Details</a>
+				<a href={ uiLink } target="_blank" class="text-blue-700  items-center font-semibold tracking-wide">
+					<span class="hover:underline">
+						Details
+					</span>
+					<span class="text-xl ml-2">&#8594;</span>
+				</a>
 			</span>
 		</li>
 	</ul>
