@@ -2,12 +2,25 @@
 	import { formatDate } from '$lib/utils';
 	export let solicitation;
 	
-	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink, active, type, typeOfSetAside } = solicitation;
+	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink, active, type, typeOfSetAside, placeOfPerformance } = solicitation;
 
 	const [date, time] = formatDate(published_at).split(", ")
 	let solicitationStatus = active === "Yes" ? "Active" : "Inactive";
     let statusColors = solicitationStatus === "Active" ? { color: "text-green-700", bg: "bg-green-100", border: "border-green-300"} : {color: "text-red-700", bg: "bg-red-100", border: "border-red-300" };
 	
+	function getPlaceOfPerformance(pop) {
+		const { state, zip, country } = pop
+
+		if(Object.keys(pop).length === 0 || state === "--") {
+			return "Place of Performance not set";
+		}
+
+		if(zip === "--") {
+			return `${ state }, ${ country }`;
+		}
+
+		return `${ state } ${ zip }, ${ country }`
+	}
 </script>
 
 <div class="bg-white shadow-sm border-b-4 w-full border-green-400">
@@ -25,6 +38,10 @@
 		<li class="flex items-center justify-between py-3">
 			<span>Type</span>
 			<span class="ml-auto">{ type }</span>
+		</li>
+		<li class="flex items-center justify-between py-3">
+			<span>Place of Performance</span>
+			<span class="ml-auto">{ getPlaceOfPerformance(placeOfPerformance) }</span>
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Set Aside</span>
