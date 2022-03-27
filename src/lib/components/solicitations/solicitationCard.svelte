@@ -2,9 +2,10 @@
 	import { formatDate } from '$lib/utils';
 	export let solicitation;
 	
-	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink, active, type, typeOfSetAside, placeOfPerformance } = solicitation;
+	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink, active, type, typeOfSetAside, placeOfPerformance, responseDeadLine } = solicitation;
 
 	const [date, time] = formatDate(published_at).split(", ")
+	const [deadLineDate, deadLineTime] = formatDate(responseDeadLine).split(", ")
 	let solicitationStatus = active === "Yes" ? "Active" : "Inactive";
     let statusColors = solicitationStatus === "Active" ? { color: "text-green-700", bg: "bg-green-100", border: "border-green-300"} : {color: "text-red-700", bg: "bg-red-100", border: "border-red-300" };
 	
@@ -34,6 +35,10 @@
 		<li class="flex items-center justify-between py-3">
 			<span>Solicitation No.</span>
 			<span class="ml-auto">{ solicitationNumber }</span>
+		</li>
+		<li class="flex items-center justify-between py-3">
+			<span>Response Deadline</span>
+			<span class="ml-auto">{ deadLineDate }</span>
 		</li>
 		<li class="flex items-center justify-between py-3">
 			<span>Type</span>
