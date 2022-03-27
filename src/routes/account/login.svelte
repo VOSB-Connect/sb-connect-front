@@ -1,7 +1,7 @@
 <script>
 import { onMount } from 'svelte'
 import { goto } from '$app/navigation'
-import { publicPost } from '$lib/utils'
+import { post } from '$lib/utils'
 import { auth } from '$lib/shared/user-store'
 import ListError from '$lib/ListError.svelte'
 
@@ -12,14 +12,15 @@ import ListError from '$lib/ListError.svelte'
    
 
     async function handleLogin() {
-        const loginResponse = await publicPost("auth/local", {identifier: email, password});
+    const loginRequest = await post("auth/local", {identifier: email, password});
         
-        if(loginResponse.ok){
-            const json = await loginResponse.json()
+    if(loginRequest.ok){
+        const json = await loginRequest.json()
             $auth = json;
             goto("/dashboard")
         } else {
-            error = loginResponse.message[0].messages[0].message
+        let message = await loginRequest.json();
+        error = message.data.shift().messages[0].message
         }
     }
 

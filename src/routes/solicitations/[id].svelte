@@ -1,6 +1,5 @@
 <script context="module">
     export async function load({ params }) {
-        console.log(params)
         const solicitationId = params.id;
         return {
             props: { solicitationId }
@@ -16,7 +15,7 @@
     export let solicitationId;
     
     async function getSolicitation() {
-        const response = await get(`solicitations/${ solicitationId }`)
+        const response = await get(`solicitations/${ solicitationId }`, true)
         if(response.ok) return response.json();
     }  
 
