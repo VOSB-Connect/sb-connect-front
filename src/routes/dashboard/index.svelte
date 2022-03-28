@@ -92,7 +92,6 @@
         <section class="border-b-2 w-full bg-white min-h-0 h-auto hidden md:flex flex-row px-3">
           <div class="font-semibold text-left py-3 px-1">NAICs</div>        
           <div class="font-semibold text-left py-3 px-1 flex-1">Title</div>
-          <div class="font-semibold text-left py-3 px-1">Expiry Date</div>
         </section>
         <SearchResults {solicitationsData} {solicitationType} />
       </div>

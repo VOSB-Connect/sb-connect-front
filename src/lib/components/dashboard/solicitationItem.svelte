@@ -14,7 +14,5 @@
         <p class="block md:hidden text-center sm:text-right">{ solicitation.naicsCode }</p>
         <p class="text-center md:text-left">{ solicitation.title }</p>
         <p class="px-6 py-2 { solicitationColor } text-white font-medium text-xs uppercase rounded-full shadow-md  focus:bg-blue-700 focus:shadow-lg  focus:ring-0">{ solicitation.baseType }</p>
-        <p class="block md:hidden text-center sm:text-right">{ date }</p>
     </div>
-    <p class="hidden md:block w-20 text-right my-auto">{ date }</p>
 </a>
