@@ -10,17 +10,16 @@
     let statusColors = solicitationStatus === "Active" ? { color: "text-green-700", bg: "bg-green-100", border: "border-green-300"} : {color: "text-red-700", bg: "bg-red-100", border: "border-red-300" };
 	
 	function getPlaceOfPerformance(pop) {
-		const { state, zip, country } = pop
 
-		if(Object.keys(pop).length === 0 || state === "--") {
-			return "Place of Performance not set";
+		if(!pop || pop.state === "--") {
+			return "Not Set";
 		}
 
 		if(zip === "--") {
-			return `${ state }, ${ country }`;
+			return `${ pop.state }, ${ pop.country }`;
 		}
 
-		return `${ state } ${ zip }, ${ country }`
+		return `${ pop.state } ${ pop.zip }, ${ pop.country }`
 	}
 </script>
 
