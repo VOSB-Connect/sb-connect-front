@@ -1,7 +1,8 @@
 <script context="module">
     export async function load(ctx) {
-        console.log(ctx)
-        const solicitationId = ctx.page.params.id;
+        //If ctx.page, sveltekit is out of date
+        let solicitationId = ctx.params.id;
+
         return {
             props: { solicitationId }
         };
