@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import ActionCard from '../solicitations/actionCard.svelte'
-	import SaveSolicitation from '$lib/components/toasts/saveSolicitation.svelte';
+	import ToastNotice from '$lib/components/toasts/toastNotice.svelte'
 	import { auth } from '$lib/shared/user-store';
 	import { get, post, del } from '$lib/utils';
 	import { faUser } from '@fortawesome/free-solid-svg-icons'
@@ -9,8 +9,7 @@
 
 	export let solicitation;
 
-	let toggleSolicitationStatus;
-
+	let toggleSolicitationStatus, showNotice, noticeClass, noticeMessage;	
     const { pointOfContact } = solicitation;
 
 	onMount(async () => {
@@ -30,17 +29,30 @@
 			}, true)
 			if(saveSolicitationResponse.ok){
 				toggleSolicitationStatus = true;
+				showNotice = true;
+				noticeClass = "bg-green-600"
+				noticeMessage = "You saved this Solicitation!"
 			}
 		}else {
 			const deleteSolicitationResponse = await del(`user/removeSolicitation/${$auth.user.id}/${solicitation.id}`, true)
-			if (deleteSolicitationResponse.ok) toggleSolicitationStatus = false;
+			if (deleteSolicitationResponse.ok) {
+				toggleSolicitationStatus = false;
+				showNotice = true;
+				noticeClass = "bg-blue-600"
+				noticeMessage = "You removed this Solicitation!"
+			}
 		}
     }
 
-	$: showToastNotice = toggleSolicitationStatus
+
+
 </script>
 
-<SaveSolicitation { showToastNotice }/>
+<ToastNotice bind:showNotice { noticeClass }>
+	{ noticeMessage }
+</ToastNotice>
+
+
 
 <div class="bg-white shadow-sm rounded-sm w-100">
 	<div class="flex items-center justify-center md:justify-start space-x-2 font-semibold text-gray-900 leading-8">
