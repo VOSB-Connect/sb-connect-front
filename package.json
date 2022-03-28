@@ -32,5 +32,5 @@
 		"svelte-preprocess": "^4.7.3",
 		"axios": "^0.26.0",
 		"svelte-fa": "^2.2.1"
-  	}
+	}
 }
