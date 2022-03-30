@@ -1,5 +1,6 @@
 <script>
 	import { formatDate } from '$lib/utils';
+	import InfoItem from './_infoItem.svelte'
 	export let solicitation;
 	
 	const { title, solicitationNumber, naicsCode, published_at, classificationCode, uiLink, active, type, typeOfSetAside, placeOfPerformance, responseDeadLine } = solicitation;
@@ -24,48 +25,24 @@
 </script>
 
 <div class="bg-white shadow-sm border-b-4 w-full border-green-400">
-	<div class="flex flex-col items-center md:flex-row md:items-row md:justify-between px-1">
-		<h1 class="text-gray-900 font-bold text-center md:text-left text-xl leading-8 my-1 break-all">{ title }</h1>
+	<div class="flex flex-col items-center md:flex-row md:items-row md:justify-between border-b-4 border-green-400 px-2">
+		<h1 class="text-gray-900 font-bold text-center md:text-left text-xl leading-8 my-1 break-word">{ title }</h1>
 		<div class="flex w-1/3 md:w-1/6 m-1 justify-center items-center rounded-full border { statusColors.bg } { statusColors.color } { statusColors.border }">
 			<div class="text-s py-2 leading-none font-semibold flex-initial">{ solicitationStatus }</div>
 		</div>
 	</div>
-	<ul class="bg-gray-100 text-gray-600 py-2 px-3 my-3 divide-y rounded shadow-sm">
-		<li class="flex items-center justify-between py-3">
-			<span>Solicitation No.</span>
-			<span class="ml-auto">{ solicitationNumber }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>Response Deadline</span>
-			<span class="ml-auto">{ deadLineDate }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>Type</span>
-			<span class="ml-auto">{ type }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>Place of Performance</span>
-			<span class="ml-auto">{ getPlaceOfPerformance(placeOfPerformance) }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>Set Aside</span>
-			<span class="ml-auto">{ typeOfSetAside ? typeOfSetAside : "--" }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>NAICs Code</span>
-			<span class="ml-auto">{ naicsCode }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>Post Date</span>
-			<span class="ml-auto">{ date }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>Classification Code </span>
-			<span class="ml-auto">{ classificationCode }</span>
-		</li>
-		<li class="flex items-center justify-between py-3">
-			<span>SAM link</span>
-			<span class="ml-auto">
+	<ul class="text-gray-600 py-2 px-3 my-3 divide-y rounded shadow-sm">
+		<InfoItem title="Solicitation No." context={solicitationNumber} />
+		<InfoItem title="Response Deadline" context={deadLineDate} />
+		<InfoItem title="Type" context={type} />
+		<InfoItem title="Place of Performance" context={getPlaceOfPerformance(placeOfPerformance)} />
+		<InfoItem title="Set Aside" context={typeOfSetAside ? typeOfSetAside : "--"} />
+		<InfoItem title="NAICs Code" context={naicsCode} />
+		<InfoItem title="Post Date" context={date} />
+		<InfoItem title="Classification Code" context={classificationCode} />
+		<li class="flex flex-col sm:flex-row sm:justify-between py-3">
+			<span class="font-bold md:items-start">SAM link</span>
+			<span class="md:items-start">
 				<a href={ uiLink } target="_blank" class="text-blue-700  items-center font-semibold tracking-wide">
 					<span class="hover:underline">
 						Details
