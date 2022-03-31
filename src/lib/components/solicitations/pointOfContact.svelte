@@ -9,7 +9,6 @@
 	import ContactInfo from './contactInfo.svelte'
 
 	export let solicitation;
-	console.log(solicitation)
 	let toggleSolicitationStatus, showNotice, noticeClass, noticeMessage;	
     
 	onMount(async () => {

@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte'
 	const dispatch = createEventDispatcher();
-    export let solicitationSelected;
+    export let solicitationSelected = undefined;
 </script>
 
 <button 
