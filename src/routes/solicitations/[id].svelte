@@ -24,7 +24,7 @@
 </script>
 
 {#await getSolicitation() then solicitation}
-    <div class="flex flex-col mx-1 sm:w-4/5">
+    <div class="flex flex-col mx-1 sm:w-4/5 lg:max-w-3xl">
         <SolicitationCard { solicitation } />
         <PointOfContact { solicitation } />
     </div>

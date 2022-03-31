@@ -59,7 +59,7 @@
 		</span>
 		<span class="tracking-wide">Points of Contact</span>
 	</div>
-	<div class="flex flex-col md:flex-row">
+	<div class="flex flex-col md:flex-row gap-x-4">
 		{#each solicitation.pointOfContact as contact (contact) }
 			<ContactInfo {contact} />
 		{/each}
