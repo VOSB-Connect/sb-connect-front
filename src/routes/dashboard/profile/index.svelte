@@ -1,5 +1,5 @@
 <script>
-	import { auth } from '$lib/shared/user-store'
+	import { auth } from '$lib/stores/user-store'
 	import { onMount } from 'svelte'
 	import ProfileCard from '$lib/components/profile/profileCard.svelte';
 	import AboutCard from '$lib/components/profile/aboutCard.svelte';

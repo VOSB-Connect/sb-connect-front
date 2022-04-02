@@ -3,7 +3,7 @@
   import { faFileAlt, faTachometerAlt, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
   import SidebarItem from '$lib/components/sideBarItem.svelte'
   import Fa from 'svelte-fa'
-  import { auth } from '$lib/shared/user-store'
+  import { auth } from '$lib/stores/user-store'
     
   function handleLogout() {
       $auth = null;

@@ -1,5 +1,5 @@
 <script>
-    import { auth } from '$lib/shared/user-store'
+    import { auth } from '$lib/stores/user-store'
     import { faTimes } from '@fortawesome/free-solid-svg-icons'
     import Fa from 'svelte-fa'
     

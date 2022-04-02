@@ -1,6 +1,6 @@
 <script>
     import PartnerCard from "$lib/components/partners/partnerCard.svelte";
-    import { auth } from '$lib/shared/user-store'
+    import { auth } from '$lib/stores/user-store'
     import { get } from '$lib/utils'
 
     async function getMyPartners(){

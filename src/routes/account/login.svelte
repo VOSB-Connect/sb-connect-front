@@ -1,10 +1,11 @@
 <script>
-import { onMount } from 'svelte'
-import { goto } from '$app/navigation'
-import { post } from '$lib/utils'
-import { auth } from '$lib/shared/user-store'
-import ListError from '$lib/ListError.svelte'
-
+	import { isOverlayOpen } from '$lib/stores/OverlayStore.js';
+    import { onMount } from 'svelte'
+    import { goto } from '$app/navigation'
+    import { post } from '$lib/utils'
+    import { auth } from '$lib/stores/user-store'
+    import ListError from '$lib/ListError.svelte'
+    import Loader from '$lib/components/Loader.svelte'
 
     let email = "";
     let password = "";
@@ -12,25 +13,29 @@ import ListError from '$lib/ListError.svelte'
    
 
     async function handleLogin() {
-    const loginRequest = await post("auth/local", {identifier: email, password});
+        isOverlayOpen.set(true);
+        const loginRequest = await post("auth/local", {identifier: email, password});
         
-    if(loginRequest.ok){
-        const json = await loginRequest.json()
+        if(loginRequest.ok){
+            const json = await loginRequest.json()
             $auth = json;
             goto("/dashboard")
+            isOverlayOpen.set(false);
         } else {
-        let message = await loginRequest.json();
-        error = message.data.shift().messages[0].message
+            isOverlayOpen.set(false);
+            let message = await loginRequest.json();
+            error = message.data.shift().messages[0].message
         }
     }
 
-onMount(async () => {
-    if($auth !== null && $auth.jwt){
-        goto("/dashboard")
-    }
-})
+    onMount(async () => {
+        if($auth !== null && $auth.jwt){
+            goto("/dashboard")
+        }
+    })
 
 </script>
+<Loader />
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
         <a href="/" class="link pointer">

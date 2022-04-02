@@ -2,9 +2,9 @@
   import SearchResults from '$lib/components/dashboard/searchResults.svelte'
   import Statistics from '$lib/components/dashboard/statistics.svelte'
   import { onMount } from 'svelte'
-  import { auth } from '$lib/shared/user-store'
+  import { auth } from '$lib/stores/user-store'
   import { get } from '$lib/utils'
-	import SolicitationStore from '$lib/shared/solicitation-store'
+	import SolicitationStore from '$lib/stores/solicitation-store'
 
   let business;
   let solicitationsData = {
