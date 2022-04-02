@@ -4,7 +4,7 @@
     import { get } from '$lib/utils'
 
     async function getMySolicitations(){
-            const response = await get(`user/getSolicitations/${ $auth.user.id }`);
+            const response = await get(`user/getSolicitations/${ $auth.user.id }`, $auth.user.confirmed);
             if(response.ok) return await response.json();
     }
 

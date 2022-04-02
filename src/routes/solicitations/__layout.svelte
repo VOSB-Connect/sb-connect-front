@@ -14,7 +14,7 @@
         <Sidebar />
 
         <SidebarMobile />
-        <div class="flex-1 flex flex-col md:flex-row justify-center lg:px-2 pt-2 lg:pt-5 lg:pr-5">
+        <div class="flex-1 flex flex-col md:flex-row justify-center overflow-auto lg:px-2 pt-2 lg:pt-5 lg:pr-5">
             <slot />
         </div>
     </div>
