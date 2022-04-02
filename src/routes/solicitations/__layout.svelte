@@ -3,6 +3,7 @@
     import SidebarMobile from '$lib/components/sidebarMobile.svelte';
     import ProtectedLayout from '$lib/components/layouts/ProtectedLayout.svelte'
 </script>
+
 <svelte:head>
   <title>CAPTR | Solicitations</title>
 </svelte:head>
@@ -13,7 +14,7 @@
         <Sidebar />
 
         <SidebarMobile />
-        <div class="flex-1 flex flex-col md:flex-row justify-start items-start lg:px-2 pt-2 lg:pt-5 lg:pr-5">
+        <div class="flex-1 flex flex-col md:flex-row justify-center lg:px-2 pt-2 lg:pt-5 lg:pr-5">
             <slot />
         </div>
     </div>

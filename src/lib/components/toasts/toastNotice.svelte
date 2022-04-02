@@ -4,7 +4,7 @@
 	import { fly } from 'svelte/transition'
 	import { quintOut } from 'svelte/easing'
 
-	export let showNotice;
+	export let showNotice = undefined;
 	export let noticeClass = "bg-green-600";
 	const options = {
 		delay: 250,
