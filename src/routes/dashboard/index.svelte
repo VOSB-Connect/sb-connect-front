@@ -18,7 +18,7 @@
       bgColor: "bg-red-600",
       items: []
     },
-    "Combined Synopsis/Solicitation": {
+    "Combined": {
       count: 0,
       bgColor: "bg-purple-600",
       items: []
@@ -62,8 +62,9 @@
           solicitationsData["Presolicitation"].items = [...solicitationsData["Presolicitation"].items, solicitation ]
         }
         if(solicitation.baseType.startsWith("Combined")){
-          solicitationsData["Combined Synopsis/Solicitation"].count += 1
-          solicitationsData["Combined Synopsis/Solicitation"].items = [...solicitationsData["Combined Synopsis/Solicitation"].items, solicitation ]
+          solicitationsData["Combined"].count += 1
+          solicitation.baseType = "Combined";
+          solicitationsData["Combined"].items = [...solicitationsData["Combined"].items, solicitation ]
         }
         if(solicitation.baseType.startsWith("Sources")){
           solicitationsData["Sources Sought"].count += 1
@@ -89,9 +90,11 @@
     <div class="lg:px-5">
       <h1 class="text-center lg:text-left text-xl mb-4">All Contract Opportunities</h1>
       <div class="container-fluid bg-gray-100">
-        <section class="border-b-2 w-full bg-white min-h-0 h-auto hidden md:flex flex-row px-3">
-          <div class="font-semibold text-left py-3 px-1">NAICs</div>        
-          <div class="font-semibold text-left py-3 px-1 flex-1">Title</div>
+        <section class="border-b-2 w-full bg-white min-h-0 h-auto hidden md:flex flex-row gap-x-2 px-2">
+          <div class="font-semibold text-left py-3 px-1 w-1/12">NAICs</div>        
+          <div class="font-semibold text-left py-3 px-1 w-8/12">Title</div>
+          <div class="font-semibold text-center py-3 px-1 w-2/12">Type</div>
+          <div class="font-semibold text-center py-3 px-1 w-1/12">POP</div>
         </section>
         <SearchResults {solicitationsData} {solicitationType} />
       </div>
