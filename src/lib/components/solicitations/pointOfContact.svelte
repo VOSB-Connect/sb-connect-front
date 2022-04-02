@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import ActionCard from '../solicitations/actionCard.svelte'
 	import ToastNotice from '$lib/components/toasts/toastNotice.svelte'
-	import { auth } from '$lib/shared/user-store';
+	import { auth } from '$lib/stores/user-store';
 	import { get, post, del } from '$lib/utils';
 	import { faUser } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'

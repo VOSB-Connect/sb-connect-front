@@ -1,5 +1,5 @@
 <script>
-    import { auth } from '$lib/shared/user-store'
+    import { auth } from '$lib/stores/user-store'
     import NavbarMobile from '$lib/components/navbarMobile.svelte';
 
     let displayMenu = false;

@@ -11,7 +11,7 @@
 
 <script>
     import { get, post } from '$lib/utils'
-    import { auth } from '$lib/shared/user-store'
+    import { auth } from '$lib/stores/user-store'
     import ProfileCard from '$lib/components/profile/profileCard.svelte';
 	import AboutCard from '$lib/components/profile/aboutCard.svelte';
 	import ExperienceCard from '$lib/components/profile/experienceCard.svelte';

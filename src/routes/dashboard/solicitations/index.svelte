@@ -1,6 +1,6 @@
 <script>
     import SavedSolicitation from '$lib/components/solicitations/savedSolicitation.svelte';
-    import { auth } from '$lib/shared/user-store'
+    import { auth } from '$lib/stores/user-store'
     import { get } from '$lib/utils'
 
     async function getMySolicitations(){

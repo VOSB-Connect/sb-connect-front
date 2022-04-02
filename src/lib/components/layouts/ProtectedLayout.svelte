@@ -1,7 +1,7 @@
 <script>
     import {onMount} from 'svelte'
     import { goto } from '$app/navigation'
-    import { auth } from '$lib/shared/user-store'
+    import { auth } from '$lib/stores/user-store'
     
     onMount(() => {   
         if(!$auth.jwt){
