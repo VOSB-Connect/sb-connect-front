@@ -58,13 +58,13 @@
 		</span>
 		<span class="tracking-wide">Points of Contact</span>
 	</div>
-	<div class="flex flex-col md:flex-row gap-x-4 justify-around">
+	<div class="flex flex-col md:flex-row gap-x-4 justify-around pb-3">
 		{#each solicitation.pointOfContact as contact (contact) }
 			<ContactInfo {contact} />
 		{/each}
 	</div>
 
-	<div class="flex justify-around items-center w-full mt-2">
+	<div class="flex justify-around items-center w-full my-3">
 		<ActionCard on:toggleSolicitation={changeStatus} bind:solicitationSelected={toggleSolicitationStatus} />
 	</div>
 </div>
