@@ -5,8 +5,8 @@
     export let solicitationColor = "";
 
     function formatPop(pop){
-        if (!pop) return "TBD"
-        if (pop?.state == "--") return "TBD"
+        if (!pop) return "Not Set"
+        if (pop?.state == "--") return "Not Set"
         return `${pop.state}, ${pop.country}`;
     }
 
