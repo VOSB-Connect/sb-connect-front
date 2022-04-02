@@ -1,15 +1,12 @@
 <script>
+    import { isOverlayOpen } from '$lib/stores/OverlayStore.js';
     import { goto } from '$app/navigation';
     import { get, post, put } from '$lib/utils';
     import ListError from '$lib/ListError.svelte';
-    import { auth } from '$lib/shared/user-store';
-
-
-
+    import { auth } from '$lib/stores/user-store';
+    import Loader from '$lib/components/Loader.svelte'
 
     let cageCode = "", email = "", password = "";
-    let confirmed = false;
-    let match = true;
     let error = null;
 
     async function handleOrganizationEmail(organizationId) {
@@ -30,7 +27,6 @@
         }
     }
 
-
     async function handleRegistration(organizationId) {
         try {
             const registrationRequest = await post("auth/local/register", { 
@@ -43,6 +39,7 @@
             if(registrationRequest.ok){
                 $auth = await registrationRequest.json()
                 goto('/activation')
+                isOverlayOpen.set(true);
             } else {
                 console.log(registrationRequest)
                 error = registrationRequest.message[0].messages[0].message;
@@ -52,9 +49,9 @@
         }    
     }
 
-
     async function handleOrganizationInformation() {
         try {
+            isOverlayOpen.set(true);
             let validationRequest = await get(`user/${cageCode}/${email}`)
             if(validationRequest.ok){
                 let validationResponse = await validationRequest.json();
@@ -74,6 +71,7 @@
             }        
         } catch (err) {
             console.error(err)
+            isOverlayOpen.set(false);
         }    
 
     }
@@ -82,7 +80,7 @@
 
 </script> 
 
-
+<Loader />
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
         <a href="/" class="link pointer">
@@ -119,9 +117,9 @@
             </button>
             <div class="text-center text-sm text-grey-dark mt-4">
                 By signing up, you agree to the 
-                <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">Terms of Service</a>
+                <a class="no-underline border-b border-grey-dark text-grey-dark" href="/terms-of-service">Terms of Service</a>
                 and 
-                <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">Privacy Policy</a>
+                <a class="no-underline border-b border-grey-dark text-grey-dark" href="/privacy-policy">Privacy Policy</a>
             </div>
         </form>
     </div>
