@@ -1,6 +1,6 @@
 <script>
     import { auth } from '$lib/stores/user-store'
-    import NavbarMobile from '$lib/components/navbarMobile.svelte';
+    import NavbarMobile from '$lib/components/shared/navbarMobile.svelte';
 
     let displayMenu = false;
 </script>
