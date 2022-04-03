@@ -1,6 +1,6 @@
 <script>
-    import Sidebar from '$lib/components/sidebar.svelte'
-    import SidebarMobile from '$lib/components/sidebarMobile.svelte';
+    import Sidebar from '$lib/components/shared/sidebar.svelte'
+    import SidebarMobile from '$lib/components/shared/sidebarMobile.svelte';
     import ProtectedLayout from '$lib/components/layouts/ProtectedLayout.svelte'
 </script>
 <svelte:head>
