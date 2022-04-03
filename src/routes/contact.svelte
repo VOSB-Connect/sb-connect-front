@@ -1,6 +1,6 @@
 <script>
-    import Footer from '$lib/components/footer.svelte'
-    import Navbar from '$lib/components/navbar.svelte'
+    import Footer from '$lib/components/shared/footer.svelte'
+    import Navbar from '$lib/components/shared/navbar.svelte'
 </script>
 <div class="bg-indigo-500">
     <Navbar />

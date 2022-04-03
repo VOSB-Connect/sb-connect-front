@@ -1,6 +1,6 @@
 <script>
-	import Footer from '$lib/components/footer.svelte'
-	import Header from '$lib/components/header.svelte'
+	import Footer from '$lib/components/shared/footer.svelte'
+	import Header from '$lib/components/shared/header.svelte'
 
 	let isOpen = true;
 

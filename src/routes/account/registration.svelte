@@ -4,7 +4,7 @@
     import { get, post, put } from '$lib/utils';
     import ListError from '$lib/ListError.svelte';
     import { auth } from '$lib/stores/user-store';
-    import Loader from '$lib/components/Loader.svelte'
+    import Loader from '$lib/components/shared/Loader.svelte'
 
     let cageCode = "", email = "", password = "";
     let error = null;

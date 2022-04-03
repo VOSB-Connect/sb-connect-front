@@ -5,7 +5,7 @@
     import { post } from '$lib/utils'
     import { auth } from '$lib/stores/user-store'
     import ListError from '$lib/ListError.svelte'
-    import Loader from '$lib/components/Loader.svelte'
+    import Loader from '$lib/components/shared/Loader.svelte'
 
     let email = "";
     let password = "";
