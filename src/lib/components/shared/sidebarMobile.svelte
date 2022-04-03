@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { faFileAlt, faTachometerAlt, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-  import SidebarItem from '$lib/components/sideBarItem.svelte'
+  import SidebarItem from '$lib/components/shared/sideBarItem.svelte'
   import Fa from 'svelte-fa'
   import { auth } from '$lib/stores/user-store'
     
