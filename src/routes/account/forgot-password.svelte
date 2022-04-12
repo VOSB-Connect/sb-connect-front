@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
     import { post } from '$lib/utils';
     
     let email = ""
@@ -11,8 +12,8 @@
 
             if(passwordRequest.ok){
                 console.log(passwordRequest)
+                goto('/reset')
             } else {
-                console.log(passwordRequest)
                 error = passwordRequest.message[0].messages[0].message;
             }        
         } catch (err) {
