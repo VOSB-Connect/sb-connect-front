@@ -1,12 +1,10 @@
 <script context="module">
     export async function load(ctx) {
         //If ctx.page, sveltekit is out of date
-        let urlCode = ctx.url.search;
-        let urlArr = urlCode.split('=');
-        let [url , code] = urlArr;
-        
+        let url = ctx.url.search;
+
         return {
-            props: { code }
+            props: { url }
         };
     }
 </script>
@@ -15,7 +13,11 @@
     import { post } from '$lib/utils'
     import { goto } from '$app/navigation'
 
-    export let code;
+    export let url;
+
+    let urlCode = url.split('=');
+    let [query, code] = urlCode;
+
     let password = "";
     let passwordConfirmation = "";
     console.log(code)
@@ -33,7 +35,7 @@
 
             if(passwordRequest.ok){
                 console.log(passwordRequest)
-                goto('/login')
+                goto('/account/login')
             } else {
                 console.log(passwordRequest)
                 error = passwordRequest;
