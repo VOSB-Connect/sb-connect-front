@@ -1,5 +1,25 @@
 <script>
+    import { goto } from '$app/navigation';
+    import { post } from '$lib/utils';
+    
     let email = ""
+
+    async function handleResetEmail() {
+        try {
+            const passwordRequest = await post("auth/forgot-password", { 
+                email
+            })
+
+            if(passwordRequest.ok){
+                console.log(passwordRequest)
+                goto('/reset')
+            } else {
+                error = passwordRequest.message[0].messages[0].message;
+            }        
+        } catch (err) {
+            console.error(err)
+        }     
+    }
 </script>
 
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
@@ -14,8 +34,8 @@
             </div>
             <hr />
             <div class="flex flex-row w-full justify-start items-center gap-x-2">
-                <button type="submit" class="group relative w-50 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Reset Password
+                <button type="submit" on:click|preventDefault={ handleResetEmail } class="group relative w-50 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Submit
                 </button>
                 <a href="/account/login" class="font-medium text-indigo-600 hover:text-indigo-500">Return to login</a>
             </div>
