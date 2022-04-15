@@ -4,7 +4,7 @@
   import { onMount } from 'svelte'
   import { auth } from '$lib/stores/user-store'
   import { get } from '$lib/utils'
-	import SolicitationStore from '$lib/stores/solicitation-store'
+	import { SolicitationStore } from '$lib/stores/solicitation-store'
 
   let business;
   let solicitationsData = {

@@ -34,7 +34,7 @@
 			}
 		}else {
 			const deleteSolicitationResponse = await del(`user/removeSolicitation/${$auth.user.id}/${solicitation.id}`, true)
-			if (deleteSolicitationResponse.ok) {
+			if (deleteSolicitationResponse.ok) {Œ
 				toggleSolicitationStatus = false;
 				showNotice = true;
 				noticeClass = "bg-blue-600"
