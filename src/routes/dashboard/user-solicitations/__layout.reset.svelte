@@ -12,7 +12,7 @@
         <Sidebar />
 
         <SidebarMobile />
-        <div class="flex flex-col overflow-auto p-2 lg:p-5 gap-y-3">
+        <div class="flex flex-col w-full overflow-auto p-2 lg:p-5 gap-y-3">
             <slot />
         </div>
     </div>
