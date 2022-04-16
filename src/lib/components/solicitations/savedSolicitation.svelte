@@ -1,6 +1,6 @@
 <script>
     import { formatDate } from '$lib/utils'
-    
+    import { getContext } from 'svelte';
     import { faExternalLinkAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
     import Fa from 'svelte-fa'
     export let solicitation;
@@ -23,8 +23,8 @@
         return fullAddress.length > 7 ? fullAddress : "";
     }
     
-    
-    //$:console.log(solicitation)
+    const removeSolicitation = getContext("cardAction");
+
 </script>
 
 
@@ -46,7 +46,9 @@
             </div>
             <div class="flex gap-x-2 justify-center items-center">
                 <a href={ uiLink } target="_blank" class="text-blue-400 cursor-pointer hover:text-blue-600"><Fa icon={ faExternalLinkAlt } size="md" /></a>
-                <Fa icon={ faTrash } size="md" class="text-red-500 cursor-pointer hover:text-red-600"  />
+                <button on:click={() => removeSolicitation(solicitation.id)}>
+                    <Fa icon={ faTrash } size="md" class="text-red-500 cursor-pointer hover:text-red-600" />
+                </button>
             </div>
             
         </div>
