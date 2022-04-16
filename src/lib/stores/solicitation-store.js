@@ -11,8 +11,7 @@ const SolicitationStore = {
 
 const UserSolicitationStore = {
 	subscribe: userSolicitations.subscribe,
-	setSolicitations: (items) => userSolicitations.set(items),
-	removeSolicitation: (solicitationId) => userSolicitations.update( items => items.filter(sol => sol.id !== solicitationId))
+	setSolicitations: (items) => userSolicitations.set(items)
 }
 
 export { SolicitationStore, UserSolicitationStore };
