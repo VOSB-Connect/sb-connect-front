@@ -45,7 +45,7 @@
 			<div class="w-full bg-green-600 text-transparent h-0.5" />
 			<ul>
 				<SidebarItem title="Discover" namedIcon={ faTachometerAlt } route="/dashboard" />
-				<SidebarItem title="My Solicitations" namedIcon={ faFileAlt } route="/dashboard/solicitations" />
+				<SidebarItem title="My Solicitations" namedIcon={ faFileAlt } route="/dashboard/user-solicitations" />
 				<SidebarItem title="Profile" namedIcon={ faUser } route="/dashboard/profile" />
 				<li class="mb-2 p-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded">
 					<span>

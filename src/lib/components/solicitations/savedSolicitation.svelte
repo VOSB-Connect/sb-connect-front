@@ -1,7 +1,7 @@
 <script>
     import { formatDate } from '$lib/utils'
-    // import SolicitationAttachments from './solicitationAttachments.svelte';
-    import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons'
+    import { getContext } from 'svelte';
+    import { faExternalLinkAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
     import Fa from 'svelte-fa'
     export let solicitation;
 
@@ -23,24 +23,33 @@
         return fullAddress.length > 7 ? fullAddress : "";
     }
     
-    
-    //$:console.log(solicitation)
+    const removeSolicitation = getContext("cardAction");
+
 </script>
 
 
 <!-- Card -->
-<div class="w-full m-2 md:w-1/4 justify-center items-center bg-white shadow-lg rounded-lg flex flex-col">
-    <div class="w-full p-4 justify-center flex flex-col">
-        <p class="border-b-2 text-xl flex justify-between items-center w-100"><span>{ title }</span> <a href={ uiLink } target="_blank"><Fa icon={ faExternalLinkSquareAlt } size="md" /></a></p>
+<div class="w-full lg:w-10/12 bg-white shadow-lg rounded-lg flex flex-col p-3 gap-y-2">
+        <div class="border-b-2">
+            <p class=" text-xl ">{ title }</p>
+        </div>
         <p class="my-0 text-gray-500"><span class="font-bold">Solicitation No:</span> { solicitationNumber }</p>
         <p class="my-0 text-gray-500"><span class="font-bold">Posted Date:</span> { postDate }</p>  
         <p class="my-0 text-gray-500"><span class="font-bold">NAICs Code:</span> { naicsCode }</p>
         <!-- {#if displaySolicationAddress(solicitation.placeOfPerformance) !== ""}
             <p class="my-0 text-gray-500"><span class="font-bold">Place of Performance:</span> { displaySolicationAddress(solicitation.placeOfPerformance) }</p>   
-        {/if}   -->
-        <div class="flex w-1/4 justify-center items-center m-1 font-medium py-1 px-2 rounded-full border { statusColors.bg } { statusColors.color } { statusColors.border }">
-            <div class="text-xs font-normal leading-none max-w-full flex-initial">{ solicitationStatus }</div>
+        
+            {/if}   -->
+        <div class="flex justify-between">
+            <div class="flex w-max justify-center items-center px-2 py-1 rounded-full border { statusColors.bg } { statusColors.color } { statusColors.border }">
+                <p class="text-xs font-normal leading-none">{ solicitationStatus }</p>
+            </div>
+            <div class="flex gap-x-2 justify-center items-center">
+                <a href={ uiLink } target="_blank" class="text-blue-400 cursor-pointer hover:text-blue-600"><Fa icon={ faExternalLinkAlt } size="md" /></a>
+                <button on:click={() => removeSolicitation(solicitation.id)}>
+                    <Fa icon={ faTrash } size="md" class="text-red-500 cursor-pointer hover:text-red-600" />
+                </button>
+            </div>
+            
         </div>
-        <!-- <SolicitationAttachments {solicitation} /> -->
-    </div>
 </div>

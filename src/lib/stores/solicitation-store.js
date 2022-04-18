@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 
 const solicitations = writable([]);
+const userSolicitations = writable([]);
 
 const SolicitationStore = {
 	subscribe: solicitations.subscribe,
@@ -8,4 +9,9 @@ const SolicitationStore = {
 	addSolicitations: (solicitation) => solicitations.update((solicitationsData) => [solicitation, ...solicitationsData])
 };
 
-export default SolicitationStore;
+const UserSolicitationStore = {
+	subscribe: userSolicitations.subscribe,
+	setSolicitations: (items) => userSolicitations.set(items)
+}
+
+export { SolicitationStore, UserSolicitationStore };
